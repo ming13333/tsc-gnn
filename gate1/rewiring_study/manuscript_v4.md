@@ -468,7 +468,7 @@ The authors declare no competing interests.
 
 [13] Liu, Y., Cai, F., Barile, M., Chang, Y., Cao, D. & Huang, Y. TemporalVAE: atlas-assisted temporal mapping of time-series single-cell transcriptomes during embryogenesis. *Nat. Cell Biol.* **27**, 1982–1992 (2025). — TemporalVAE.
 
-[14] RENGE: reconstruction of enhancer and gene-regulatory networks from single-cell multi-omics. *[Preprint]* (2023). — RENGE (placeholder).
+[14] Ishikawa, M. et al. RENGE infers gene regulatory networks using time-series single-cell RNA-seq data with CRISPR perturbations. *Commun. Biol.* **6**, 1290 (2023).
 
 [15] Kipf, T. N. & Welling, M. Semi-supervised classification with graph convolutional networks. *Proc. ICLR* (2017). — GCN.
 
@@ -506,9 +506,9 @@ The authors declare no competing interests.
 
 [32] Benjamini, Y. & Hochberg, Y. Controlling the false discovery rate: a practical and powerful approach to multiple testing. *J. R. Stat. Soc. B* **57**, 289–300 (1995). — BH correction.
 
-[33] Finlayson, C. et al. Sox10 is essential for oligodendrocyte lineage specification and myelination. *[Dataset]* GSE269122 (2024). — Sox10 cKO (placeholder; verify publication).
+[33] Jörg, L. M. et al. Transcription factors Sox8 and Sox10 contribute with different importance to the maintenance of mature oligodendrocytes. *Int. J. Mol. Sci.* **25**, 8754 (2024).
 
-[34] He, M. et al. Cebpb regulates Kupffer cell activation in metabolic liver disease. *[Dataset]* GSE273163 (2024). — Cebpb het-KO (placeholder; verify).
+[34] Lin, S.-Z. et al. C/EBPβ–VCAM1 axis in Kupffer cells promotes hepatic inflammation in MASLD. *JHEP Rep.* **7**, 101418 (2025).
 
 [35] Subramanian, A. et al. A next generation connectivity map: L1000 platform and the first 1,000,000 profiles. *Cell* **171**, 1437–1452.e17 (2017). — LINCS L1000 / SigCom.
 
