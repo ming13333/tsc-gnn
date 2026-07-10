@@ -1,5 +1,13 @@
 # Recovering Temporal Regulatory Rewiring: An Interpretable Graph-Based Virtual Perturbation Framework Applied to Ischemic Stroke
 
+**Ming Luo^1, Yimin Mei^1, Wangyang Ye^1, Wenwu Huang^1,***
+
+^1 Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China
+
+*Ming Luo and Yimin Mei contributed equally to this work.*
+
+*Corresponding author: Wenwu Huang, Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China. Email: hwenwu321@gmail.com*
+
 > **Target journal:** Nature Methods / Patterns (Cell Press) / Nature Biotechnology / Bioinformatics  
 > **Manuscript type:** Methods article with validation  
 > **Version:** v5 — 2026-07-10
@@ -424,7 +432,7 @@ The framework is named TSC-GNN (Temporal/cell-State-Conditioned Graph Neural Net
 
 ## Author Contributions
 
-[To be completed by authors.]
+Ming Luo and Yimin Mei contributed equally to this work. Wenwu Huang is the corresponding author (hwenwu321@gmail.com). The per-author role allocation across study conception, method development, data analysis, and manuscript writing is to be finalised by the authors.
 
 ---
 
