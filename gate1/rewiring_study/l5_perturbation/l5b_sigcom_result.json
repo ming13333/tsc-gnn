@@ -1,0 +1,47 @@
+{
+  "targets_n": {
+    "SOX10": 322,
+    "CEBPB": 589,
+    "GATA2": 5370
+  },
+  "own_uuids_n": {
+    "CRISPR_KO": {
+      "SOX10": 20,
+      "CEBPB": 20,
+      "GATA2": 44
+    },
+    "Overexpression": {
+      "SOX10": 14,
+      "CEBPB": 0,
+      "GATA2": 15
+    }
+  },
+  "results": {
+    "CRISPR_KO": {
+      "matrix": {
+        "SOX10|SOX10": [],
+        "SOX10|CEBPB": [],
+        "SOX10|GATA2": [],
+        "CEBPB|SOX10": [],
+        "CEBPB|CEBPB": [],
+        "CEBPB|GATA2": [],
+        "GATA2|SOX10": [],
+        "GATA2|CEBPB": [],
+        "GATA2|GATA2": []
+      }
+    },
+    "Overexpression": {
+      "matrix": {
+        "SOX10|SOX10": [],
+        "SOX10|CEBPB": [],
+        "SOX10|GATA2": [],
+        "CEBPB|SOX10": [],
+        "CEBPB|CEBPB": [],
+        "CEBPB|GATA2": [],
+        "GATA2|SOX10": [],
+        "GATA2|CEBPB": [],
+        "GATA2|GATA2": []
+      }
+    }
+  }
+}

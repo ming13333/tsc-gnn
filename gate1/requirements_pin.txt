@@ -1,0 +1,8 @@
+# Gate 1 可复现性依赖锁定（审计 2026-07-09 捕获）
+# 安装：在隔离 venv 中  pip install -r requirements_pin.txt
+numpy==2.4.6
+scipy==1.17.1
+pandas==3.0.3
+scikit-learn==1.9.0
+scanpy==1.12.2
+# 注：无 skmisc/scikit-misc 依赖（HVG 已改用 cell_ranger flavor）。

@@ -1,0 +1,91 @@
+{
+  "dataset": "GSE16561",
+  "tissue": "peripheral whole blood",
+  "platform": "GPL6883 (Illumina HumanWG-6)",
+  "n_stroke": 39,
+  "n_control": 24,
+  "method": "AUCell/ssGSEA-style rank-mass fraction activity score",
+  "modules": [
+    {
+      "module": "SOX10",
+      "negative_control": false,
+      "n_targets_total": 322,
+      "n_targets_present": 296,
+      "stroke_mean": 0.5179031888965862,
+      "control_mean": 0.4727577082956735,
+      "mean_diff": 0.04514548060091267,
+      "cliffs_delta": 0.8247863247863247,
+      "U": 854.0,
+      "p": 4.86541666839094e-08,
+      "empirical_p_random": 0.001996007984031936,
+      "q_bh": 1.1246071802521122e-08
+    },
+    {
+      "module": "CEBPB",
+      "negative_control": false,
+      "n_targets_total": 589,
+      "n_targets_present": 555,
+      "stroke_mean": 0.5236758769771975,
+      "control_mean": 0.4658393880932897,
+      "mean_diff": 0.057836488883907855,
+      "cliffs_delta": 0.891025641025641,
+      "U": 885.0,
+      "p": 3.748690600840374e-09,
+      "empirical_p_random": 0.001996007984031936,
+      "q_bh": 1.1246071802521122e-08
+    },
+    {
+      "module": "GATA2",
+      "negative_control": false,
+      "n_targets_total": 5370,
+      "n_targets_present": 4780,
+      "stroke_mean": 0.5093047713054292,
+      "control_mean": 0.48605492132098904,
+      "mean_diff": 0.02324984998444013,
+      "cliffs_delta": 0.7585470085470085,
+      "U": 823.0,
+      "p": 5.237473683583129e-07,
+      "empirical_p_random": 0.001996007984031936,
+      "q_bh": 1.1246071802521122e-08
+    },
+    {
+      "module": "OLIG2",
+      "negative_control": true,
+      "n_targets_total": 1,
+      "n_targets_present": 1,
+      "stroke_mean": 0.491979209266124,
+      "control_mean": 0.43828245583947867,
+      "mean_diff": 0.053696753426645316,
+      "cliffs_delta": 0.09829059829059839,
+      "U": 514.0,
+      "p": 0.5195867410941031,
+      "empirical_p_random": 0.6347305389221557
+    },
+    {
+      "module": "PAX6",
+      "negative_control": true,
+      "n_targets_total": 371,
+      "n_targets_present": 344,
+      "stroke_mean": 0.5111545619184722,
+      "control_mean": 0.4827314646788948,
+      "mean_diff": 0.028423097239577422,
+      "cliffs_delta": 0.8269230769230769,
+      "U": 855.0,
+      "p": 4.4924041749170085e-08,
+      "empirical_p_random": 0.003992015968063872
+    },
+    {
+      "module": "NKX2-2",
+      "negative_control": true,
+      "n_targets_total": 1,
+      "n_targets_present": 1,
+      "stroke_mean": 0.529111278210918,
+      "control_mean": 0.5494126221917338,
+      "mean_diff": -0.020301343980815845,
+      "cliffs_delta": -0.06837606837606836,
+      "U": 436.0,
+      "p": 0.6557171006244769,
+      "empirical_p_random": 0.812375249500998
+    }
+  ]
+}

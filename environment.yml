@@ -1,0 +1,21 @@
+name: tsc-gnn
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy=2.2.6
+  - scipy=1.15.3
+  - pandas=2.3.3
+  - scikit-learn=1.5.*
+  - anndata=0.11.4
+  - h5py
+  - pip
+  - pip:
+      - mygene
+      - decoupler
+      - requests
+# CellChat (§5.4) is used via the R package; run the R CellChat step
+# separately and feed its output back into the Python pipeline.
+# GEARS comparison (gate1/gears_validation) requires torch + the GEARS repo.

@@ -1,0 +1,24 @@
+== Rewiring Run Manifest (single-cohort) ==
+Date: 2026-07-09 16:34:40
+
+n_cells: 6000
+n_edges_tested: 11615
+n_perm: 200
+p_min: 0.004975124378109453
+n_pc: 10
+seed_perm: 2
+a_aff_threshold: 0.5
+transitions: [['sham', '2d'], ['2d', '14d']]
+time_points: ['14d', '2d', 'sham']
+python: 3.10.20
+numpy: 2.2.6
+scipy: 1.15.3
+pandas: 2.3.3
+resident_matrices_GB: 1.39
+command: python run_rewiring_single.py --cache gse225_cache.npz --time-points sham,2d,14d --species mouse --out-prefix cc_gse225_ --n-per-time 2000 --n-perm 200 --n-pc 10 --aff-q 0.5
+cache_sha256: a5f3252c09421d130baf5a50ecdd581aad482df144cc518f9a7c367cc5b374c6
+cache_path: gse225_cache.npz
+subsample_seed: 0
+grn_seed: 1
+n_per_time: 2000
+elapsed_sec: 187.8

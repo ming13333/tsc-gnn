@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Environments
+envs/
+.venv/
+*.conda
+
+# Logs & intermediates (manifests are kept)
+*.log
+*_run.log
+*_diag.log
+.ipynb_checkpoints/
+
+# Large raw downloads (data are public GEO accessions)
+*.h5ad
+*.h5
+*.npz
+raw_cache/
+data/GSE174574/
+data/GSE225948/
+data/GSE225948_probe/
+gears_validation/
+# Keep processed tables that back the figures/tables:
+!gate1/rewiring_study/*_rewiring_full.csv
+
+# OS
+.DS_Store
+Thumbs.db

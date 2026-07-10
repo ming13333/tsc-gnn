@@ -1,0 +1,446 @@
+{
+  "M": [
+    "Ar",
+    "Cebpb",
+    "E2f1",
+    "Erg",
+    "Gata2",
+    "Gata3",
+    "Nr2f2",
+    "Pax5",
+    "Runx3",
+    "Sox10",
+    "Sox2",
+    "Sox9"
+  ],
+  "HUM_M_present": [
+    "AR",
+    "CEBPB",
+    "E2F1",
+    "ERG",
+    "GATA2",
+    "GATA3",
+    "NR2F2",
+    "PAX5",
+    "RUNX3",
+    "SOX10",
+    "SOX2",
+    "SOX9"
+  ],
+  "missing": [],
+  "N_universe": 18564,
+  "per_tf": {
+    "AR": {
+      "nt": 984,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 0,
+          "n": 22,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        },
+        "neuroinflammation": {
+          "k": 6,
+          "n": 23,
+          "OR": 6.338138525931632,
+          "p": 0.001012129678191649,
+          "emp_p": 0.3153423288355822,
+          "rand_mean": 4.0715,
+          "rand_std": 4.1117378017086645,
+          "overlap": [
+            "IL6",
+            "NFKB1",
+            "NFKBIA",
+            "PTGS2",
+            "RELA",
+            "STAT3"
+          ]
+        }
+      }
+    },
+    "CEBPB": {
+      "nt": 589,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 1,
+          "n": 22,
+          "OR": 1.4539994047755542,
+          "p": 0.5082274934698924,
+          "emp_p": 0.391304347826087,
+          "rand_mean": 0.478,
+          "rand_std": 0.74331420005271,
+          "overlap": [
+            "ST18"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 8,
+          "n": 23,
+          "OR": 16.486497758704918,
+          "p": 3.151240123217229e-07,
+          "emp_p": 0.02348825587206397,
+          "rand_mean": 1.798,
+          "rand_std": 2.4230550963607906,
+          "overlap": [
+            "CCL3",
+            "CCL5",
+            "IL1B",
+            "IL6",
+            "NOS2",
+            "PTGS2",
+            "STAT3",
+            "TNF"
+          ]
+        }
+      }
+    },
+    "E2F1": {
+      "nt": 5895,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 6,
+          "n": 22,
+          "OR": 0.8057176511625193,
+          "p": 0.7465939313721972,
+          "emp_p": 0.7481259370314842,
+          "rand_mean": 8.6075,
+          "rand_std": 5.042166573012042,
+          "overlap": [
+            "CLDN11",
+            "MBP",
+            "PDGFRA",
+            "PMP22",
+            "ST18",
+            "TSPAN2"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 12,
+          "n": 23,
+          "OR": 2.347222740551628,
+          "p": 0.033321138680217896,
+          "emp_p": 0.255872063968016,
+          "rand_mean": 9.5145,
+          "rand_std": 4.95255386139313,
+          "overlap": [
+            "CCL3",
+            "CCL5",
+            "HMGB1",
+            "IL1B",
+            "IRF1",
+            "NFKB1",
+            "NFKBIA",
+            "NOS2",
+            "RELA",
+            "STAT3",
+            "TLR2",
+            "TNF"
+          ]
+        }
+      }
+    },
+    "ERG": {
+      "nt": 538,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 1,
+          "n": 22,
+          "OR": 1.5966112053592856,
+          "p": 0.4765799711399251,
+          "emp_p": 0.3808095952023988,
+          "rand_mean": 0.4565,
+          "rand_std": 0.6626520580214024,
+          "overlap": [
+            "MBP"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 0,
+          "n": 23,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        }
+      }
+    },
+    "GATA2": {
+      "nt": 5370,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 6,
+          "n": 22,
+          "OR": 0.9212800018370548,
+          "p": 0.6466571540529438,
+          "emp_p": 0.5452273863068465,
+          "rand_mean": 8.1935,
+          "rand_std": 5.1124414666575895,
+          "overlap": [
+            "CLDN11",
+            "MBP",
+            "MOBP",
+            "OLIG2",
+            "ST18",
+            "TSPAN2"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 15,
+          "n": 23,
+          "OR": 4.616939168840987,
+          "p": 0.0003268236160689229,
+          "emp_p": 0.046476761619190406,
+          "rand_mean": 9.7355,
+          "rand_std": 4.8852369185127555,
+          "overlap": [
+            "CCL2",
+            "CCL5",
+            "CXCL1",
+            "CXCL2",
+            "HMGB1",
+            "IL1B",
+            "IL6",
+            "NFKB1",
+            "NFKBIA",
+            "NOS2",
+            "PTGS2",
+            "STAT1",
+            "STAT3",
+            "TLR2",
+            "TLR4"
+          ]
+        }
+      }
+    },
+    "GATA3": {
+      "nt": 7212,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 8,
+          "n": 22,
+          "OR": 0.8993409072615671,
+          "p": 0.6712705595406026,
+          "emp_p": 0.7286356821589205,
+          "rand_mean": 8.859,
+          "rand_std": 4.827744711560461,
+          "overlap": [
+            "ASPA",
+            "CLDN11",
+            "MAL",
+            "MBP",
+            "MOBP",
+            "ST18",
+            "TSPAN2",
+            "UGT8"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 11,
+          "n": 23,
+          "OR": 1.4435481428598467,
+          "p": 0.2490857893579527,
+          "emp_p": 0.44227886056971516,
+          "rand_mean": 10.059,
+          "rand_std": 4.9050503565203085,
+          "overlap": [
+            "CEBPA",
+            "CXCL1",
+            "HMGB1",
+            "IL1B",
+            "IL6",
+            "NFKB1",
+            "NFKBIA",
+            "NOS2",
+            "RELA",
+            "STAT3",
+            "TLR4"
+          ]
+        }
+      }
+    },
+    "NR2F2": {
+      "nt": 474,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 0,
+          "n": 22,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        },
+        "neuroinflammation": {
+          "k": 0,
+          "n": 23,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        }
+      }
+    },
+    "PAX5": {
+      "nt": 499,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 1,
+          "n": 22,
+          "OR": 1.7253762187689712,
+          "p": 0.45107685436432315,
+          "emp_p": 0.33883058470764615,
+          "rand_mean": 0.4745,
+          "rand_std": 0.6628346324687628,
+          "overlap": [
+            "MBP"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 1,
+          "n": 23,
+          "OR": 1.646858817292488,
+          "p": 0.46584940585133633,
+          "emp_p": 0.6466766616691654,
+          "rand_mean": 1.8255,
+          "rand_std": 2.3795061987731825,
+          "overlap": [
+            "STAT3"
+          ]
+        }
+      }
+    },
+    "RUNX3": {
+      "nt": 492,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 1,
+          "n": 22,
+          "OR": 1.750653135860122,
+          "p": 0.446375577380538,
+          "emp_p": 0.29485257371314344,
+          "rand_mean": 0.45,
+          "rand_std": 0.6939020103732227,
+          "overlap": [
+            "MBP"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 2,
+          "n": 23,
+          "OR": 3.50845179472374,
+          "p": 0.12319411095657841,
+          "emp_p": 0.344327836081959,
+          "rand_mean": 1.7995,
+          "rand_std": 2.638427514638217,
+          "overlap": [
+            "NFKB1",
+            "STAT3"
+          ]
+        }
+      }
+    },
+    "SOX10": {
+      "nt": 322,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 7,
+          "n": 22,
+          "OR": 27.002930150718196,
+          "p": 6.03603759741875e-08,
+          "emp_p": 0.0004997501249375312,
+          "rand_mean": 0.4175,
+          "rand_std": 0.5469860601514447,
+          "overlap": [
+            "GJC2",
+            "MAG",
+            "MBP",
+            "MPZ",
+            "PDGFRA",
+            "PLP1",
+            "PMP22"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 0,
+          "n": 23,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        }
+      }
+    },
+    "SOX2": {
+      "nt": 3253,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 6,
+          "n": 22,
+          "OR": 1.7664365620895677,
+          "p": 0.17475253767156126,
+          "emp_p": 0.2303848075962019,
+          "rand_mean": 6.6945,
+          "rand_std": 5.188657798506276,
+          "overlap": [
+            "CLDN11",
+            "MBP",
+            "PLP1",
+            "ST18",
+            "TSPAN2",
+            "UGT8"
+          ]
+        },
+        "neuroinflammation": {
+          "k": 1,
+          "n": 23,
+          "OR": 0.21370051122167671,
+          "p": 0.98813200695296,
+          "emp_p": 0.9620189905047476,
+          "rand_mean": 10.137,
+          "rand_std": 4.58848896696941,
+          "overlap": [
+            "IL6"
+          ]
+        }
+      }
+    },
+    "SOX9": {
+      "nt": 504,
+      "refs": {
+        "myelin_oligodendrocyte": {
+          "k": 0,
+          "n": 22,
+          "OR": null,
+          "p": null,
+          "emp_p": null,
+          "rand_mean": null,
+          "rand_std": null,
+          "overlap": []
+        },
+        "neuroinflammation": {
+          "k": 1,
+          "n": 23,
+          "OR": 1.6300366176086287,
+          "p": 0.46924148271328975,
+          "emp_p": 0.6431784107946027,
+          "rand_mean": 1.7595,
+          "rand_std": 2.4283038833720956,
+          "overlap": [
+            "HMGB1"
+          ]
+        }
+      }
+    }
+  }
+}

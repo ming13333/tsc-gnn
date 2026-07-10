@@ -1,0 +1,601 @@
+{
+  "main": {
+    "n_raw": 50,
+    "shareId": "6a4f7341474acf005d773ade",
+    "n_unique_drugs": 35,
+    "candidates": [
+      {
+        "drug": "Hinokitiol",
+        "pert_id": "BRD-K37691127",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "2-morpholino-N-((5-nitro-1H-benzo[d]imidazol-2-yl)methyl)-9-(thiophen-3-yl)-9H-purin-6-amine",
+        "pert_id": "BRD-K01896723",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HEPG2",
+        "known": ""
+      },
+      {
+        "drug": "230752",
+        "pert_id": "BRD-A11702965",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "PLX-4720",
+        "pert_id": "BRD-K16478699",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "A375",
+        "known": ""
+      },
+      {
+        "drug": "dabrafenib",
+        "pert_id": "BRD-K09951645",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HT29",
+        "known": ""
+      },
+      {
+        "drug": "pelitinib",
+        "pert_id": "BRD-K08799216",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "MCF10A",
+        "known": ""
+      },
+      {
+        "drug": "NVP-TAE684",
+        "pert_id": "BRD-K50140147",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "WZ-4-145",
+        "pert_id": "BRD-U61997977",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "linifanib",
+        "pert_id": "BRD-K99749624",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "AZD-5438",
+        "pert_id": "BRD-K72414522",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "A443654",
+        "pert_id": "BRD-K88573743",
+        "best_score": 0.0671,
+        "mean_score": 0.0671,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "-666",
+        "pert_id": "BRD-K85853281",
+        "best_score": 0.0671,
+        "mean_score": 0.0695,
+        "n_hits": 5,
+        "cells": "A375;HA1E;HEPG2",
+        "known": ""
+      },
+      {
+        "drug": "PP-110",
+        "pert_id": "BRD-K03618428",
+        "best_score": 0.0671,
+        "mean_score": 0.0702,
+        "n_hits": 2,
+        "cells": "A375;A549",
+        "known": ""
+      },
+      {
+        "drug": "16-HYDROXYTRIPTOLIDE",
+        "pert_id": "BRD-A13122391",
+        "best_score": 0.0671,
+        "mean_score": 0.0702,
+        "n_hits": 2,
+        "cells": "PC3;SKLU1",
+        "known": "triptolide · 免疫抑制抗炎"
+      },
+      {
+        "drug": "HY-10459",
+        "pert_id": "BRD-K99545815",
+        "best_score": 0.0671,
+        "mean_score": 0.0702,
+        "n_hits": 2,
+        "cells": "HA1E;HEPG2",
+        "known": ""
+      },
+      {
+        "drug": "AZD-8330",
+        "pert_id": "BRD-K37687095",
+        "best_score": 0.0671,
+        "mean_score": 0.0732,
+        "n_hits": 2,
+        "cells": "A375;HT29",
+        "known": ""
+      },
+      {
+        "drug": "geldanamycin",
+        "pert_id": "BRD-A19500257",
+        "best_score": 0.0671,
+        "mean_score": 0.0732,
+        "n_hits": 4,
+        "cells": "HA1E;MCF10A",
+        "known": ""
+      },
+      {
+        "drug": "TWS119",
+        "pert_id": "BRD-K94176593",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "PP 2",
+        "pert_id": "BRD-K95785537",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "656402-250MG",
+        "pert_id": "BRD-K72238567",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "HY-10992",
+        "pert_id": "BRD-K46056750",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 2,
+        "cells": "ASC;VCAP",
+        "known": ""
+      },
+      {
+        "drug": "PD-184352",
+        "pert_id": "BRD-K05104363",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "A375",
+        "known": ""
+      },
+      {
+        "drug": "canertinib",
+        "pert_id": "BRD-K50168500",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "alvocidib",
+        "pert_id": "BRD-K87909389",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "PF-562271",
+        "pert_id": "BRD-K99545815",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "KIN001-043",
+        "pert_id": "BRD-K44100512",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "BMS-387032",
+        "pert_id": "BRD-K43389698",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "AS-605240",
+        "pert_id": "BRD-K41895714",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "HT29",
+        "known": ""
+      },
+      {
+        "drug": "GSK-1059615",
+        "pert_id": "BRD-K02708799",
+        "best_score": 0.0732,
+        "mean_score": 0.0732,
+        "n_hits": 1,
+        "cells": "MCF10A",
+        "known": ""
+      },
+      {
+        "drug": "NVP-AUY922",
+        "pert_id": "BRD-K65182930",
+        "best_score": 0.0732,
+        "mean_score": 0.0773,
+        "n_hits": 3,
+        "cells": "MCF10A",
+        "known": ""
+      },
+      {
+        "drug": "BMS-536924",
+        "pert_id": "BRD-K34581968",
+        "best_score": 0.0793,
+        "mean_score": 0.0793,
+        "n_hits": 1,
+        "cells": "A375",
+        "known": ""
+      },
+      {
+        "drug": "radicicol",
+        "pert_id": "BRD-A39996500",
+        "best_score": 0.0793,
+        "mean_score": 0.0793,
+        "n_hits": 1,
+        "cells": "MCF10A",
+        "known": ""
+      },
+      {
+        "drug": "AZD-7762",
+        "pert_id": "BRD-K46056750",
+        "best_score": 0.0793,
+        "mean_score": 0.0793,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "saracatinib",
+        "pert_id": "BRD-K19540840",
+        "best_score": 0.0793,
+        "mean_score": 0.0793,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "CGP-60474",
+        "pert_id": "BRD-K79090631",
+        "best_score": 0.0976,
+        "mean_score": 0.1007,
+        "n_hits": 2,
+        "cells": "HME1",
+        "known": ""
+      }
+    ]
+  },
+  "robust": {
+    "n_raw": 50,
+    "shareId": "6a4f7344474acf005d773ae0",
+    "n_unique_drugs": 30,
+    "candidates": [
+      {
+        "drug": "Mevastatin",
+        "pert_id": "BRD-K94441233",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "vorinostat",
+        "pert_id": "BRD-K81418486",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 6,
+        "cells": "A549;HA1E;HCC515;OV7",
+        "known": "vorinostat · HDAC抑制剂(神经保护)"
+      },
+      {
+        "drug": "PALDA",
+        "pert_id": "BRD-K21064560",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "PUROMYCIN HYDROCHLORIDE",
+        "pert_id": "BRD-A28970875",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HCC515",
+        "known": ""
+      },
+      {
+        "drug": "Hinokitiol",
+        "pert_id": "BRD-K37691127",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "APIGENIN TRIACETATE",
+        "pert_id": "BRD-K12057390",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "ROSUVASTATIN CALCIUM",
+        "pert_id": "BRD-K82941592",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "TG101348",
+        "pert_id": "BRD-K12502280",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "A549",
+        "known": ""
+      },
+      {
+        "drug": "Tyrphostin AG 1478",
+        "pert_id": "BRD-K68336408",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "Chemistry 2804",
+        "pert_id": "BRD-K74402642",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "HCC515",
+        "known": ""
+      },
+      {
+        "drug": "ISOLIQUIRITIGENIN",
+        "pert_id": "BRD-K33583600",
+        "best_score": 0.125,
+        "mean_score": 0.125,
+        "n_hits": 1,
+        "cells": "VCAP",
+        "known": ""
+      },
+      {
+        "drug": "-666",
+        "pert_id": "BRD-K41859756",
+        "best_score": 0.125,
+        "mean_score": 0.135,
+        "n_hits": 5,
+        "cells": "EFO27;HA1E;MDST8;SKLU1",
+        "known": ""
+      },
+      {
+        "drug": "chaetocin",
+        "pert_id": "BRD-A85860691",
+        "best_score": 0.125,
+        "mean_score": 0.1375,
+        "n_hits": 2,
+        "cells": "A375;HCC515",
+        "known": ""
+      },
+      {
+        "drug": "trichostatin A",
+        "pert_id": "BRD-A19037878",
+        "best_score": 0.125,
+        "mean_score": 0.1375,
+        "n_hits": 4,
+        "cells": "HA1E;HCC515",
+        "known": "trichostatin · HDAC抑制剂(神经保护)"
+      },
+      {
+        "drug": "geldanamycin",
+        "pert_id": "BRD-A19500257",
+        "best_score": 0.125,
+        "mean_score": 0.14,
+        "n_hits": 5,
+        "cells": "HA1E;HCC515",
+        "known": ""
+      },
+      {
+        "drug": "R406",
+        "pert_id": "BRD-K20285085",
+        "best_score": 0.125,
+        "mean_score": 0.15,
+        "n_hits": 2,
+        "cells": "A549;SNGM",
+        "known": ""
+      },
+      {
+        "drug": "MITOMYCIN C",
+        "pert_id": "BRD-A48237631",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "HCC515",
+        "known": ""
+      },
+      {
+        "drug": "HKI-272",
+        "pert_id": "BRD-K85606544",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "MDST8",
+        "known": ""
+      },
+      {
+        "drug": "S1085",
+        "pert_id": "BRD-K17743125",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "A549",
+        "known": ""
+      },
+      {
+        "drug": "NVP-AUY922",
+        "pert_id": "BRD-K65182930",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "PD-184352",
+        "pert_id": "BRD-K05104363",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "HEPG2",
+        "known": ""
+      },
+      {
+        "drug": "NVP-TAE684",
+        "pert_id": "BRD-K50140147",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "BT20",
+        "known": ""
+      },
+      {
+        "drug": "canertinib",
+        "pert_id": "BRD-K50168500",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "BT20",
+        "known": ""
+      },
+      {
+        "drug": "dasatinib",
+        "pert_id": "BRD-K49328571",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 2,
+        "cells": "HT29;PC3",
+        "known": ""
+      },
+      {
+        "drug": "pracinostat",
+        "pert_id": "BRD-K86797399",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "A549",
+        "known": ""
+      },
+      {
+        "drug": "GSK-1070916",
+        "pert_id": "BRD-K36740062",
+        "best_score": 0.15,
+        "mean_score": 0.15,
+        "n_hits": 1,
+        "cells": "HA1E",
+        "known": ""
+      },
+      {
+        "drug": "L5288-1MG",
+        "pert_id": "BRD-A19248578",
+        "best_score": 0.175,
+        "mean_score": 0.175,
+        "n_hits": 1,
+        "cells": "A549",
+        "known": ""
+      },
+      {
+        "drug": "XMD16-144",
+        "pert_id": "BRD-U64521890",
+        "best_score": 0.175,
+        "mean_score": 0.175,
+        "n_hits": 1,
+        "cells": "A549",
+        "known": ""
+      },
+      {
+        "drug": "CGP-60474",
+        "pert_id": "BRD-K79090631",
+        "best_score": 0.175,
+        "mean_score": 0.175,
+        "n_hits": 1,
+        "cells": "HME1",
+        "known": ""
+      },
+      {
+        "drug": "KIN001-043",
+        "pert_id": "BRD-K44100512",
+        "best_score": 0.175,
+        "mean_score": 0.175,
+        "n_hits": 2,
+        "cells": "HME1;HS578T",
+        "known": ""
+      }
+    ]
+  }
+}

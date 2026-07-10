@@ -1,0 +1,24 @@
+== Rewiring Run Manifest ==
+Date: 2026-07-09 15:42:26
+
+n_cells: 8000
+n_edges_tested: 11434
+n_perm: 200
+p_min: 0.004975124378109453
+n_pc: 10
+seed_perm: 2
+a_aff_threshold: 0.5
+transitions: [['sham', '24h'], ['24h', '2d'], ['2d', '14d'], ['sham', '14d']]
+time_points: ['14d', '24h', '2d', 'sham']
+python: 3.10.20
+numpy: 2.2.6
+scipy: 1.15.3
+pandas: 2.3.3
+resident_matrices_GB: 1.83
+command: python run_rewiring.py --n-per-time 2000 --n-perm 200 --n-pc 10 --aff-q 0.5
+cache_sha256: bc16b30e6295a12fcbb17a77cf66ed06189407c020c977d362291813668258b6
+cache_path: C:/D 盘/科研/虚拟敲除/gate1/rewiring_study/rewiring_doro_cache.npz
+subsample_seed: 0
+grn_seed: 1
+n_per_time: 2000
+elapsed_sec: 259.5

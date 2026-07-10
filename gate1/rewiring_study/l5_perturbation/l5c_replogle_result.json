@@ -1,0 +1,76 @@
+{
+  "meta": {
+    "dataset": "Replogle2022 K562_gwps normalized pseudo-bulk (CRISPRi)",
+    "n_perturbations": 11258,
+    "n_ntc": 585,
+    "n_candidate_programs": 332
+  },
+  "tfs": {
+    "SOX10": {
+      "present": true,
+      "n_guides": 1,
+      "self_z": null,
+      "n_targets_mapped": 119,
+      "n_targets_total": 322,
+      "mean_target_z": 0.018398122861981392,
+      "mwu_U": 518665.0,
+      "mwu_p_less": 0.9125905421924015,
+      "down_thr_q25": -0.06906240433454514,
+      "fisher_OR_down": 0.9661911788817839,
+      "fisher_p": 0.5987802490337364,
+      "down_targets": 29,
+      "n_targets": 119,
+      "rank_among_programs": 304,
+      "n_programs": 332,
+      "pct_most_down": 8.433734939759036,
+      "cross_other_tf_meanZ": {
+        "CEBPB": 0.009034032002091408,
+        "GATA2": 0.004507495556026697
+      }
+    },
+    "CEBPB": {
+      "present": true,
+      "n_guides": 1,
+      "self_z": -0.4273605942726135,
+      "n_targets_mapped": 223,
+      "n_targets_total": 589,
+      "mean_target_z": 0.007055485621094704,
+      "mwu_U": 930089.0,
+      "mwu_p_less": 0.8429127509113866,
+      "down_thr_q25": -0.0581897608935833,
+      "fisher_OR_down": 0.8410504136903233,
+      "fisher_p": 0.8730243524455277,
+      "down_targets": 49,
+      "n_targets": 223,
+      "rank_among_programs": 239,
+      "n_programs": 332,
+      "pct_most_down": 28.012048192771083,
+      "cross_other_tf_meanZ": {
+        "SOX10": 0.005311042536050081,
+        "GATA2": 0.0060176728293299675
+      }
+    },
+    "GATA2": {
+      "present": true,
+      "n_guides": 2,
+      "self_z": -0.1901141256093979,
+      "n_targets_mapped": 2419,
+      "n_targets_total": 5370,
+      "mean_target_z": 0.004369395785033703,
+      "mwu_U": 6959362.0,
+      "mwu_p_less": 0.1781579151341407,
+      "down_thr_q25": -0.05224480479955673,
+      "fisher_OR_down": 1.0007801746350167,
+      "fisher_p": 0.5048025636059656,
+      "down_targets": 605,
+      "n_targets": 2419,
+      "rank_among_programs": 139,
+      "n_programs": 332,
+      "pct_most_down": 58.13253012048193,
+      "cross_other_tf_meanZ": {
+        "SOX10": 0.009777992032468319,
+        "CEBPB": 0.014770014211535454
+      }
+    }
+  }
+}
