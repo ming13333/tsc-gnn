@@ -432,9 +432,9 @@ A fixed causal graph read out by a linear decoder does not beat linear models at
 
 **Data.** All primary omics data are publicly available and were re-analysed without generating new sequencing: mouse stroke scRNA-seq, GSE174574 [3] and GSE225948 [4]; human stroke blood bulk, GSE16561 [30]; TF-knockout profiling, GSE269122 [33] (Sox10) and GSE273163 [34] (Cebpb); K562 genome-scale CRISPRi, Figshare 20029387 [36].
 
-**Code.** The full TSC-GNN pipeline — pre-processing, GRN construction, edge-level rewiring with permutation significance, CellChat remodelling, LINCS drug-reversal, and the Level-5 perturbation re-analysis — is implemented in Python 3 and released under an MIT licence. Source code and the exact analysis scripts are available at https://github.com/ming13333/tsc-gnn (released upon acceptance) and archived on Zenodo (DOI: 10.5281/zenodo.XXXXXXX). The repository ships a conda environment file (`environment.yml`), a per-run SHA-256 manifest, and a worked example on a subsampled cohort. Processed tables underlying Figs. 3–7 and Tables 1–11 are provided as Supplementary Data.
+**Code.** The full TSC-GNN pipeline — pre-processing, GRN construction, edge-level rewiring with permutation significance, CellChat remodelling, LINCS drug-reversal, and the Level-5 perturbation re-analysis — is implemented in Python 3 and released under an MIT licence. Source code and the exact analysis scripts are available at https://github.com/ming13333/tsc-gnn (released upon acceptance) and archived on Zenodo (DOI: 10.5281/zenodo.21289784). The repository ships a conda environment file (`environment.yml`), a per-run SHA-256 manifest, and a worked example on a subsampled cohort. Processed tables underlying Figs. 3–7 and Tables 1–11 are provided as Supplementary Data.
 
-**Note.** The GitHub and Zenodo URLs are placeholders to be finalised at acceptance; the code is additionally available from the corresponding author on request.
+**Note.** The GitHub URL is a placeholder to be finalised at acceptance; the Zenodo DOI (10.5281/zenodo.21289784) is active. The code is additionally available from the corresponding author on request.
 
 ---
 
@@ -456,7 +456,7 @@ The authors declare that no funds, grants, or other support were received during
 
 The authors thank colleagues at the Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), for helpful discussions.
 
-**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this manuscript, the authors used WorkBuddy (powered by Deepseek-V4-Flash) for the purposes of assisting in literature citation matching, reference formatting, and generation of illustrative figures. The authors have reviewed and edited all output and take full responsibility for the content of this publication.
+**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this manuscript, the authors used WorkBuddy (powered by Deepseek-V4-Flash) for the purposes of assisting in literature citation matching, reference formatting, and generation of illustrative figures. The authors have reviewed and edited all output and take full responsibility for the content of this publication. No generative AI system was used to generate, interpret, or fabricate scientific data, results, or conclusions; all data processing, statistical analyses, and their interpretation were performed and verified by the authors.
 
 ---
 
