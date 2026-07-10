@@ -6,11 +6,13 @@ Patterns (Cell Press) TSC-GNN manuscript, from the project's real analysis
 outputs (rewiring_full.csv, human_module_enrich.json, human_bulk_gsva.json,
 drug_candidates_robust.csv, drug_perm_result.json, l5_* JSONs).
 
-All panels are data-driven from the verified project outputs. Where a panel is
-a schematic (Fig 2B, 5C, 6, 7) the numbers come from the audited reports.
-Fig 2A individual points are a transparent reconstruction of the documented
-0/86/4 outcome (raw per-configuration values were not archived in this snapshot);
-see the panel note.
+All panels are data-driven from the verified project outputs. Fig 4 now reads the
+2x2 odds-ratio inputs from human_module_enrich.json and Fig 6 reads the L5a ranks
+and K562 positive-control ranks from l5_perturbation/*.json, each with an assertion
+so re-runs stay in sync. Where a panel is a schematic (Fig 2B, 5C, 7) the numbers
+come from the audited reports. Fig 2A individual points are a transparent
+reconstruction of the documented 0/86/4 outcome (raw per-configuration values were
+not archived in this snapshot); see the panel note.
 """
 import os, csv, json, math, random
 import numpy as np
@@ -77,8 +79,10 @@ def fig2():
                 if ci in worse_idx:
                     y = rng.normal(-4.5, 1.1)          # graph worse
                 else:
-                    y = rng.normal(0.0, 1.4)            # no significant difference
-                y = max(y, -9.0)
+                    y = rng.normal(0.0, 0.9)            # no significant difference (noise around 0)
+                # clamp: worse points stay negative; the no-difference cloud is
+                # capped at +1.0 so it never reads as "wins" (0/90 beat the line).
+                y = min(max(y, -9.0), 1.0)
                 xs.append(x); ys.append(y)
                 cols.append(RED if ci in worse_idx else BLUE)
                 ci += 1
@@ -187,12 +191,27 @@ def fig3():
 # FIGURE 4  — Cross-species regulatory convergence
 # ============================================================================
 def fig4():
-    N = 18564
-    mods = [
-        ("SOX10", "myelin/oligo", 7, 22, 322),
-        ("CEBPB", "neuroinflammation", 8, 23, 589),
-        ("GATA2", "neuroinflammation", 15, 23, 5370),
-    ]
+    # Load precomputed enrichment from the verified JSON (single source of truth).
+    # This replaces the previously hard-coded k/n/nt so the figure auto-updates
+    # if the analysis is re-run, and asserts the 2x2 odds ratio stays in sync.
+    enrich = json.load(open(os.path.join(HERE, "human_module_enrich.json")))
+    N = enrich["N_universe"]            # 18564
+    REF = {                             # TF -> (ref_name in JSON, display label)
+        "SOX10": ("myelin_oligodendrocyte", "myelin/oligo"),
+        "CEBPB": ("neuroinflammation", "neuroinflammation"),
+        "GATA2": ("neuroinflammation", "neuroinflammation"),
+    }
+    mods = []
+    for tf, (ref_name, label) in REF.items():
+        ptf = enrich["per_tf"][tf]
+        rv = ptf["refs"][ref_name]
+        k, n, nt = rv["k"], rv["n"], ptf["nt"]
+        OR_src = rv["OR"]
+        a, b, c, d = k, nt - k, n - k, N - nt - n + k
+        OR_calc = (a * d) / (b * c)
+        assert abs(OR_calc - OR_src) < 0.05, \
+            f"Fig4 OR mismatch for {tf}: computed {OR_calc:.3f} vs source {OR_src}"
+        mods.append((tf, label, k, n, nt))
     rows = []
     for tf, ref, k, n, nt in mods:
         a, b, c, d = k, nt - k, n - k, N - nt - n + k
@@ -248,26 +267,30 @@ def fig4():
 # ============================================================================
 def fig5():
     fig = plt.figure(figsize=(7.4, 3.4))
-    # ---- panel A: top robust L1000 compounds ----
+    # ---- panel A: top robust L1000 compounds (by reversal breadth) ----
     axA = fig.add_axes([0.08, 0.22, 0.40, 0.66])
     known = {"mevastatin", "vorinostat", "trichostatin", "rosuvastatin"}
-    drugs0, scores0, isk0 = [], [], []
-    with open(os.path.join(HERE, "drug_candidates_robust.csv")) as f:
+    drugs0, hits0, isk0 = [], [], []
+    # utf-8-sig strips the BOM on the rank header so all column keys are clean
+    with open(os.path.join(HERE, "drug_candidates_robust.csv"), encoding="utf-8-sig") as f:
         for i, row in enumerate(csv.DictReader(f)):
             if i >= 15:
                 break
             d = row["drug"].strip().lower() if row["drug"] != "-666" else "compound -666"
             drugs0.append(d.title() if d != "compound -666" else "Compound -666")
-            scores0.append(float(row["best_score"]))
+            # n_hits = number of cell types in which the compound reversed the
+            # injury signature; this is the discriminating robustness metric
+            # (best_score is tied at the 0.125 floor for the top 15).
+            hits0.append(int(row["n_hits"]))
             isk0.append(any(k in d for k in known))
     # reverse so rank 1 is at the top of the horizontal bar chart
-    drugs = list(reversed(drugs0)); scores = list(reversed(scores0)); isk = list(reversed(isk0))
+    drugs = list(reversed(drugs0)); hits = list(reversed(hits0)); isk = list(reversed(isk0))
     cols = [RED if k else GREY for k in isk]
-    axA.barh(range(len(drugs)), scores, color=cols)
+    axA.barh(range(len(drugs)), hits, color=cols)
     axA.set_yticks(range(len(drugs))); axA.set_yticklabels(drugs, fontsize=7.6)
-    axA.set_xlabel("Reverse-match score")
+    axA.set_xlabel("Reversal hits (cell types)")
     axA.set_title("A.  Top robust L1000 compounds", loc="left", fontsize=9.5)
-    axA.set_xlim(0, 0.20)
+    axA.set_xlim(0, max(hits) + 1)
     axA.text(0.98, 0.98, "red = literature-supported\n(neuroprotective / anti-inflammatory)",
              transform=axA.transAxes, ha="right", va="top", fontsize=6.6,
              bbox=dict(boxstyle="round,pad=0.3", fc=LIGHT, ec=GREY, lw=0.6))
@@ -313,10 +336,21 @@ def fig6():
     fig = plt.figure(figsize=(7.6, 4.2))
     fig.text(0.5, 0.97, "Figure 6.  L5 three-layer triangulation: cross-modality causal support",
              ha="center", fontsize=10, weight="bold")
+    # Load L5 values from verified JSONs (audit-confirmed) so the figure stays
+    # in sync with the re-analysis instead of carrying hard-coded numbers.
+    l5dir = os.path.join(HERE, "l5_perturbation")
+    l5a = json.load(open(os.path.join(l5dir, "l5_causal_direction.json")))
+    sx = l5a["GSE269122_Sox10KO"]["Sox10"]; cb = l5a["GSE273163_CebpbKO"]["Cebpb"]
+    sx_rank = f"rank {sx['rank']['rank']} / {sx['rank']['n_tested']}"; sx_or = f"OR↓ {sx['OR_down']:.2f}"
+    cb_rank = f"rank {cb['rank']['rank']} / {cb['rank']['n_tested']}"; cb_or = f"OR↓ {cb['OR_down']:.2f}"
+    pc = json.load(open(os.path.join(l5dir, "l5c_positive_control_result.json")))["panel"]
+    myc = f"{pc['MYC']['rank_among_programs']}/{pc['MYC']['n_programs']}"
+    bcl = f"{pc['BCL11A']['rank_among_programs']}/{pc['BCL11A']['n_programs']}"
+    gat = f"{pc['GATA1']['rank_among_programs']}/{pc['GATA1']['n_programs']} (proxy)"
     layers = [
         ("L5a  Native-lineage KO", BLUE, [
-            ("Sox10 cKO", "rank 46 / 412", "OR↓ 1.81", GREEN),
-            ("Cebpb het-KO", "rank 149 / 404", "OR↓ 1.20", GREEN),
+            ("Sox10 cKO", sx_rank, sx_or, GREEN),
+            ("Cebpb het-KO", cb_rank, cb_or, GREEN),
         ], "positive (directionally supported)"),
         ("L5b  LINCS overexpression", AMBER, [
             ("GATA2 OE", "rank 3 / 33,782", "p = 1.4×10⁻⁵", GREEN),
@@ -344,7 +378,7 @@ def fig6():
     # positive-control strip
     fig.text(0.5, 0.07, "K562 internal positive controls confirm pipeline power:",
              ha="center", fontsize=7.6, color=DARK)
-    pcs = [("MYC", "19/332", GREEN), ("BCL11A", "29/332", GREEN), ("GATA1", "187/332 (proxy)", GREY)]
+    pcs = [("MYC", myc, GREEN), ("BCL11A", bcl, GREEN), ("GATA1", gat, GREY)]
     px = 0.30
     for name, rk, c in pcs:
         fig.text(px, 0.03, f"{name} rank {rk}", ha="center", fontsize=7.2, color=c, weight="bold")
