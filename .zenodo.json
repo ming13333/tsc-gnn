@@ -1,0 +1,38 @@
+{
+  "title": "TSC-GNN: Temporal/cell-State-Conditioned Graph Neural Network for Interpretable Gene-Regulatory Rewiring",
+  "upload_type": "software",
+  "description": "TSC-GNN is a fixed-graph, linear-readout framework for recovering edge-level transcriptional rewiring (ΔW with permutation significance) from multi-timepoint, multi-condition single-cell RNA-seq. It is built as a recovery engine rather than a prediction engine: a fixed literature-curated causal gene-regulatory network (DoRothEA) is combined with a linear decoder so that the \"which edge changed and why\" question stays interpretable. The repository contains the analysis code for the accompanying manuscript, including GRN construction, edge-level rewiring with permutation testing, cell–cell communication analysis, cross-species and drug-repurposing validation, and public TF-perturbation re-analysis. All inputs are public; the pipeline runs fully offline after an initial mapping cache.",
+  "creators": [
+    {
+      "name": "Luo, Ming",
+      "affiliation": "Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China"
+    },
+    {
+      "name": "Mei, Yimin",
+      "affiliation": "Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China"
+    },
+    {
+      "name": "Ye, Wangyang",
+      "affiliation": "Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China"
+    },
+    {
+      "name": "Huang, Wenwu",
+      "affiliation": "Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China"
+    }
+  ],
+  "license": "mit",
+  "keywords": [
+    "gene regulatory network",
+    "single-cell RNA-seq",
+    "stroke",
+    "perturbation modelling",
+    "graph neural network",
+    "interpretability",
+    "transcriptional rewiring",
+    "DoRothEA"
+  ],
+  "access_right": "open",
+  "version": "v1.0.0",
+  "publication_date": "2026-07-10",
+  "notes": "Ming Luo and Yimin Mei contributed equally to this work. Wenwu Huang is the corresponding author (hwenwu321@gmail.com). This archive accompanies the manuscript \"TSC-GNN: ...\" and provides the analysis code; no new sequencing data were generated."
+}
