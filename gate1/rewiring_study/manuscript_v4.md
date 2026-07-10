@@ -52,7 +52,9 @@ We apply TSC-GNN to ischemic stroke as a proof-of-concept application that exerc
 
 A distinctive feature of this study is the **triangulation of directional causal support across three independent public perturbation modalities** (§3.7–3.8): native-lineage bulk TF knockout (L5a), genome-wide L1000 overexpression/knockdown signatures (L5b), and a single-cell-resolution CRISPRi screen in an off-context cancer line (L5c). This multi-modal design — and the K562-internal positive control that brackets it — allows us to establish that program-level causal support is *context-gated*, a finding that reframes what a re-analysis of public perturbation data can (and cannot) certify about a recovered GRN.
 
-**[Figure 1 about here — TSC-GNN framework overview]**
+![Figure 1. An evidence-driven framework for recovery-oriented virtual perturbation](figures/figure1_tsc_gnn_conceptual_framework_v4.png)
+
+**Figure 1. An evidence-driven framework for recovery-oriented virtual perturbation.** TSC-GNN infers temporally rewired regulatory programs from state-conditioned transcriptional networks and interprets them through a hierarchical evidence framework spanning technical reproducibility (L1), biological recovery (L2), cross-species regulatory convergence (L3), translational hypothesis generation (L4), and context-gated directional causal support (L5). Together, these evidence layers progressively strengthen confidence in recovered regulatory programs while explicitly defining the scope and limitations of the framework.
 
 ---
 
@@ -596,7 +598,7 @@ The authors declare no competing interests.
 
 ## Figure Legends
 
-**Figure 1. TSC-GNN framework overview.** (A) The input is a multi-timepoint, multi-condition scRNA-seq dataset. (B) Directed causal GRN is constructed from DoRothEA literature-curated regulons. (C) State-conditioned perturbation propagation along the GRN produces a rewired latent embedding. (D) Readouts: edge-level ΔW with permutation significance, master-regulator ranking, cell–cell communication remodelling, and LINCS drug-repurposing map.
+**Figure 1. An evidence-driven framework for recovery-oriented virtual perturbation.** TSC-GNN infers temporally rewired regulatory programs from state-conditioned transcriptional networks and interprets them through a hierarchical evidence framework spanning technical reproducibility (L1), biological recovery (L2), cross-species regulatory convergence (L3), translational hypothesis generation (L4), and context-gated directional causal support (L5). Together, these evidence layers progressively strengthen confidence in recovered regulatory programs while explicitly defining the scope and limitations of the framework.
 
 **Figure 2. Prediction benchmark and interpretability trade-off.** (A) Scatter plot of graph-vs-linear relative improvement across 90 configurations. (B) Schematic illustrating the interpretability-vs-prediction trade-off that reframes the contribution of fixed-graph methods.
 
