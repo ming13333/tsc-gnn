@@ -636,7 +636,7 @@ The authors declare no competing interests.
 
 ## Tables (in-text)
 
-**Table 1.** Five-level evidence ladder (L1–L5): design, evidence type, and strength. *[in-text, §2.5; visual summary: Fig. 7]*
+**Table 1.** Five-level evidence ladder (L1–L5): design, evidence type, and strength. *[in-text, §3.4; visual summary: Fig. 7]*
 
 **Table 2.** Summary of significant rewiring edges per transition. *[in-text, §3.3]*
 
