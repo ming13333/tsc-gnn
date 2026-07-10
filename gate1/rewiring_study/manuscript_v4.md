@@ -446,17 +446,29 @@ Using the CRediT taxonomy: **Conceptualization** — W.H., M.L.; **Methodology**
 
 ---
 
+## Funding
+
+The authors declare that no funds, grants, or other support were received during the preparation of this manuscript.
+
+---
+
 ## Acknowledgements
 
 The authors thank colleagues at the Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), for helpful discussions.
 
-**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this work, the authors used a large language model (LLM)-based AI assistant to help with language editing, improving readability, and formatting of the manuscript, and to assist with drafting, organizing, and debugging analysis code. No generative AI system was used to generate, interpret, or fabricate scientific data, results, or conclusions; all data processing, statistical analyses, and their interpretation were performed and verified by the authors. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
+**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this manuscript, the authors used WorkBuddy (powered by Deepseek-V4-Flash) for the purposes of assisting in literature citation matching, reference formatting, and generation of illustrative figures. The authors have reviewed and edited all output and take full responsibility for the content of this publication.
 
 ---
 
-## Competing Interests
+## Conflict of Interest
 
-The authors declare no competing interests.
+The authors declare no competing financial interests.
+
+---
+
+## Ethical Statement
+
+This study is a computational analysis that used only publicly available, previously published datasets and did not involve human participants, human specimens, or animal subjects. Accordingly, Institutional Review Board (IRB) approval and animal-care-and-use committee approval were not required.
 
 ---
 
