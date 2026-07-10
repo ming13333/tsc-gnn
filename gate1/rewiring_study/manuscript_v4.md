@@ -26,7 +26,7 @@
 
 ## Abstract (≈220 words)
 
-**Background.** Temporal rewiring of gene-regulatory networks (GRNs) drives tissue repair after stroke, but current virtual-perturbation methods either lack temporal resolution, ignore cell–cell communication, or provide no interpretable edge-level output — trading mechanism for accuracy.
+**Background.** Temporal rewiring of gene-regulatory networks (GRNs) drives tissue repair after stroke, but current virtual-perturbation methods either lack temporal resolution, ignore cell–cell communication, or provide no interpretable edge-level output, sacrificing mechanism for accuracy.
 
 **Results.** We present TSC-GNN, a framework that recovers edge-level GRN rewiring, master-regulator dynamics, and drug-repurposing hypotheses from multi-timepoint single-cell transcriptomes. In ischemic stroke (two mouse cohorts, 24 h → 14 d), it recovers the canonical repair program — acute inflammation → oligodendrocyte remyelination (Sox10→Plp1, ΔW = +0.51) → recovery — with cross-cohort reproducibility (ρ = 0.48–0.55, p < 10⁻¹⁵). The recovered programs are conserved in the human GRN (SOX10→myelin OR = 27) and activated in human stroke blood (n = 39, BH-q = 10⁻⁸). The injury signature maps onto neuroprotective agents (HDAC inhibitors, statins). Triangulating three public perturbation modalities (native-lineage knockout, L1000 overexpression, single-cell CRISPRi in K562) shows that program-level causal support is **context-gated**: recovered in biologically appropriate perturbations, absent in an off-context cancer line — a gradient that an interpretability-first framework predicts.
 
@@ -48,9 +48,9 @@ Graph neural networks (GNNs) [15, 16, 17] are a natural choice for modelling per
 
 **TSC-GNN** is a temporal and cell-state-conditioned GNN framework built for interpretability rather than accuracy. Given a multi-timepoint, multi-condition scRNA-seq dataset and a literature-curated directed causal GRN (DoRothEA [20]), it (i) builds a time- and state-conditioned graph, (ii) propagates a virtual perturbation along this graph to obtain a rewired latent embedding, and (iii) reads out *edge-level rewiring* (ΔW) with permutation significance, master-regulator ranking, cell–cell communication remodelling via CellChat [21], and a drug-repurposing map via LINCS L1000 [22]. The framework is validated along a five-level evidence ladder (L1–L5, Table 1; a visual summary is provided in Fig. 7) that escalates from cross-cohort reproducibility to independent public-perturbation causal support.
 
-Ischemic stroke serves as the proof-of-concept that exercises the framework, not as a biological discovery in its own right. Its role is to show that the recovered regulatory programs are coherent, reproducible, conserved across species, and directionally supported by independent public perturbation data. The central methodological contribution is that *fixed causal graphs do not necessarily improve perturbation prediction accuracy, but they substantially improve the interpretability of temporal regulatory remodelling* — an honest boundary reframing that, we argue, will benefit the field more than another incrementally more accurate predictor.
+Ischemic stroke serves as the proof-of-concept that exercises the framework, not as a biological discovery in its own right. Its role is to show that the recovered regulatory programs are coherent, reproducible, conserved across species, and directionally supported by independent public perturbation data. The central methodological contribution is that *fixed causal graphs do not necessarily improve perturbation prediction accuracy, but they substantially improve the interpretability of temporal regulatory remodelling*: an honest boundary reframing that, we argue, benefits the field more than another incrementally more accurate predictor.
 
-To probe the recovered programs from more than one angle, we triangulate directional causal support across three independent public perturbation modalities (§3.7–3.8): native-lineage bulk TF knockout (L5a), genome-wide L1000 overexpression/knockdown signatures (L5b), and a single-cell-resolution CRISPRi screen in an off-context cancer line (L5c). This multi-modal design — with the K562-internal positive control that brackets it — establishes that program-level causal support is *context-gated*, a finding that reframes what a re-analysis of public perturbation data can (and cannot) certify about a recovered GRN.
+To probe the recovered programs from more than one angle, we triangulate directional causal support across three independent public perturbation modalities (§3.7–3.8): native-lineage bulk TF knockout (L5a), genome-wide L1000 overexpression/knockdown signatures (L5b), and a single-cell-resolution CRISPRi screen in an off-context cancer line (L5c). This multi-modal design, with the K562-internal positive control that brackets it, establishes that program-level causal support is *context-gated*, a finding that reframes what a re-analysis of public perturbation data can (and cannot) certify about a recovered GRN.
 
 ![Figure 1. An evidence-driven framework for recovery-oriented virtual perturbation](figures/figure1_tsc_gnn_conceptual_framework_v4.png)
 
@@ -74,7 +74,7 @@ The scoping benchmark (§3.1) established that a fixed causal graph does not imp
 
 The answer lies in what is being measured. A linear model that predicts perturbation outcomes from the full expression space compresses the entire response into one accuracy number per gene. It cannot attribute that prediction change to a *specific edge* in a regulatory graph, because it has no graph: its outputs are scalar deltas per gene, not edge-level coupling changes. To recover edge-level rewiring — *which TF→target coupling strengthened or weakened across a biological transition* — one must decompose the co-expression change onto a graph substrate. This is what ΔW (§5.3) does: it measures the *change in Pearson coupling* restricted to each directed edge, which is a fundamentally graph-level operation. No linear model operating on raw expression can produce this output, because the coupling is defined *over* the edge, not *over* the transcriptome.
 
-TSC-GNN is best understood not as a **prediction** engine but as a **recovery** engine: its deliverable is edge-level ΔW with permutation significance and module-level master-regulator ranking — quantities that a linear predictor cannot compute and that a foundation-model readout cannot decompose. The graph is necessary not because it makes better predictions, but because it defines *what is interpretable*. The remaining Results demonstrate what this recovery lens reveals.
+TSC-GNN is best understood not as a **prediction** engine but as a **recovery** engine: its deliverable is edge-level ΔW with permutation significance and module-level master-regulator ranking: quantities that a linear predictor cannot compute and a foundation-model readout cannot decompose. The graph is necessary not because it makes better predictions, but because it defines *what is interpretable*. The remaining Results demonstrate what this recovery lens reveals.
 
 **[Figure 2B about here — Schematic: interpretability vs prediction trade-off]**
 
@@ -97,7 +97,7 @@ Applying state-conditioned rewiring across the four transitions recovered a cohe
 
 ### 3.4 Level 1 — Cross-cohort master-regulator reproducibility
 
-To test technical stability we re-derived the rewiring on the two independent cohorts and compared **TF master-regulator rankings** against the integrated analysis. *Crucially*, because the integrated "sham" baseline mixes cells from both cohorts (and the two cohorts share no transition and differ in gene space), we evaluate reproducibility at the **master-regulator level**, where biological signal is robust, rather than at the edge level, where single-edge estimates are intrinsically noisy. The integrated ranking pools all four transitions, two of which are stitched cross-cohort pseudo-transitions (§4.3); the ρ therefore reflects TFs that drive rewiring in general, with *Sox10* the clean cross-cohort-reproduced exemplar.
+To test technical stability we re-derived the rewiring on the two independent cohorts and compared **TF master-regulator rankings** against the integrated analysis. Because the integrated "sham" baseline mixes cells from both cohorts, with no shared transition and a different gene space, we evaluate reproducibility at the **master-regulator level**, where the biological signal is robust, rather than at the edge level, where single-edge estimates are intrinsically noisy. The integrated ranking pools all four transitions, two of which are stitched cross-cohort pseudo-transitions (§4.3); the ρ therefore reflects TFs that drive rewiring in general, with *Sox10* the clean cross-cohort-reproduced exemplar.
 
 The master-regulator ranking reproduced significantly across cohorts (Table 3):
 
@@ -109,7 +109,7 @@ The master-regulator ranking reproduced significantly across cohorts (Table 3):
 | Integrated vs cohort 2 | 235 | +0.548 | 8.8 × 10⁻²⁰ |
 | Cohort 1 vs cohort 2 | 242 | +0.482 | 1.7 × 10⁻¹⁵ |
 
-**Sox10** appeared in the top-20 |ΔW|max TFs of **all three** analyses; **Sox2/Sox9** reproduced in ≥2. By contrast, individual edge-level significance did **not** reproduce across cohorts (direction agreement ≈ 0.52, i.e. at chance; Jaccard ≈ 0) — consistent with the high intrinsic variance of single-edge estimates under a fixed-graph/linear-readout method, and reported here as expected behaviour that motivates the module-level interpretability focus, not as a defect.
+**Sox10** appeared in the top-20 |ΔW|max TFs of **all three** analyses; **Sox2/Sox9** reproduced in ≥2. By contrast, individual edge-level significance did **not** reproduce across cohorts (direction agreement ≈ 0.52, i.e. at chance; Jaccard ≈ 0), consistent with the high intrinsic variance of single-edge estimates under a fixed-graph/linear-readout method, and reported here as expected behaviour that motivates the module-level interpretability focus, not as a defect.
 
 ### 3.5 Level 3 — Cross-species regulatory convergence of recovered programs
 
@@ -129,9 +129,9 @@ Three links were significantly conserved (Table 4):
 | **CEBPB** | neuroinflammation | 8/23 | 16.5 | 3.2 × 10⁻⁷ | 0.024 |
 | **GATA2** | neuroinflammation | 15/23 | 4.6 | 3.3 × 10⁻⁴ | 0.047 |
 
-**SOX10 → human myelin/oligodendrocyte:** overlapping *PLP1, MBP, MAG, MPZ, PMP22* (major myelin structural proteins) plus *GJC2* (oligodendrocyte gap junction) and *PDGFRA* (oligodendrocyte-precursor marker) — the mouse top rewired TF projects precisely onto the human myelin-regeneration program, closing the loop with Sox10→Plp1 (§3.3).
+**SOX10 → human myelin/oligodendrocyte:** overlapping *PLP1, MBP, MAG, MPZ, PMP22* (major myelin structural proteins) plus *GJC2* (oligodendrocyte gap junction) and *PDGFRA* (oligodendrocyte-precursor marker); the mouse top rewired TF projects precisely onto the human myelin-regeneration program, closing the loop with Sox10→Plp1 (§3.3).
 
-**CEBPB → human neuroinflammation:** overlapping *IL1B, IL6, TNF, CCL3, CCL5, NOS2, PTGS2, STAT3*. **GATA2 → neuroinflammation:** overlapping *TLR2, TLR4, NFKB1, NFKBIA* and CCL/CXCL chemokines — the TLR/NF-κB innate-immune module.
+**CEBPB → human neuroinflammation:** overlapping *IL1B, IL6, TNF, CCL3, CCL5, NOS2, PTGS2, STAT3*. **GATA2 → neuroinflammation:** overlapping *TLR2, TLR4, NFKB1, NFKBIA* and CCL/CXCL chemokines: the TLR/NF-κB innate-immune module.
 
 Non-significant / expected-negative results are reported honestly: AR/ERG/NR2F2/PAX5/RUNX3/SOX9 showed no tissue-specific enrichment (emp. p = 0.29–0.65); SOX2/E2F1/GATA3 are too broadly targeting to show single-tissue enrichment (biologically expected).
 
@@ -252,7 +252,7 @@ Levels 5b and 5c interrogate the framework's recovered TF→target programs with
 | **CEBPB** | rank 149/404, OR↓ 1.20, p = 0.022 ✓ | no OE data | top 0.46 % (non-specific) | rank 239/332, on-target, p = 0.84 |
 | **GATA2** | not tested | rank 3/33,782, p = 1.4 × 10⁻⁵ ✓✓ | top 1.17 % (non-specific) | rank 139/332, on-target, p = 0.18 |
 
-**Positive control confirms the pipeline has power in K562, but generic regulons are a coarse proxy (Table 11).** Among K562 master TFs the regulon-response test recovers a significant down-shift for **MYC (rank 19/332, MWU p = 3.1 × 10⁻³)** and **BCL11A (29/332, p = 7.5 × 10⁻³)**. The three focal stroke TFs rank far below these in-context positives (139–304/332). Crucially, even a canonical K562 erythroid master — **GATA1** — shows strong on-target knockdown (self-Z −0.54) *without* a coherent DoRothEA-regulon down-shift (mean Z +0.27, rank 187/332), demonstrating that generic DoRothEA regulons only partially track TF activity even in the correct cell type.
+**Positive control confirms the pipeline has power in K562, but generic regulons are a coarse proxy (Table 11).** Among K562 master TFs the regulon-response test recovers a significant down-shift for **MYC (rank 19/332, MWU p = 3.1 × 10⁻³)** and **BCL11A (29/332, p = 7.5 × 10⁻³)**. The three focal stroke TFs rank far below these in-context positives (139–304/332). Even a canonical K562 erythroid master, **GATA1**, shows strong on-target knockdown (self-Z −0.54) yet no coherent DoRothEA-regulon down-shift (mean Z +0.27, rank 187/332), showing that generic DoRothEA regulons only partially track TF activity even in the correct cell type.
 
 **[Table 11 about here — K562 positive-control regulon response]**
 
@@ -358,7 +358,7 @@ A fixed causal graph read out by a linear decoder does not beat linear models at
 
 ### 5.2 Gene-regulatory network construction
 
-We used the **DoRothEA** consensus regulons [20] (confidence levels A–C) as a *directed causal* TF→target graph — direction and sign (activation/repression) are taken from the literature-curated prior, so that any rewiring we report is interpretable as "whose regulation is enhanced/weakened", not merely as undirected co-expression change. Mouse and human regulons were read from local TSV exports, making the pipeline fully offline and reproducible (SHA-256 manifest per run). For each TF we additionally computed a **state-affinity** vector `A_aff` (subsample of n=4,000 cells) capturing how strongly the TF's targets are expressed in each cell state; edges in the top 50 % by |A_aff| are retained as *state-conditioned* edges for rewiring testing.
+We used the **DoRothEA** consensus regulons [20] (confidence levels A–C) as a *directed causal* TF→target graph — direction and sign (activation/repression) are taken from the literature-curated prior, so that any rewiring we report is interpretable as "whose regulation is enhanced/weakened" rather than merely as undirected co-expression change. Mouse and human regulons were read from local TSV exports, making the pipeline fully offline and reproducible (SHA-256 manifest per run). For each TF we additionally computed a **state-affinity** vector `A_aff` (subsample of n=4,000 cells) capturing how strongly the TF's targets are expressed in each cell state; edges in the top 50 % by |A_aff| are retained as *state-conditioned* edges for rewiring testing.
 
 ### 5.3 TSC-GNN: state-conditioned edge rewiring
 
