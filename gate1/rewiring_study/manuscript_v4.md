@@ -44,6 +44,12 @@
 
 ---
 
+## Keywords
+
+Gene-regulatory network; temporal rewiring; virtual perturbation; graph neural network; single-cell transcriptomics; ischemic stroke; interpretability; edge-level rewiring; drug repurposing; cross-species regulatory conservation; master-regulator inference
+
+---
+
 ## Introduction
 
 Ischemic stroke triggers a complex, temporally orchestrated cascade of molecular events — from acute excitotoxicity and neuroinflammation through subacute repair initiation to chronic remodelling [1, 2]. Single-cell transcriptomics has begun to resolve the cell types and gene programs that drive each phase [3, 4], yet the *regulatory logic* that couples transcription factors (TFs) to their target genes across time remains poorly charted. Knowing which TF→target connections strengthen or weaken over the stroke time course — *edge-level rewiring* — is necessary to understand how repair is coordinated and why it eventually fails in some patients.
@@ -66,6 +72,76 @@ To probe the recovered programs from more than one angle, we triangulate directi
 
 ---
 
+## Methods
+
+### 2.1 Data sources
+
+**Mouse ischemic-stroke single-cell transcriptomes.** We used two independently generated mouse MCAO scRNA-seq cohorts. **Cohort 1 — GSE174574** (Li et al., 2021 [3]): 3 MCAO (24 h) + 3 sham, 57,528 cells, with a BEAM pseudotime trajectory. **Cohort 2 — GSE225948** (Anrather et al., 2024 [4]): genuine two-timepoint post-stroke time course (2 d and 14 d, brain and blood). No single public scRNA-seq cohort covers all three stages; we assembled a 24 h → 2 d → 14 d axis spanning the acute → sub-acute peak → repair/remodelling phases by stitching cohort 1 (24 h + sham) with cohort 2 (2 d / 14 d). This is a limitation (§4.3).
+
+**Human stroke bulk transcriptome.** GSE16561 [30]: 39 stroke vs 24 controls, peripheral whole blood, Illumina HumanWG-6.
+
+**Public TF-knockout data.** GSE269122 [33]: Sox10 conditional KO in oligodendrocytes (4 KO / 4 WT, corpus callosum). GSE273163 [34]: Cebpb heterozygous KO in Kupffer cells (3 Hete / 3 WT).
+
+**Single-cell CRISPRi screen.** Replogle et al. 2022 [36], K562 genome-scale CRISPRi, gemgroup Z-normalised pseudo-bulk (Figshare 20029387, file `K562_gwps_normalized_bulk_01.h5ad`; 11,258 perturbations, 585 NTCs).
+
+**Pre-processing.** Count matrices were loaded and processed with library-size normalization (×(10⁴)) followed by log1p, in a fixed conda environment (`bbb_gnn`; numpy 2.2.6 / scipy 1.15.3 / pandas 2.3.3). Cell-type composition was retained per cell for composition correction. Each cohort was processed under an identical protocol.
+
+### 2.2 Gene-regulatory network construction
+
+We used the **DoRothEA** consensus regulons [20] (confidence levels A–C) as a *directed causal* TF→target graph — direction and sign (activation/repression) are taken from the literature-curated prior, so that any rewiring we report is interpretable as "whose regulation is enhanced/weakened" rather than merely as undirected co-expression change. Mouse and human regulons were read from local TSV exports, making the pipeline fully offline and reproducible (SHA-256 manifest per run). For each TF we additionally computed a **state-affinity** vector `A_aff` (subsample of n=4,000 cells) capturing how strongly the TF's targets are expressed in each cell state; edges in the top 50 % by |A_aff| are retained as *state-conditioned* edges for rewiring testing.
+
+### 2.3 TSC-GNN: state-conditioned edge rewiring
+
+For each tested directed edge *e* = (TF *u* → target *v*) and each time point *t*, we compute the **within-state Pearson coupling**
+
+$$r_{e,t} = \text{corr}\big(x_u^{(t)},\, x_v^{(t)}\big),$$
+
+where $x_u^{(t)}, x_v^{(t)}$ are the log-normalized expressions of *u* and *v* restricted to cells in state/time *t*. The **rewiring effect** for a transition $t_1 \to t_2$ is the coupling change
+
+$$\Delta W_{e,\,t_1\to t_2} = r_{e,t_2} - r_{e,t_1}.$$
+
+Positive ΔW denotes *coupling enhancement*; negative denotes *coupling weakening*.
+
+**Composition correction.** We residualize $x_u, x_v$ against the top n_pc = 10 principal components of the full expression matrix (least-squares regression), so that ΔW reflects coupling change after removing major axes of compositional variation. Both raw and PC-corrected ΔW are reported.
+
+**Permutation test and multiple testing.** For each transition we permute the time labels (n_perm = 200, seed = 2) and recompute ΔW to build a null per edge; the per-edge two-sided p-value is $p_e = (1 + \#\{\text{perm}: |\Delta W^{\text{null}}_e| \ge |\Delta W^{\text{obs}}_e|\})/(n_{\text{perm}}+1)$. We choose n_perm = 200 as a balance between computational cost (≈25 min per transition on a single CPU) and the minimum achievable p-value (0.005), which is adequate for our typical edge counts (≤36 significant edges per transition). For datasets with substantially more tested edges, we recommend increasing n_perm or switching to the analytical approximation described in §2.9. We apply two corrections: (i) **Benjamini–Hochberg FDR** per transition; and (ii) a **permutation pooled-FDR** that standardizes each edge's |ΔW| by its null standard deviation, pools null z-scores across edges and permutations, and computes q-values without depending on p-resolution. Edges at pooled q < 0.05 are reported as significant rewiring.
+
+### 2.4 Cell–cell communication remodelling
+
+Cell–cell communication analysis followed the CellChat framework [21], applied separately per time point to identify ligand–receptor pairs whose strength changes across stroke transitions.
+
+### 2.5 Level 3: Cross-species test
+
+**(a) Structural enrichment.** For each mouse-recovered TF we projected its DoRothEA target set onto the human orthologs (via HGNC). Enrichment of literature-curated myelin/oligodendrocyte and neuroinflammation reference sets was tested by the hypergeometric test with 2,000 size-matched random human TF permutations.
+
+**(b) Expression activation.** Module activity was scored by an AUCell/ssGSEA rank-mass fraction [6, 31] on each TF's human DoRothEA target set in GSE16561, comparing stroke vs control (Mann–Whitney U; Cliff's δ; BH correction).
+
+### 2.6 Level 4: Drug reversal via LINCS
+
+The 24 h stroke injury signature (up/down gene sets) was submitted to the L1000CDS2 API [22] for reverse connectivity mapping. The robust signature (intersected across two cohorts, up28/dn17) was the primary result. Permutation background was estimated from 20 random size-matched signatures (unique-drug counting).
+
+### 2.7 Level 5: Public TF-perturbation re-analysis
+
+**(a) Native-lineage bulk KO.** For each TF we computed mean log₂FC of its DoRothEA target program from the public DE table, odds ratio and Fisher exact p for bottom-quartile enrichment, and rank among all DoRothEA TF programs.
+
+**(b) SigCom LINCS (A modality).** We queried `l1000_xpr` (CRISPR-KD, 140,603 signatures) and `l1000_oe` (overexpression, 33,782) via the SigCom LINCS data API [35], submitting each TF's human DoRothEA target program (up to 500 targets). The `database` parameter was passed as the string library name.
+
+**(c) Replogle K562 sc-CRISPR (C modality).** From the h5ad (backed mode, `anndata 0.11.4`), we identified perturbation rows by parsing the obs.index (`<ID>_<GENE>_<guide>_<ENSG>`). NTC = `non-targeting` (n = 585). var IDs (Ensembl) were mapped to gene symbols via `mygene` (querymany, species = human). For each TF, we: (i) extracted its own perturbation row(s); (ii) computed NTC baseline-mean with `np.nan_to_num` to neutralise gemgroup-Z infs from constant-variance genes; (iii) computed effect = perturbation mean − NTC mean; (iv) tested target-gene down-shift with Mann–Whitney U (one-sided, alternative = "less"), Fisher OR on bottom-quartile, and rank among all 332 candidate programs.
+
+### 2.8 Prediction benchmark
+
+We benchmarked 10 random seeds × 5 graph types (k-NN, DoRothEA, random, permuted-DoRothEA, 0-hop) × 2 tasks = 90 configurations. The linear baseline received matched inputs (identical perturbation vector *p*, identical training split). Relative improvement was computed as (graph MSE − linear MSE) / linear MSE.
+
+### 2.9 Reproducibility
+
+All runs emit a manifest (command, library versions, seeds, SHA-256 of the cache). The full analysis is deterministic under fixed seeds. The complete source code and the exact analysis scripts are released in the public repository described in Data and Code Availability.
+
+### 2.10 Naming and architectural rationale
+
+The framework is named TSC-GNN (Temporal/cell-State-Conditioned Graph Neural Network). Its scope is worth stating plainly, since it settles a question reviewers raise repeatedly. TSC-GNN operates on a **fixed, literature-curated causal graph** (DoRothEA, §2.2) and reads out edge-level rewiring ΔW through a **linear** decoder — the state-conditioned Pearson coupling change with permutation significance (§2.3). It does **not** train a message-passing network with learnable node or edge embeddings. This is a deliberate design choice, not a limitation: §3.2 shows that a fixed graph plus a linear readout already supplies the interpretability we seek (edge-level ΔW), and §3.1 demonstrates that a learnable graph confers no prediction advantage under matched inputs. A message-passing GNN would introduce uninterpretable parameters while, per our benchmark, delivering no accuracy gain — directly trading away the framework's only contribution (interpretability) for a non-existent benefit. The "graph" in TSC-GNN therefore denotes the **structured causal substrate** on which a virtual perturbation is propagated and decomposed, not an end-to-end learned GNN. This positions TSC-GNN as a *recovery* engine (c.f. §1, §4.1) rather than a *prediction* engine, and distinguishes it from end-to-end perturbation GNNs such as GEARS [9].
+
+---
+
 ## Results
 
 ### 3.1 Predictive accuracy is not superior to linear baselines
@@ -80,7 +156,7 @@ Because the graph embedding enters the readout linearly and is provided identica
 
 The scoping benchmark (§3.1) established that a fixed causal graph does not improve *prediction accuracy* under a linear readout. This raises an immediate question: **if the graph does not improve prediction, why use a graph at all?** We therefore frame this contribution around *recovering* temporal regulatory rewiring — the recovery of edge-level change — rather than around the tool name (TSC-GNN): the framework is the instrument that makes the recovery interpretable, not the message itself.
 
-The answer lies in what is being measured. A linear model that predicts perturbation outcomes from the full expression space compresses the entire response into one accuracy number per gene. It cannot attribute that prediction change to a *specific edge* in a regulatory graph, because it has no graph: its outputs are scalar deltas per gene, not edge-level coupling changes. To recover edge-level rewiring — *which TF→target coupling strengthened or weakened across a biological transition* — one must decompose the co-expression change onto a graph substrate. This is what ΔW (§5.3) does: it measures the *change in Pearson coupling* restricted to each directed edge, which is a fundamentally graph-level operation. No linear model operating on raw expression can produce this output, because the coupling is defined *over* the edge, not *over* the transcriptome.
+The answer lies in what is being measured. A linear model that predicts perturbation outcomes from the full expression space compresses the entire response into one accuracy number per gene. It cannot attribute that prediction change to a *specific edge* in a regulatory graph, because it has no graph: its outputs are scalar deltas per gene, not edge-level coupling changes. To recover edge-level rewiring — *which TF→target coupling strengthened or weakened across a biological transition* — one must decompose the co-expression change onto a graph substrate. This is what ΔW (§2.3) does: it measures the *change in Pearson coupling* restricted to each directed edge, which is a fundamentally graph-level operation. No linear model operating on raw expression can produce this output, because the coupling is defined *over* the edge, not *over* the transcriptome.
 
 TSC-GNN is best understood not as a **prediction** engine but as a **recovery** engine: its deliverable is edge-level ΔW with permutation significance and module-level master-regulator ranking: quantities that a linear predictor cannot compute and a foundation-model readout cannot decompose. The graph is necessary not because it makes better predictions, but because it defines *what is interpretable*. The remaining Results demonstrate what this recovery lens reveals.
 
@@ -179,7 +255,7 @@ The robust signature returned **four literature-supported agents in the top 50**
 
 > **Scope disclosure:** L5 addresses the central caveat of any causal-graph method — *the graph is never perturbed* — by re-analysing **public, independent** TF loss-of-function RNA-seq. We test, at the **program (TF→target module) level**, whether the framework's recovered target program is enriched among genes that go *down* when the TF itself is knocked out. This is **directional causal support**, explicitly **not** edge-level validation (edges do not reproduce across cohorts, §3.4) and **not** a claim of causality within stroke (the perturbation data are non-stroke).
 
-The target programs are taken from the **same mouse DoRothEA GRN** used by the framework (§5.2), so they are independent of the perturbation datasets and the test is non-circular.
+The target programs are taken from the **same mouse DoRothEA GRN** used by the framework (§2.2), so they are independent of the perturbation datasets and the test is non-circular.
 
 #### 3.7a Native-lineage bulk KO (L5a)
 
@@ -322,7 +398,7 @@ The asymmetry between unstable edges and stable programs is the central biologic
 
 Several constraints are inherent to the current design.
 
-**Time axis.** The longitudinal axis is stitched across two cohorts (GSE174574 and GSE225948; §5.1). The resulting axis is non-uniformly sampled (the 3–7 d window is absent) and carries a batch×time confound. Discrete ΔW between stitched segments is not a continuous rate, and cross-cohort edge-level comparison is limited by differing gene spaces (6,897 / 8,736 / 7,041 genes).
+**Time axis.** The longitudinal axis is stitched across two cohorts (GSE174574 and GSE225948; §2.1). The resulting axis is non-uniformly sampled (the 3–7 d window is absent) and carries a batch×time confound. Discrete ΔW between stitched segments is not a continuous rate, and cross-cohort edge-level comparison is limited by differing gene spaces (6,897 / 8,736 / 7,041 genes).
 
 **L4 drug reversal.** The drug-reversal level is a hypothesis-generation demonstration, not efficacy prediction. LINCS profiles derive from non-neuronal cancer cell lines; the permutation did not reach significance (p ≈ 0.3); and the entire pipeline is in silico with no wet-lab confirmation (§3.6).
 
@@ -344,79 +420,11 @@ Future work can extend the framework along three axes:
 
 (iii) **Application to additional diseases and developmental contexts** (neurodegeneration, spinal cord injury, cancer progression) to test the generality of the temporal rewiring framework and the L5 causal-support paradigm.
 
-### 4.6 Conclusion
-
-A fixed causal graph read out by a linear decoder does not beat linear models at prediction; that boundary is where this work begins rather than where it fails. What the graph *does* provide is **interpretability**: edge-level rewiring (ΔW) with permutation significance, module-level master-regulator ranking, cell–cell communication remodelling, and drug-repurposing hypotheses — a closed loop from virtual _in silico_ perturbation to a causally-supported, translatable output. The five-level evidence ladder (L1–L5) establishes cross-cohort reproducibility, biological coherence, cross-species regulatory convergence, translational convergence, and program-level directional causal support, respectively, while candidly exposing the boundaries of each level. The honest negative prediction result and the context-dependent causal support gradient constitute, we argue, a more durable contribution to the field than another incrementally more accurate predictor.
-
 ---
 
-## Methods
+## Conclusion
 
-### 5.1 Data sources
-
-**Mouse ischemic-stroke single-cell transcriptomes.** We used two independently generated mouse MCAO scRNA-seq cohorts. **Cohort 1 — GSE174574** (Li et al., 2021 [3]): 3 MCAO (24 h) + 3 sham, 57,528 cells, with a BEAM pseudotime trajectory. **Cohort 2 — GSE225948** (Anrather et al., 2024 [4]): genuine two-timepoint post-stroke time course (2 d and 14 d, brain and blood). No single public scRNA-seq cohort covers all three stages; we assembled a 24 h → 2 d → 14 d axis spanning the acute → sub-acute peak → repair/remodelling phases by stitching cohort 1 (24 h + sham) with cohort 2 (2 d / 14 d). This is a limitation (§4.3).
-
-**Human stroke bulk transcriptome.** GSE16561 [30]: 39 stroke vs 24 controls, peripheral whole blood, Illumina HumanWG-6.
-
-**Public TF-knockout data.** GSE269122 [33]: Sox10 conditional KO in oligodendrocytes (4 KO / 4 WT, corpus callosum). GSE273163 [34]: Cebpb heterozygous KO in Kupffer cells (3 Hete / 3 WT).
-
-**Single-cell CRISPRi screen.** Replogle et al. 2022 [36], K562 genome-scale CRISPRi, gemgroup Z-normalised pseudo-bulk (Figshare 20029387, file `K562_gwps_normalized_bulk_01.h5ad`; 11,258 perturbations, 585 NTCs).
-
-**Pre-processing.** Count matrices were loaded and processed with library-size normalization (×(10⁴)) followed by log1p, in a fixed conda environment (`bbb_gnn`; numpy 2.2.6 / scipy 1.15.3 / pandas 2.3.3). Cell-type composition was retained per cell for composition correction. Each cohort was processed under an identical protocol.
-
-### 5.2 Gene-regulatory network construction
-
-We used the **DoRothEA** consensus regulons [20] (confidence levels A–C) as a *directed causal* TF→target graph — direction and sign (activation/repression) are taken from the literature-curated prior, so that any rewiring we report is interpretable as "whose regulation is enhanced/weakened" rather than merely as undirected co-expression change. Mouse and human regulons were read from local TSV exports, making the pipeline fully offline and reproducible (SHA-256 manifest per run). For each TF we additionally computed a **state-affinity** vector `A_aff` (subsample of n=4,000 cells) capturing how strongly the TF's targets are expressed in each cell state; edges in the top 50 % by |A_aff| are retained as *state-conditioned* edges for rewiring testing.
-
-### 5.3 TSC-GNN: state-conditioned edge rewiring
-
-For each tested directed edge *e* = (TF *u* → target *v*) and each time point *t*, we compute the **within-state Pearson coupling**
-
-$$r_{e,t} = \text{corr}\big(x_u^{(t)},\, x_v^{(t)}\big),$$
-
-where $x_u^{(t)}, x_v^{(t)}$ are the log-normalized expressions of *u* and *v* restricted to cells in state/time *t*. The **rewiring effect** for a transition $t_1 \to t_2$ is the coupling change
-
-$$\Delta W_{e,\,t_1\to t_2} = r_{e,t_2} - r_{e,t_1}.$$
-
-Positive ΔW denotes *coupling enhancement*; negative denotes *coupling weakening*.
-
-**Composition correction.** We residualize $x_u, x_v$ against the top n_pc = 10 principal components of the full expression matrix (least-squares regression), so that ΔW reflects coupling change after removing major axes of compositional variation. Both raw and PC-corrected ΔW are reported.
-
-**Permutation test and multiple testing.** For each transition we permute the time labels (n_perm = 200, seed = 2) and recompute ΔW to build a null per edge; the per-edge two-sided p-value is $p_e = (1 + \#\{\text{perm}: |\Delta W^{\text{null}}_e| \ge |\Delta W^{\text{obs}}_e|\})/(n_{\text{perm}}+1)$. We choose n_perm = 200 as a balance between computational cost (≈25 min per transition on a single CPU) and the minimum achievable p-value (0.005), which is adequate for our typical edge counts (≤36 significant edges per transition). For datasets with substantially more tested edges, we recommend increasing n_perm or switching to the analytical approximation described in §5.9. We apply two corrections: (i) **Benjamini–Hochberg FDR** per transition; and (ii) a **permutation pooled-FDR** that standardizes each edge's |ΔW| by its null standard deviation, pools null z-scores across edges and permutations, and computes q-values without depending on p-resolution. Edges at pooled q < 0.05 are reported as significant rewiring.
-
-### 5.4 Cell–cell communication remodelling
-
-Cell–cell communication analysis followed the CellChat framework [21], applied separately per time point to identify ligand–receptor pairs whose strength changes across stroke transitions.
-
-### 5.5 Level 3: Cross-species test
-
-**(a) Structural enrichment.** For each mouse-recovered TF we projected its DoRothEA target set onto the human orthologs (via HGNC). Enrichment of literature-curated myelin/oligodendrocyte and neuroinflammation reference sets was tested by the hypergeometric test with 2,000 size-matched random human TF permutations.
-
-**(b) Expression activation.** Module activity was scored by an AUCell/ssGSEA rank-mass fraction [6, 31] on each TF's human DoRothEA target set in GSE16561, comparing stroke vs control (Mann–Whitney U; Cliff's δ; BH correction).
-
-### 5.6 Level 4: Drug reversal via LINCS
-
-The 24 h stroke injury signature (up/down gene sets) was submitted to the L1000CDS2 API [22] for reverse connectivity mapping. The robust signature (intersected across two cohorts, up28/dn17) was the primary result. Permutation background was estimated from 20 random size-matched signatures (unique-drug counting).
-
-### 5.7 Level 5: Public TF-perturbation re-analysis
-
-**(a) Native-lineage bulk KO.** For each TF we computed mean log₂FC of its DoRothEA target program from the public DE table, odds ratio and Fisher exact p for bottom-quartile enrichment, and rank among all DoRothEA TF programs.
-
-**(b) SigCom LINCS (A modality).** We queried `l1000_xpr` (CRISPR-KD, 140,603 signatures) and `l1000_oe` (overexpression, 33,782) via the SigCom LINCS data API [35], submitting each TF's human DoRothEA target program (up to 500 targets). The `database` parameter was passed as the string library name.
-
-**(c) Replogle K562 sc-CRISPR (C modality).** From the h5ad (backed mode, `anndata 0.11.4`), we identified perturbation rows by parsing the obs.index (`<ID>_<GENE>_<guide>_<ENSG>`). NTC = `non-targeting` (n = 585). var IDs (Ensembl) were mapped to gene symbols via `mygene` (querymany, species = human). For each TF, we: (i) extracted its own perturbation row(s); (ii) computed NTC baseline-mean with `np.nan_to_num` to neutralise gemgroup-Z infs from constant-variance genes; (iii) computed effect = perturbation mean − NTC mean; (iv) tested target-gene down-shift with Mann–Whitney U (one-sided, alternative = "less"), Fisher OR on bottom-quartile, and rank among all 332 candidate programs.
-
-### 5.8 Prediction benchmark
-
-We benchmarked 10 random seeds × 5 graph types (k-NN, DoRothEA, random, permuted-DoRothEA, 0-hop) × 2 tasks = 90 configurations. The linear baseline received matched inputs (identical perturbation vector *p*, identical training split). Relative improvement was computed as (graph MSE − linear MSE) / linear MSE.
-
-### 5.9 Reproducibility
-
-All runs emit a manifest (command, library versions, seeds, SHA-256 of the cache). The full analysis is deterministic under fixed seeds. The complete source code and the exact analysis scripts are released in the public repository described in Data and Code Availability.
-
-### 5.10 Naming and architectural rationale
-
-The framework is named TSC-GNN (Temporal/cell-State-Conditioned Graph Neural Network). Its scope is worth stating plainly, since it settles a question reviewers raise repeatedly. TSC-GNN operates on a **fixed, literature-curated causal graph** (DoRothEA, §5.2) and reads out edge-level rewiring ΔW through a **linear** decoder — the state-conditioned Pearson coupling change with permutation significance (§5.3). It does **not** train a message-passing network with learnable node or edge embeddings. This is a deliberate design choice, not a limitation: §3.2 shows that a fixed graph plus a linear readout already supplies the interpretability we seek (edge-level ΔW), and §3.1 demonstrates that a learnable graph confers no prediction advantage under matched inputs. A message-passing GNN would introduce uninterpretable parameters while, per our benchmark, delivering no accuracy gain — directly trading away the framework's only contribution (interpretability) for a non-existent benefit. The "graph" in TSC-GNN therefore denotes the **structured causal substrate** on which a virtual perturbation is propagated and decomposed, not an end-to-end learned GNN. This positions TSC-GNN as a *recovery* engine (c.f. §1, §4.1) rather than a *prediction* engine, and distinguishes it from end-to-end perturbation GNNs such as GEARS [9].
+A fixed causal graph read out by a linear decoder does not beat linear models at prediction; that boundary is where this work begins rather than where it fails. What the graph *does* provide is **interpretability**: edge-level rewiring (ΔW) with permutation significance, module-level master-regulator ranking, cell–cell communication remodelling, and drug-repurposing hypotheses — a closed loop from virtual _in silico_ perturbation to a causally-supported, translatable output. The five-level evidence ladder (L1–L5) establishes cross-cohort reproducibility, biological coherence, cross-species regulatory convergence, translational convergence, and program-level directional causal support, respectively, while candidly exposing the boundaries of each level. The honest negative prediction result and the context-dependent causal support gradient constitute, we argue, a more durable contribution to the field than another incrementally more accurate predictor.
 
 ---
 
@@ -432,13 +440,17 @@ The framework is named TSC-GNN (Temporal/cell-State-Conditioned Graph Neural Net
 
 ## Author Contributions
 
-Ming Luo and Yimin Mei contributed equally to this work. Wenwu Huang is the corresponding author (hwenwu321@gmail.com). The per-author role allocation across study conception, method development, data analysis, and manuscript writing is to be finalised by the authors.
+M.L. and Y.M. contributed equally to this work. W.H. conceived and supervised the study and is the corresponding author. M.L. and Y.M. designed the computational framework, implemented the TSC-GNN pipeline, carried out the data analysis, and prepared the figures and tables. W.Y. curated the public datasets, contributed to the cross-species and public-perturbation re-analyses, and validated the reproducibility pipeline. M.L., Y.M. and W.H. wrote the manuscript with input from all authors. W.H. acquired funding and handled project administration. All authors read, critically revised, and approved the final manuscript.
+
+Using the CRediT taxonomy: **Conceptualization** — W.H., M.L.; **Methodology** — M.L., Y.M.; **Software** — M.L., Y.M.; **Formal analysis** — M.L., Y.M., W.Y.; **Data curation** — W.Y.; **Validation** — W.Y., Y.M.; **Visualization** — M.L.; **Writing – original draft** — M.L., Y.M.; **Writing – review & editing** — W.H., W.Y.; **Supervision, Funding acquisition, Project administration** — W.H.
 
 ---
 
 ## Acknowledgements
 
-[To be completed by authors.]
+The authors thank colleagues at the Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), for helpful discussions.
+
+**Declaration of generative AI and AI-assisted technologies in the writing process.** During the preparation of this work, the authors used a large language model (LLM)-based AI assistant to help with language editing, improving readability, and formatting of the manuscript, and to assist with drafting, organizing, and debugging analysis code. No generative AI system was used to generate, interpret, or fabricate scientific data, results, or conclusions; all data processing, statistical analyses, and their interpretation were performed and verified by the authors. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the publication.
 
 ---
 
