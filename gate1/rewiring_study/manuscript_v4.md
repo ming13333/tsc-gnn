@@ -166,7 +166,28 @@ TSC-GNN is best understood not as a **prediction** engine but as a **recovery** 
 
 Applying state-conditioned rewiring across the four transitions recovered a coherent, literature-aligned program of stroke recovery. At pooled q < 0.05, **8, 28, 19 and 36 edges** were significant for sham→24 h, 24 h→2 d, 2 d→14 d and sham→14 d respectively (Fig. 3A–D).
 
+The recovered program is evaluated along the five-level evidence ladder (L1–L5, Table 1; Fig. 7), which escalates from technical reproducibility to independent public-perturbation causal support. Table 1 summarises the design, evidence type and strength of each level.
+
+**Table 1.** Five-level evidence ladder (L1–L5): design, evidence type, and strength.
+
+| Level | Goal | Design / evidence source | Evidence type | Strength (key result) |
+|---|---|---|---|---|
+| **L1** Technical reproducibility | Are master-regulator rankings stable across cohorts? | Re-derive rewiring on two independent cohorts; Spearman ρ vs integrated analysis | Computational reproduction | ρ = 0.48–0.55 (p < 1 × 10⁻¹⁵); edge-level not reproduced (Jaccard ≈ 0) |
+| **L2** Biological recovery | Does the method recover established stroke-repair biology? | Target-program enrichment + stress-artifact negative control (Fos) | Known-biology concordance | Sox10/Sox2/Sox9 drive top rewiring; 14/15 known stroke TFs recovered; target enrichment OR 15–110 |
+| **L3** Cross-species convergence | Are mouse programs conserved in the human GRN and engaged in human stroke? | Orthogonal projection to human DoRothEA + activation in GSE16561 blood | Cross-species structural + transcriptional convergence | SOX10→myelin OR = 27 (emp p = 0.0005); CEBPB OR = 16.5 (p = 0.024); GATA2 OR = 4.6 (p = 0.047); blood activation BH-q = 1.1 × 10⁻⁸ |
+| **L4** Translational hypothesis generation | Which drugs reverse the injury signature? | L1000CDS2 reverse-matching of the robust 24 h signature | Perturbation-direction concordance | Robust hits vorinostat / trichostatin A / Mevastatin / Rosuvastatin; permutation p = 0.33 (n.s.) → hypothesis generation, not efficacy prediction |
+| **L5** Directional causal support | Is the program directionally supported by independent perturbation? | Native-lineage KO (L5a) + LINCS OE (L5b) + K562 sc-CRISPRi (L5c) triangulation | Independent directional perturbation | L5a: Sox10 rank 46/412, Cebpb rank 149/404; L5b: GATA2 OE rank 3/33,782 (p = 1.4 × 10⁻⁵); L5c: context-gated null with K562 positive controls (MYC rank 19/332) |
+
+**[Figure 7 about here — Five-level evidence ladder (L1–L5) visual summary]**
+
 **[Table 2 about here — Summary of significant edges per transition]**
+
+| Transition | Phase | # Sig. edges (q < 0.05) | Representative rewired edges (ΔW, q) |
+|---|---|---|---|
+| sham→24 h | Acute onset | 8 | *Tbx21→Cxcr3* (ΔW = −0.21, coupling loss) |
+| 24 h→2 d | Repair initiation | 28 | *Sox2→Lsamp* (ΔW = +0.86), *Sox10→Ank3* (ΔW = +0.74); both q < 0.001 |
+| 2 d→14 d | Active remyelination | 19 | *Sox10→Plp1* (ΔW = +0.51), *Hey2→Acta2* (ΔW = +0.59); both q < 0.001 |
+| sham→14 d | Inflammation resolution | 36 | *Sox9→Hapln1* (ΔW = +0.79), *Sox10→Plp1* (ΔW = +0.42); both q < 0.001 |
 
 - **Acute injury onset (sham→24 h, 8 significant edges):** weak but directionally consistent coupling of damage/inflammatory genes (e.g. *Tbx21→Cxcr3*, ΔW = −0.21), consistent with the known acute ischaemic response and the modest acute signal.
 - **Repair initiation (24 h→2 d, 28 significant edges):** the strongest coupling gains were *Sox2→Lsamp* (ΔW = +0.86, q < 0.001) and *Sox10→Ank3* (ΔW = +0.74, q < 0.001) — a sharp surge in oligodendrocyte-lineage commitment coupling that initiates remyelination.
@@ -294,6 +315,15 @@ The strongest result is **GATA2 overexpression**: GATA2's own OE signature ranks
 
 **[Table 8 about here — SigCom LINCS: signature-match results]**
 
+| Assay (SigCom LINCS) | Gene | Metric | Rank / total | p / percentile | Self-specific? | Note |
+|---|---|---|---|---|---|---|
+| OE mimicker | GATA2 | own OE signature mimics GATA2 target program | 3 / 33,782 (top 0.01 %) | 1.4 × 10⁻⁵ | Yes (self 0.01 % vs best cross 4.98 %) | strong activator evidence |
+| OE mimicker | SOX10 | own OE signature mimics SOX10 target program | mixed direction | — | n/a | mixed directionality |
+| OE mimicker | CEBPB | own OE signature mimics CEBPB target program | no OE data | — | n/a | not in library |
+| CRISPR-KD reverser | SOX10 | own KO signature reverses SOX10 target program | top 0.90 % | — | No (self ≈ cross) | directionally correct |
+| CRISPR-KD reverser | CEBPB | own KO signature reverses CEBPB target program | top 0.46 % | — | No | directionally correct |
+| CRISPR-KD reverser | GATA2 | own KO signature reverses GATA2 target program | top 1.17 % | — | No | directionally correct |
+
 #### 3.7c Single-cell-resolution perturb-seq re-analysis — Replogle 2022 K562 (L5c, C modality)
 
 As a higher-resolution and off-context control we re-analysed a genome-scale CRISPRi screen in K562 (Replogle et al., 2022 [36]; 11,258 perturbations, 585 non-targeting controls; Figshare 20029387), testing each TF's recovered DoRothEA target program under the TF's own CRISPRi signature (gemgroup Z-normalised pseudo-bulk). In this off-context cancer line the test returned a **null**: none of the three TFs' target programs was significantly down-shifted under its own perturbation (Table 9).
@@ -339,6 +369,17 @@ Levels 5b and 5c interrogate the framework's recovered TF→target programs with
 **Positive control confirms the pipeline has power in K562, but generic regulons are a coarse proxy (Table 11).** Among K562 master TFs the regulon-response test recovers a significant down-shift for **MYC (rank 19/332, MWU p = 3.1 × 10⁻³)** and **BCL11A (29/332, p = 7.5 × 10⁻³)**. The three focal stroke TFs rank far below these in-context positives (139–304/332). Even a canonical K562 erythroid master, **GATA1**, shows strong on-target knockdown (self-Z −0.54) yet no coherent DoRothEA-regulon down-shift (mean Z +0.27, rank 187/332), showing that generic DoRothEA regulons only partially track TF activity even in the correct cell type.
 
 **[Table 11 about here — K562 positive-control regulon response]**
+
+| K562 TF | Test | Rank / 332 | MWU p | self-Z (on-target) | regulon mean-Z | Interpretation |
+|---|---|---|---|---|---|---|
+| MYC | positive control | 19 | 3.1 × 10⁻³ | n/r | down-shift | significant down-shift ✓ |
+| BCL11A | positive control | 29 | 7.5 × 10⁻³ | n/r | down-shift | significant down-shift ✓ |
+| GATA1 | in-context erythroid master | 187 | n/r | −0.54 | +0.27 | on-target, regulon null (coarse proxy) |
+| SOX10 | focal stroke TF | 304 | 0.91 | absent (locus not in K562) | +0.018 | locus absent (reproduced from Table 9) |
+| CEBPB | focal stroke TF | 239 | 0.84 | −0.43 | +0.007 | on-target, regulon null |
+| GATA2 | focal stroke TF | 139 | 0.18 | −0.19 | +0.004 | in-context, yet regulon null |
+
+*SOX10/CEBPB/GATA2 rows reproduce Table 9 for context; the three focal stroke TFs rank far below the in-context positives (139–304/332).*
 
 **New findings from combining A + C:**
 
@@ -630,8 +671,6 @@ This study is a computational analysis that used only publicly available, previo
 
 ## Figure Legends
 
-**Figure 1. An evidence-driven framework for recovery-oriented virtual perturbation.** TSC-GNN infers temporally rewired regulatory programs from state-conditioned transcriptional networks and interprets them through a hierarchical evidence framework spanning technical reproducibility (L1), biological recovery (L2), cross-species regulatory convergence (L3), translational hypothesis generation (L4), and context-gated directional causal support (L5). Together, these evidence layers progressively strengthen confidence in recovered regulatory programs while explicitly defining the scope and limitations of the framework.
-
 **Figure 2. Prediction benchmark and interpretability trade-off.** (A) Scatter plot of graph-vs-linear relative improvement across 90 configurations. (B) Schematic illustrating the interpretability-vs-prediction trade-off that reframes the contribution of fixed-graph methods.
 
 **Figure 3. Temporal rewiring across stroke transitions.** Heatmaps of ΔW for significant edges (pooled q < 0.05) at each transition: (A) sham→24 h, (B) 24 h→2 d, (C) 2 d→14 d, (D) sham→14 d. Colour: red = coupling enhancement, blue = weakening.
@@ -648,7 +687,7 @@ This study is a computational analysis that used only publicly available, previo
 
 ## Tables (in-text)
 
-**Table 1.** Five-level evidence ladder (L1–L5): design, evidence type, and strength. *[in-text, §3.4; visual summary: Fig. 7]*
+**Table 1.** Five-level evidence ladder (L1–L5): design, evidence type, and strength. *[in-text, §3.3; visual summary: Fig. 7]*
 
 **Table 2.** Summary of significant rewiring edges per transition. *[in-text, §3.3]*
 
