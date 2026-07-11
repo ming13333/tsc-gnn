@@ -447,35 +447,33 @@ This study is a computational analysis that used only publicly available, previo
 
 ## References
 
-> References reformatted to Cell Press style; DOIs and journal standard abbreviations to be verified before submission.
----
 1. Cramer, S. C., and Carrico, C. R. (2008). Stroke recovery: a perspective on mechanisms. Nat. Rev. Neurosci. 9, 720–731. [DOI: pending]
 
-Carmichael, S. T. (2016). The 3 Rs of Stroke Biology: Radial, Relayed, and Regenerative. Neurotherapeutics 13, 348–359. [DOI: 10.1007/s13311-015-0408-0]
+2. Carmichael, S. T. (2016). The 3 Rs of Stroke Biology: Radial, Relayed, and Regenerative. Neurotherapeutics 13, 348–359. [DOI: 10.1007/s13311-015-0408-0]
 
 3. Li, S. et al. (2021). Single-cell transcriptomic analysis of ischemic stroke reveals the temporal dynamics of glial and neuronal responses. Acta Neuropathol. Commun. 9, 152. [DOI: pending]
 
 4. Anrather, J. et al. (2024). Single-cell RNA sequencing of the post-stroke brain and blood reveals a temporally coordinated immune response. Nat. Immunol. 25, 294–307. [DOI: pending]
 
-Kamimoto, K. et al. (2023). Dissecting cell identity via network inference and in silico gene perturbation. Nature 614, 742–751. [DOI: 10.1038/s41586-022-05688-9]
+5. Kamimoto, K. et al. (2023). Dissecting cell identity via network inference and in silico gene perturbation. Nature 614, 742–751. [DOI: 10.1038/s41586-022-05688-9]
 
-Aibar, S. et al. (2017). SCENIC: single-cell regulatory network inference and clustering. Nat. Methods 14, 1083–1086. [DOI: 10.1038/nmeth.4463]
+6. Aibar, S. et al. (2017). SCENIC: single-cell regulatory network inference and clustering. Nat. Methods 14, 1083–1086. [DOI: 10.1038/nmeth.4463]
 
-Bravo González-Blas, C. et al. (2023). SCENIC+: single-cell multiomic inference of enhancer-driven gene regulatory networks. Nat. Methods 20, 1355–1367. [DOI: 10.1038/s41592-023-01938-4]
+7. Bravo González-Blas, C. et al. (2023). SCENIC+: single-cell multiomic inference of enhancer-driven gene regulatory networks. Nat. Methods 20, 1355–1367. [DOI: 10.1038/s41592-023-01938-4]
 
-Browaeys, R., Saelens, W., and Saeys, Y. (2020). NicheNet: modeling intercellular communication by linking ligands to target genes. Nat. Methods 17, 159–162. [DOI: 10.1038/s41592-019-0667-5]
+8. Browaeys, R., Saelens, W., and Saeys, Y. (2020). NicheNet: modeling intercellular communication by linking ligands to target genes. Nat. Methods 17, 159–162. [DOI: 10.1038/s41592-019-0667-5]
 
-Roohani, Y., Huang, K., and Leskovec, J. (2023). Predicting transcriptional outcomes of novel multigene perturbations with GEARS. Nat. Biotechnol. 42, 927–935. [DOI: 10.1038/s41587-023-01905-6]
+9. Roohani, Y., Huang, K., and Leskovec, J. (2023). Predicting transcriptional outcomes of novel multigene perturbations with GEARS. Nat. Biotechnol. 42, 927–935. [DOI: 10.1038/s41587-023-01905-6]
 
-Cui, H. et al. (2024). scGPT: toward building a foundation model for single-cell multi-omics. Nat. Methods 21, 1470–1480. [DOI: 10.1038/s41592-024-02201-0]
+10. Cui, H. et al. (2024). scGPT: toward building a foundation model for single-cell multi-omics. Nat. Methods 21, 1470–1480. [DOI: 10.1038/s41592-024-02201-0]
 
-Hao, M. et al. (2024). Large-scale foundation model for single-cell transcriptomics. Nat. Methods 21, 1481–1491. [DOI: 10.1038/s41592-024-02305-7]
+11. Hao, M. et al. (2024). Large-scale foundation model for single-cell transcriptomics. Nat. Methods 21, 1481–1491. [DOI: 10.1038/s41592-024-02305-7]
 
-Wang, W., Hu, Z., Weiler, P., Mayes, S., Lange, M., Fountain, D. M., Haug, J. O., Wang, J., Xue, Z., Sauka-Spengler, T., and Theis, F. J. (2026). RegVelo: gene-regulatory-informed dynamics of single cells. Cell 189, 3773–3800.e44. [DOI: 10.1016/j.cell.2026.04.022]
+12. Wang, W., Hu, Z., Weiler, P., Mayes, S., Lange, M., Fountain, D. M., Haug, J. O., Wang, J., Xue, Z., Sauka-Spengler, T., and Theis, F. J. (2026). RegVelo: gene-regulatory-informed dynamics of single cells. Cell 189, 3773–3800.e44. [DOI: 10.1016/j.cell.2026.04.022]
 
-Liu, Y., Cai, F., Barile, M., Chang, Y., Cao, D., and Huang, Y. (2025). TemporalVAE: atlas-assisted temporal mapping of time-series single-cell transcriptomes during embryogenesis. Nat. Cell Biol. 27, 1982–1992. [DOI: 10.1038/s41556-025-01787-7]
+13. Liu, Y., Cai, F., Barile, M., Chang, Y., Cao, D., and Huang, Y. (2025). TemporalVAE: atlas-assisted temporal mapping of time-series single-cell transcriptomes during embryogenesis. Nat. Cell Biol. 27, 1982–1992. [DOI: 10.1038/s41556-025-01787-7]
 
-Ishikawa, M. et al. (2023). RENGE infers gene regulatory networks using time-series single-cell RNA-seq data with CRISPR perturbations. Commun. Biol. 6, 1290. [DOI: 10.1038/s42003-023-05594-4]
+14. Ishikawa, M. et al. (2023). RENGE infers gene regulatory networks using time-series single-cell RNA-seq data with CRISPR perturbations. Commun. Biol. 6, 1290. [DOI: 10.1038/s42003-023-05594-4]
 
 15. Kipf, T. N., and Welling, M. (2017). Semi-supervised classification with graph convolutional networks. Proc. ICLR. [DOI: pending]
 
@@ -487,21 +485,21 @@ Ishikawa, M. et al. (2023). RENGE infers gene regulatory networks using time-ser
 
 19. Lotfollahi, M. et al. (2019). Predicting cellular responses to perturbations with scGen. Nat. Methods 16, 1253–1261. [DOI: pending]
 
-Garcia-Alonso, L. et al. (2019). Benchmark and integration of resources for the estimation of human transcription factor activities. Genome Res. 29, 1363–1375. [DOI: 10.1101/gr.240663.118]
+20. Garcia-Alonso, L. et al. (2019). Benchmark and integration of resources for the estimation of human transcription factor activities. Genome Res. 29, 1363–1375. [DOI: 10.1101/gr.240663.118]
 
-Jin, S. et al. (2021). Inference and analysis of cell–cell communication using CellChat. Nat. Commun. 12, 1088. [DOI: 10.1038/s41467-021-21246-9]
+21. Jin, S. et al. (2021). Inference and analysis of cell–cell communication using CellChat. Nat. Commun. 12, 1088. [DOI: 10.1038/s41467-021-21246-9]
 
-Duan, Q. et al. (2016). L1000CDS2: LINCS L1000 characteristic direction signatures search engine. npj Syst. Biol. Appl. 2, 16015. [DOI: 10.1038/npjsba.2016.15]
+22. Duan, Q. et al. (2016). L1000CDS2: LINCS L1000 characteristic direction signatures search engine. npj Syst. Biol. Appl. 2, 16015. [DOI: 10.1038/npjsba.2016.15]
 
-Stolt, C. C. et al. (2002). Terminal differentiation of myelin-forming oligodendrocytes depends on the transcription factor Sox10. Genes Dev. 16, 165–170. [DOI: 10.1101/gad.215802]
+23. Stolt, C. C. et al. (2002). Terminal differentiation of myelin-forming oligodendrocytes depends on the transcription factor Sox10. Genes Dev. 16, 165–170. [DOI: 10.1101/gad.215802]
 
-Nave, K. A. (2010). Myelination and support of axonal integrity by glia. Nat. Rev. Neurosci. 11, 275–283. [DOI: 10.1038/nrn2797]
+24. Nave, K. A. (2010). Myelination and support of axonal integrity by glia. Nat. Rev. Neurosci. 11, 275–283. [DOI: 10.1038/nrn2797]
 
 25. Fancy, S. P. J. et al. (2011). Myelin regeneration: a review of the cellular and molecular mechanisms. Ann. Neurol. 69, 579–589. [DOI: pending]
 
-Morgan, J. I., and Curran, T. (1991). Stimulus-transcription coupling in the nervous system: involvement of the inducible proto-oncogenes fos and jun. Annu. Rev. Neurosci. 14, 421–451. [DOI: 10.1146/annurev.neuro.14.1.421]
+26. Morgan, J. I., and Curran, T. (1991). Stimulus-transcription coupling in the nervous system: involvement of the inducible proto-oncogenes fos and jun. Annu. Rev. Neurosci. 14, 421–451. [DOI: 10.1146/annurev.neuro.14.1.421]
 
-Zawadzka, M. et al. (2010). CNS-resident glial progenitor/stem cells produce Schwann cells as well as oligodendrocytes during repair of CNS demyelination. Cell Stem Cell 6, 578–590. [DOI: 10.1016/j.stem.2010.04.002]
+27. Zawadzka, M. et al. (2010). CNS-resident glial progenitor/stem cells produce Schwann cells as well as oligodendrocytes during repair of CNS demyelination. Cell Stem Cell 6, 578–590. [DOI: 10.1016/j.stem.2010.04.002]
 
 28. Doyle, K. P., Simon, R. P., and Stenzel-Poore, M. P. (2008). Mechanisms of ischemic brain damage and repair. Stroke 39, 571–578. [DOI: pending]
 
@@ -509,17 +507,17 @@ Zawadzka, M. et al. (2010). CNS-resident glial progenitor/stem cells produce Sch
 
 30. Barr, T. L. et al. (2010). Genomic expression in acute stroke patients. Stroke 41, 2280–2285. [DOI: pending]
 
-Barbie, D. A. et al. (2009). Systematic RNA interference reveals that oncogenic KRAS-driven cancers require TBK1. Nature 462, 108–112. [DOI: 10.1038/nature08460]
+31. Barbie, D. A. et al. (2009). Systematic RNA interference reveals that oncogenic KRAS-driven cancers require TBK1. Nature 462, 108–112. [DOI: 10.1038/nature08460]
 
-Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. J. R. Stat. Soc. B 57, 289–300. [DOI: 10.1111/j.2517-6161.1995.tb02031.x]
+32. Benjamini, Y., and Hochberg, Y. (1995). Controlling the false discovery rate: a practical and powerful approach to multiple testing. J. R. Stat. Soc. B 57, 289–300. [DOI: 10.1111/j.2517-6161.1995.tb02031.x]
 
-Jörg, L. M. et al. (2024). Transcription factors Sox8 and Sox10 contribute with different importance to the maintenance of mature oligodendrocytes. Int. J. Mol. Sci. 25, 8754. [DOI: 10.3390/ijms25168754]
+33. Jörg, L. M. et al. (2024). Transcription factors Sox8 and Sox10 contribute with different importance to the maintenance of mature oligodendrocytes. Int. J. Mol. Sci. 25, 8754. [DOI: 10.3390/ijms25168754]
 
-Lin, S.-Z. et al. (2025). C/EBPβ–VCAM1 axis in Kupffer cells promotes hepatic inflammation in MASLD. JHEP Rep. 7, 101418. [DOI: 10.1016/j.jhepr.2025.101418]
+34. Lin, S.-Z. et al. (2025). C/EBPβ–VCAM1 axis in Kupffer cells promotes hepatic inflammation in MASLD. JHEP Rep. 7, 101418. [DOI: 10.1016/j.jhepr.2025.101418]
 
-Subramanian, A. et al. (2017). A next generation connectivity map: L1000 platform and the first 1,000,000 profiles. Cell 171, 1437–1452.e17. [DOI: 10.1016/j.cell.2017.10.049]
+35. Subramanian, A. et al. (2017). A next generation connectivity map: L1000 platform and the first 1,000,000 profiles. Cell 171, 1437–1452.e17. [DOI: 10.1016/j.cell.2017.10.049]
 
-Replogle, J. M. et al. (2022). Mapping information-rich genotype–phenotype landscapes with genome-scale Perturb-seq. Cell 185, 2559–2575.e28. [DOI: 10.1016/j.cell.2022.05.013]
+36. Replogle, J. M. et al. (2022). Mapping information-rich genotype–phenotype landscapes with genome-scale Perturb-seq. Cell 185, 2559–2575.e28. [DOI: 10.1016/j.cell.2022.05.013]
 
 37. Veličković, P. (2023). Message passing all you need: graph attention networks and beyond. Nat. Rev. Phys. 5, 343–356. [DOI: pending]
 
@@ -529,17 +527,17 @@ Replogle, J. M. et al. (2022). Mapping information-rich genotype–phenotype lan
 
 40. Bereket, M., and Karaletsos, T. (2022). PerturbNet: a graph neural network for predicting perturbation outcomes. [bioRxiv]. [DOI: pending]
 
-Peidli, I. et al. (2024). scPerturb: harmonized single-cell perturbation data. Nature Methods 21, 531–540. [DOI: 10.1038/s41592-023-02144-y]
+41. Peidli, I. et al. (2024). scPerturb: harmonized single-cell perturbation data. Nature Methods 21, 531–540. [DOI: 10.1038/s41592-023-02144-y]
 
 42. Singh, R. et al. (2024). PerturbExpress: a benchmarking platform for perturbation prediction. Nat. Microbiol. [DOI: pending]
 
-Pratapa, A. et al. (2020). Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154. [DOI: 10.1038/s41592-019-0690-6]
+43. Pratapa, A. et al. (2020). Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154. [DOI: 10.1038/s41592-019-0690-6]
 
 44. Schraivogel, D. et al. (2022). Targeted Perturb-seq enables genome-scale identification of cellular regulators. Nat. Biotechnol. 40, 1370–1378. [DOI: pending]
 
-Adamson, B. et al. (2016). A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response. Cell 167, 1867–1882.e21. [DOI: 10.1016/j.cell.2016.11.048]
+45. Adamson, B. et al. (2016). A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response. Cell 167, 1867–1882.e21. [DOI: 10.1016/j.cell.2016.11.048]
 
-Dixit, A. et al. (2016). Perturb-Seq: dissecting molecular circuits with scalable single-cell RNA profiling of pooled genetic screens. Cell 167, 1853–1866.e17. [DOI: 10.1016/j.cell.2016.11.038]
+46. Dixit, A. et al. (2016). Perturb-Seq: dissecting molecular circuits with scalable single-cell RNA profiling of pooled genetic screens. Cell 167, 1853–1866.e17. [DOI: 10.1016/j.cell.2016.11.038]
 
 47. Bhatt, D. L. et al. (2017). Statins in stroke prevention. Circulation 135, 1707–1720. [DOI: pending]
 
@@ -549,17 +547,17 @@ Dixit, A. et al. (2016). Perturb-Seq: dissecting molecular circuits with scalabl
 
 50. Kartha, V. K. et al. (2023). Functional inference of gene regulation using single-cell Perturb-seq. Nat. Genet. 55, 1339–1350. [DOI: pending]
 
-Margolin, A. A. et al. (2006). ARACNE: an algorithm for the reconstruction of gene regulatory networks in a mammalian cellular context. BMC Bioinformatics 7, S7. [DOI: 10.1186/1471-2105-7-s1-s7]
+51. Margolin, A. A. et al. (2006). ARACNE: an algorithm for the reconstruction of gene regulatory networks in a mammalian cellular context. BMC Bioinformatics 7, S7. [DOI: 10.1186/1471-2105-7-s1-s7]
 
-Edelman, G. M., and Gally, J. A. (2001). Degeneracy and complexity in biological systems. Proc. Natl Acad. Sci. USA 98, 13763–13768. [DOI: 10.1073/pnas.231499798]
+52. Edelman, G. M., and Gally, J. A. (2001). Degeneracy and complexity in biological systems. Proc. Natl Acad. Sci. USA 98, 13763–13768. [DOI: 10.1073/pnas.231499798]
 
-Whitacre, J. M. (2010). Degeneracy: a link between evolvability, robustness and complexity in biological systems. Theor. Biol. Med. Model. 7, 6. [DOI: 10.1186/1742-4682-7-6]
+53. Whitacre, J. M. (2010). Degeneracy: a link between evolvability, robustness and complexity in biological systems. Theor. Biol. Med. Model. 7, 6. [DOI: 10.1186/1742-4682-7-6]
 
 54. Weider, M. et al. (2021). Nfat/calcineurin signaling promotes oligodendrocyte differentiation and myelination. Nat. Commun. 12, 4240. [DOI: pending]
 
-Huang, S. (2009). Reprogramming cell fates: reconciling rarity with robustness. BioEssays 31, 546–560. [DOI: 10.1002/bies.200800189]
+55. Huang, S. (2009). Reprogramming cell fates: reconciling rarity with robustness. BioEssays 31, 546–560. [DOI: 10.1002/bies.200800189]
 
-Raj, A., and van Oudenaarden, A. (2008). Nature, nurture, or chance: stochastic gene expression and its consequences. Cell 135, 216–226. [DOI: 10.1016/j.cell.2008.09.050]
+56. Raj, A., and van Oudenaarden, A. (2008). Nature, nurture, or chance: stochastic gene expression and its consequences. Cell 135, 216–226. [DOI: 10.1016/j.cell.2008.09.050]
 
 ## Figure Legends
 
