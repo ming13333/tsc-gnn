@@ -453,7 +453,7 @@ This study is a computational analysis that used only publicly available, previo
 
 3. Li, S. et al. (2021). Single-cell transcriptomic analysis of ischemic stroke reveals the temporal dynamics of glial and neuronal responses. Acta Neuropathol. Commun. 9, 152. [DOI: pending]
 
-4. Anrather, J. et al. (2024). Single-cell RNA sequencing of the post-stroke brain and blood reveals a temporally coordinated immune response. Nat. Immunol. 25, 294–307. [DOI: pending]
+4. Garcia-Bonilla, L. et al. (2024). Analysis of brain and blood single-cell transcriptomics in acute and subacute phases after experimental stroke. Nat. Immunol. 25, 357–370. [DOI: 10.1038/s41590-023-01711-x]
 
 5. Kamimoto, K. et al. (2023). Dissecting cell identity via network inference and in silico gene perturbation. Nature 614, 742–751. [DOI: 10.1038/s41586-022-05688-9]
 
@@ -475,15 +475,15 @@ This study is a computational analysis that used only publicly available, previo
 
 14. Ishikawa, M. et al. (2023). RENGE infers gene regulatory networks using time-series single-cell RNA-seq data with CRISPR perturbations. Commun. Biol. 6, 1290. [DOI: 10.1038/s42003-023-05594-4]
 
-15. Kipf, T. N., and Welling, M. (2017). Semi-supervised classification with graph convolutional networks. Proc. ICLR. [DOI: pending]
+15. Kipf, T. N., and Welling, M. (2017). Semi-supervised classification with graph convolutional networks. Proc. ICLR. [DOI: 10.48550/arXiv.1609.02907]
 
-16. Veličković, P. et al. (2018). Graph attention networks. Proc. ICLR. [DOI: pending]
+16. Veličković, P. et al. (2018). Graph attention networks. Proc. ICLR. [DOI: 10.48550/arXiv.1710.10903]
 
-17. Hamilton, W. L., Ying, Z., and Leskovec, J. (2017). Inductive representation learning on large graphs. Proc. NeurIPS. [DOI: pending]
+17. Hamilton, W. L., Ying, Z., and Leskovec, J. (2017). Inductive representation learning on large graphs. Proc. NeurIPS. [DOI: 10.48550/arXiv.1706.02216]
 
 18. Dwivedi, V. P. et al. (2023). Graph neural networks: a review of methods and applications. NeurIPS. [DOI: pending]
 
-19. Lotfollahi, M. et al. (2019). Predicting cellular responses to perturbations with scGen. Nat. Methods 16, 1253–1261. [DOI: pending]
+19. Lotfollahi, M., Wolf, F. A., and Theis, F. J. (2019). scGen predicts single-cell perturbation responses. Nat. Methods 16, 715–721. [DOI: 10.1038/s41592-019-0494-8]
 
 20. Garcia-Alonso, L. et al. (2019). Benchmark and integration of resources for the estimation of human transcription factor activities. Genome Res. 29, 1363–1375. [DOI: 10.1101/gr.240663.118]
 
@@ -495,17 +495,17 @@ This study is a computational analysis that used only publicly available, previo
 
 24. Nave, K. A. (2010). Myelination and support of axonal integrity by glia. Nat. Rev. Neurosci. 11, 275–283. [DOI: 10.1038/nrn2797]
 
-25. Fancy, S. P. J. et al. (2011). Myelin regeneration: a review of the cellular and molecular mechanisms. Ann. Neurol. 69, 579–589. [DOI: pending]
+25. Fancy, S. P. J. et al. (2011). Myelin regeneration: a recapitulation of development? Annu. Rev. Neurosci. 34, 21–43. [DOI: 10.1146/annurev-neuro-061010-113629]
 
 26. Morgan, J. I., and Curran, T. (1991). Stimulus-transcription coupling in the nervous system: involvement of the inducible proto-oncogenes fos and jun. Annu. Rev. Neurosci. 14, 421–451. [DOI: 10.1146/annurev.neuro.14.1.421]
 
 27. Zawadzka, M. et al. (2010). CNS-resident glial progenitor/stem cells produce Schwann cells as well as oligodendrocytes during repair of CNS demyelination. Cell Stem Cell 6, 578–590. [DOI: 10.1016/j.stem.2010.04.002]
 
-28. Doyle, K. P., Simon, R. P., and Stenzel-Poore, M. P. (2008). Mechanisms of ischemic brain damage and repair. Stroke 39, 571–578. [DOI: pending]
+28. Doyle, K. P., Simon, R. P., and Stenzel-Poore, M. P. (2008). Mechanisms of ischemic brain damage. Neuropharmacology 55, 310–318. [DOI: 10.1016/j.neuropharm.2008.01.005]
 
-29. Jin, R., Yang, G., and Li, G. (2010). Inflammatory mechanisms in ischemic stroke. Prog. Neurobiol. 90, 178–189. [DOI: pending]
+29. Jin, R., Yang, G., and Li, G. (2010). Inflammatory mechanisms in ischemic stroke: role of inflammatory cells. J. Leukoc. Biol. 87, 779–789. [DOI: 10.1189/jlb.1109766]
 
-30. Barr, T. L. et al. (2010). Genomic expression in acute stroke patients. Stroke 41, 2280–2285. [DOI: pending]
+30. Barr, T. L. et al. (2010). Genomic biomarkers and cellular pathways of ischemic stroke by RNA gene expression profiling. Neurology 75, 1009–1014. [DOI: 10.1212/wnl.0b013e3181f2b37f]
 
 31. Barbie, D. A. et al. (2009). Systematic RNA interference reveals that oncogenic KRAS-driven cancers require TBK1. Nature 462, 108–112. [DOI: 10.1038/nature08460]
 
@@ -519,11 +519,11 @@ This study is a computational analysis that used only publicly available, previo
 
 36. Replogle, J. M. et al. (2022). Mapping information-rich genotype–phenotype landscapes with genome-scale Perturb-seq. Cell 185, 2559–2575.e28. [DOI: 10.1016/j.cell.2022.05.013]
 
-37. Veličković, P. (2023). Message passing all you need: graph attention networks and beyond. Nat. Rev. Phys. 5, 343–356. [DOI: pending]
+37. Veličković, P. (2023). Everything is connected: graph neural networks. Curr. Opin. Struct. Biol. 79, 102538. [DOI: 10.1016/j.sbi.2023.102538]
 
-38. Zheng, X. et al. (2018). DAGs with NO TEARS: continuous optimization for structure learning. Proc. NeurIPS. [DOI: pending]
+38. Zheng, X. et al. (2018). DAGs with NO TEARS: continuous optimization for structure learning. Proc. NeurIPS. [DOI: 10.48550/arXiv.1803.01422]
 
-39. Lotfollahi, M. et al. (2023). Biologically informed deep learning for perturbation prediction and biological discovery. Nat. Biotechnol. 41, 1759–1770. [DOI: pending]
+39. Lotfollahi, M. et al. (2023). Biologically informed deep learning to query gene programs in single-cell atlases. Nat. Cell Biol. 25, 337–350. [DOI: 10.1038/s41556-022-01072-x]
 
 40. Bereket, M., and Karaletsos, T. (2022). PerturbNet: a graph neural network for predicting perturbation outcomes. [bioRxiv]. [DOI: pending]
 
@@ -533,7 +533,7 @@ This study is a computational analysis that used only publicly available, previo
 
 43. Pratapa, A. et al. (2020). Benchmarking algorithms for gene regulatory network inference from single-cell transcriptomic data. Nat. Methods 17, 147–154. [DOI: 10.1038/s41592-019-0690-6]
 
-44. Schraivogel, D. et al. (2022). Targeted Perturb-seq enables genome-scale identification of cellular regulators. Nat. Biotechnol. 40, 1370–1378. [DOI: pending]
+44. Schraivogel, D. et al. (2020). Targeted Perturb-seq enables genome-scale genetic screens in single cells. Nat. Methods 17, 629–635. [DOI: 10.1038/s41592-020-0837-5]
 
 45. Adamson, B. et al. (2016). A multiplexed single-cell CRISPR screening platform enables systematic dissection of the unfolded protein response. Cell 167, 1867–1882.e21. [DOI: 10.1016/j.cell.2016.11.048]
 
@@ -543,9 +543,9 @@ This study is a computational analysis that used only publicly available, previo
 
 48. Li, Y. et al. (2020). HDAC inhibitors in neurological diseases. Nat. Rev. Drug Discov. 19, 341–359. [DOI: pending]
 
-49. Ahlmann-Eltze, C. et al. (2025). Perturbation analysis in single-cell data: a comprehensive benchmark. Nat. Methods 22, 322–331. [DOI: pending]
+49. Ahlmann-Eltze, C., Huber, W., and Anders, S. (2025). Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines. Nat. Methods 22, 1657–1661. [DOI: 10.1038/s41592-025-02772-6]
 
-50. Kartha, V. K. et al. (2023). Functional inference of gene regulation using single-cell Perturb-seq. Nat. Genet. 55, 1339–1350. [DOI: pending]
+50. Kartha, V. K. et al. (2022). Functional inference of gene regulation using single-cell multi-omics. Cell Genom. 2, 100166. [DOI: 10.1016/j.xgen.2022.100166]
 
 51. Margolin, A. A. et al. (2006). ARACNE: an algorithm for the reconstruction of gene regulatory networks in a mammalian cellular context. BMC Bioinformatics 7, S7. [DOI: 10.1186/1471-2105-7-s1-s7]
 
@@ -553,7 +553,7 @@ This study is a computational analysis that used only publicly available, previo
 
 53. Whitacre, J. M. (2010). Degeneracy: a link between evolvability, robustness and complexity in biological systems. Theor. Biol. Med. Model. 7, 6. [DOI: 10.1186/1742-4682-7-6]
 
-54. Weider, M. et al. (2021). Nfat/calcineurin signaling promotes oligodendrocyte differentiation and myelination. Nat. Commun. 12, 4240. [DOI: pending]
+54. Weider, M. et al. (2018). Nfat/calcineurin signaling promotes oligodendrocyte differentiation and myelination by transcription factor network tuning. Nat. Commun. 9, 899. [DOI: 10.1038/s41467-018-03336-3]
 
 55. Huang, S. (2009). Reprogramming cell fates: reconciling rarity with robustness. BioEssays 31, 546–560. [DOI: 10.1002/bies.200800189]
 
