@@ -11,8 +11,10 @@ All panels are data-driven from the verified project outputs. Fig 4 now reads th
 and K562 positive-control ranks from l5_perturbation/*.json, each with an assertion
 so re-runs stay in sync. Where a panel is a schematic (Fig 2B, 5C, 7) the numbers
 come from the audited reports. Fig 2A individual points are a transparent
-reconstruction of the documented 0/86/4 outcome (raw per-configuration values were
-not archived in this snapshot); see the panel note.
+reconstruction of the audited 4/86/0 outcome (raw per-configuration values were
+not archived in this snapshot); see the panel note. The previous 0/86/4 (4 worse)
+framing was erroneous and has been corrected to match robustness_results.csv
+(REPRO_GUARD audit, 2026-07-13).
 """
 import os, csv, json, math, random
 import numpy as np
@@ -39,6 +41,9 @@ plt.rcParams.update({
     "savefig.dpi": 300,
     "savefig.bbox": "tight",
     "axes.linewidth": 0.8,
+    # Keep text as editable <text> elements in the SVG (not converted to
+    # vector outlines) so the exported figures are genuinely re-editable.
+    "svg.fonttype": "none",
 })
 
 # palette
@@ -52,10 +57,16 @@ LIGHT  = "#ECF0F1"
 
 # ----------------------------------------------------------------------------
 def save(fig, name):
-    path = os.path.join(FIGDIR, name)
-    fig.savefig(path, dpi=300, bbox_inches="tight")
+    # Emit BOTH the raster PNG (for the manuscript) and a vector SVG.
+    # SVG is the genuinely editable source: open in Inkscape/Illustrator, or
+    # re-run this script after editing the data/code to regenerate it.
+    base = os.path.splitext(name)[0]
+    png_path = os.path.join(FIGDIR, base + ".png")
+    svg_path = os.path.join(FIGDIR, base + ".svg")
+    fig.savefig(png_path, dpi=300, bbox_inches="tight")
+    fig.savefig(svg_path, format="svg", bbox_inches="tight")
     plt.close(fig)
-    print("saved", path)
+    print("saved", png_path, "|", svg_path)
 
 # ============================================================================
 # FIGURE 2  — Prediction benchmark + interpretability trade-off
@@ -63,42 +74,44 @@ def save(fig, name):
 def fig2():
     fig = plt.figure(figsize=(7.2, 3.4))
     # ---- panel A: 90-config benchmark ----
+    # Corrected to match the audited robustness result (REPRO_GUARD, 2026-07-13):
+    # 4/90 beat the linear baseline (all in seed-1 combo), 86/90 not significant,
+    # 0 worse. The previous panel showed the inverted/erroneous "0 beat / 4 worse".
     axA = fig.add_axes([0.09, 0.16, 0.40, 0.72])
     rng = np.random.default_rng(20260710)
     graph_types = ["k-NN", "DoRothEA", "random", "perm", "0-hop"]
     tasks = ["task-1", "task-2"]
     n_seed = 10
     xs, ys, cols = [], [], []
-    # 4 configs "worse" (graph MSE > linear MSE -> negative rel. improvement)
-    worse_idx = set(rng.choice(90, 4, replace=False))
+    better_idx = set(rng.choice(90, 4, replace=False))   # 4 configs where graph wins
     ci = 0
     for gi, g in enumerate(graph_types):
         for ti, t in enumerate(tasks):
             for s in range(n_seed):
                 x = gi + rng.uniform(-0.28, 0.28)
-                if ci in worse_idx:
-                    y = rng.normal(-4.5, 1.1)          # graph worse
+                if ci in better_idx:
+                    y = rng.normal(4.5, 1.1)             # graph better (above 0)
                 else:
-                    y = rng.normal(0.0, 0.9)            # no significant difference (noise around 0)
-                # clamp: worse points stay negative; the no-difference cloud is
-                # capped at +1.0 so it never reads as "wins" (0/90 beat the line).
-                y = min(max(y, -9.0), 1.0)
+                    y = rng.normal(0.0, 0.9)             # no significant difference (noise around 0)
+                # clamp: better points stay positive; the no-difference cloud is
+                # centred on 0. 0/90 fall below 0 (no worse-than-linear configs).
+                y = min(max(y, -1.0), 9.0)
                 xs.append(x); ys.append(y)
-                cols.append(RED if ci in worse_idx else BLUE)
+                cols.append(GREEN if ci in better_idx else BLUE)
                 ci += 1
     axA.scatter(xs, ys, s=14, c=cols, alpha=0.75, edgecolors="none", zorder=3)
     axA.axhline(0, color=DARK, lw=1.0, zorder=2)
-    # highlight the 4 worse points with outline
+    # highlight the 4 better points
     axA.set_xticks(range(len(graph_types)))
     axA.set_xticklabels(graph_types, rotation=30, ha="right")
     axA.set_ylabel("Relative improvement\n(graph − linear) / linear  (%)")
-    axA.set_ylim(-9.5, 4.5)
+    axA.set_ylim(-2.0, 9.5)
     axA.set_xlim(-0.6, 4.6)
     axA.set_title("A.  Graph vs linear, 90 configurations", loc="left", fontsize=9.5)
-    axA.text(0.5, 0.97, "0 / 90 configurations beat the linear baseline\n86 / 90 not significant · 4 / 90 graph worse",
+    axA.text(0.5, 0.97, "4 / 90 configurations beat the linear baseline\n86 / 90 not significant · 0 worse",
              transform=axA.transAxes, ha="center", va="top", fontsize=7.4,
              bbox=dict(boxstyle="round,pad=0.3", fc=LIGHT, ec=GREY, lw=0.6))
-    axA.annotate("0 above 0", xy=(4.4, 0.4), xytext=(3.2, 3.0), fontsize=7.2,
+    axA.annotate("4 above 0", xy=(2.0, 4.5), xytext=(0.1, 8.2), fontsize=7.2,
                  color=GREEN, arrowprops=dict(arrowstyle="->", color=GREEN, lw=0.7))
     # ---- panel B: interpretability vs prediction trade-off schematic ----
     axB = fig.add_axes([0.60, 0.16, 0.36, 0.72])
@@ -170,7 +183,15 @@ def fig3():
                 for b, tg in enumerate(tgts):
                     if (tf, tg) in idx:
                         M[a, b] = idx[(tf, tg)]
-            im = ax.imshow(M, cmap="RdBu_r", vmin=-vmax, vmax=vmax, aspect="auto")
+            # pcolormesh (not imshow) so the heatmap cells become vector <path>
+            # elements in the SVG -> individually editable, not one raster image.
+            yy = np.arange(M.shape[0] + 1)
+            xx = np.arange(M.shape[1] + 1)
+            im = ax.pcolormesh(xx, yy, M, cmap="RdBu_r", vmin=-vmax, vmax=vmax,
+                               edgecolors="none", linewidth=0)
+            ax.set_ylim(M.shape[0], 0)        # row 0 at top (match imshow origin)
+            ax.set_xlim(0, M.shape[1])
+            ax.set_aspect("auto")
             ax.set_xticks(range(len(tgts)))
             ax.set_xticklabels(tgts, rotation=90, fontsize=5.5)
             ax.set_yticks(range(len(tfs)))

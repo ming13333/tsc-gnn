@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="526.5792pt" height="306.988031pt" viewBox="0 0 526.5792 306.988031" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-07-13T13:58:46.076177</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 306.988031 
+L 526.5792 306.988031 
+L 526.5792 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="patch_2">
+   <path d="M 11.5776 101.069325 
+L 170.2656 101.069325 
+Q 174.6432 101.069325 174.6432 98.650125 
+L 174.6432 47.242125 
+Q 174.6432 44.822925 170.2656 44.822925 
+L 11.5776 44.822925 
+Q 7.2 44.822925 7.2 47.242125 
+L 7.2 98.650125 
+Q 7.2 101.069325 11.5776 101.069325 
+z
+" style="fill: #ffffff; stroke: #27ae60; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_3">
+   <path d="M 11.5776 161.549325 
+L 170.2656 161.549325 
+Q 174.6432 161.549325 174.6432 159.130125 
+L 174.6432 107.722125 
+Q 174.6432 105.302925 170.2656 105.302925 
+L 11.5776 105.302925 
+Q 7.2 105.302925 7.2 107.722125 
+L 7.2 159.130125 
+Q 7.2 161.549325 11.5776 161.549325 
+z
+" style="fill: #ffffff; stroke: #27ae60; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_4">
+   <path d="M 183.9456 101.069325 
+L 342.6336 101.069325 
+Q 347.0112 101.069325 347.0112 98.650125 
+L 347.0112 47.242125 
+Q 347.0112 44.822925 342.6336 44.822925 
+L 183.9456 44.822925 
+Q 179.568 44.822925 179.568 47.242125 
+L 179.568 98.650125 
+Q 179.568 101.069325 183.9456 101.069325 
+z
+" style="fill: #ffffff; stroke: #27ae60; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_5">
+   <path d="M 183.9456 161.549325 
+L 342.6336 161.549325 
+Q 347.0112 161.549325 347.0112 159.130125 
+L 347.0112 107.722125 
+Q 347.0112 105.302925 342.6336 105.302925 
+L 183.9456 105.302925 
+Q 179.568 105.302925 179.568 107.722125 
+L 179.568 159.130125 
+Q 179.568 161.549325 183.9456 161.549325 
+z
+" style="fill: #ffffff; stroke: #e67e22; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_6">
+   <path d="M 356.3136 101.069325 
+L 515.0016 101.069325 
+Q 519.3792 101.069325 519.3792 98.650125 
+L 519.3792 47.242125 
+Q 519.3792 44.822925 515.0016 44.822925 
+L 356.3136 44.822925 
+Q 351.936 44.822925 351.936 47.242125 
+L 351.936 98.650125 
+Q 351.936 101.069325 356.3136 101.069325 
+z
+" style="fill: #ffffff; stroke: #95a5a6; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_7">
+   <path d="M 356.3136 161.549325 
+L 515.0016 161.549325 
+Q 519.3792 161.549325 519.3792 159.130125 
+L 519.3792 107.722125 
+Q 519.3792 105.302925 515.0016 105.302925 
+L 356.3136 105.302925 
+Q 351.936 105.302925 351.936 107.722125 
+L 351.936 159.130125 
+Q 351.936 161.549325 356.3136 161.549325 
+z
+" style="fill: #ffffff; stroke: #95a5a6; stroke-width: 1.2; stroke-linejoin: miter"/>
+  </g>
+  <g id="patch_8">
+   <path d="M 13.497384 270.444567 
+Q 244.138028 201.823556 473.707062 270.125991 
+" style="fill: none; stroke: #1a1a1a; stroke-linecap: round"/>
+   <path d="M 470.443496 267.068356 
+L 473.707062 270.125991 
+L 469.302814 270.902263 
+z
+" style="fill: #1a1a1a; stroke: #1a1a1a; stroke-linecap: round"/>
+  </g>
+  <g id="text_1">
+   <text style="font-weight: 700; font-size: 10px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle" x="252.3456" y="13.978125" transform="rotate(-0 252.3456 13.978125)">Figure 6.  L5 three-layer triangulation: cross-modality causal support</text>
+  </g>
+  <g id="text_2">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #2c6fb0" x="90.9216" y="35.146125" transform="rotate(-0 90.9216 35.146125)">L5a  Native-lineage KO</text>
+  </g>
+  <g id="text_3">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="22.5216" y="60.850125" transform="rotate(-0 22.5216 60.850125)">Sox10 cKO</text>
+  </g>
+  <g id="text_4">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="22.5216" y="75.970125" transform="rotate(-0 22.5216 75.970125)">rank 46 / 412</text>
+  </g>
+  <g id="text_5">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #27ae60" x="22.5216" y="91.090125" transform="rotate(-0 22.5216 91.090125)">OR↓ 1.81</text>
+  </g>
+  <g id="text_6">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="22.5216" y="121.330125" transform="rotate(-0 22.5216 121.330125)">Cebpb het-KO</text>
+  </g>
+  <g id="text_7">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="22.5216" y="136.450125" transform="rotate(-0 22.5216 136.450125)">rank 149 / 404</text>
+  </g>
+  <g id="text_8">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #27ae60" x="22.5216" y="151.570125" transform="rotate(-0 22.5216 151.570125)">OR↓ 1.20</text>
+  </g>
+  <g id="text_9">
+   <text style="font-style: italic; font-size: 6.6px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #2c6fb0" x="90.9216" y="174.250125" transform="rotate(-0 90.9216 174.250125)">positive (directionally supported)</text>
+  </g>
+  <g id="text_10">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #e67e22" x="263.2896" y="35.146125" transform="rotate(-0 263.2896 35.146125)">L5b  LINCS overexpression</text>
+  </g>
+  <g id="text_11">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="194.8896" y="60.850125" transform="rotate(-0 194.8896 60.850125)">GATA2 OE</text>
+  </g>
+  <g id="text_12">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="194.8896" y="75.970125" transform="rotate(-0 194.8896 75.970125)">rank 3 / 33,782</text>
+  </g>
+  <g id="text_13">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #27ae60" x="194.8896" y="91.090125" transform="rotate(-0 194.8896 91.090125)">p = 1.4×10⁻⁵</text>
+  </g>
+  <g id="text_14">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="194.8896" y="121.330125" transform="rotate(-0 194.8896 121.330125)">3× TF CRISPR-KO</text>
+  </g>
+  <g id="text_15">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="194.8896" y="136.450125" transform="rotate(-0 194.8896 136.450125)">top ~1% reverser</text>
+  </g>
+  <g id="text_16">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #e67e22" x="194.8896" y="151.570125" transform="rotate(-0 194.8896 151.570125)">no self-specificity</text>
+  </g>
+  <g id="text_17">
+   <text style="font-style: italic; font-size: 6.6px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #e67e22" x="263.2896" y="174.250125" transform="rotate(-0 263.2896 174.250125)">positive + directional, mixed self-specificity</text>
+  </g>
+  <g id="text_18">
+   <text style="font-weight: 700; font-size: 9px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #95a5a6" x="435.6576" y="35.146125" transform="rotate(-0 435.6576 35.146125)">L5c  K562 sc-CRISPRi</text>
+  </g>
+  <g id="text_19">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="367.2576" y="60.850125" transform="rotate(-0 367.2576 60.850125)">SOX10</text>
+  </g>
+  <g id="text_20">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="367.2576" y="75.970125" transform="rotate(-0 367.2576 75.970125)">locus absent</text>
+  </g>
+  <g id="text_21">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #95a5a6" x="367.2576" y="91.090125" transform="rotate(-0 367.2576 91.090125)">off-context null</text>
+  </g>
+  <g id="text_22">
+   <text style="font-weight: 700; font-size: 8.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="367.2576" y="121.330125" transform="rotate(-0 367.2576 121.330125)">CEBPB / GATA2</text>
+  </g>
+  <g id="text_23">
+   <text style="font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #1a1a1a" x="367.2576" y="136.450125" transform="rotate(-0 367.2576 136.450125)">on-target, regulon null</text>
+  </g>
+  <g id="text_24">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: start; fill: #95a5a6" x="367.2576" y="151.570125" transform="rotate(-0 367.2576 151.570125)">context-gated null</text>
+  </g>
+  <g id="text_25">
+   <text style="font-style: italic; font-size: 6.6px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #95a5a6" x="435.6576" y="174.250125" transform="rotate(-0 435.6576 174.250125)">context boundary (expected)</text>
+  </g>
+  <g id="text_26">
+   <text style="font-size: 7.6px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #1a1a1a" x="252.3456" y="286.138125" transform="rotate(-0 252.3456 286.138125)">K562 internal positive controls confirm pipeline power:</text>
+  </g>
+  <g id="text_27">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #27ae60" x="142.9056" y="298.234125" transform="rotate(-0 142.9056 298.234125)">MYC rank 19/332</text>
+  </g>
+  <g id="text_28">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #27ae60" x="252.3456" y="298.234125" transform="rotate(-0 252.3456 298.234125)">BCL11A rank 29/332</text>
+  </g>
+  <g id="text_29">
+   <text style="font-weight: 700; font-size: 7.2px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #95a5a6" x="361.7856" y="298.234125" transform="rotate(-0 361.7856 298.234125)">GATA1 rank 187/332 (proxy)</text>
+  </g>
+  <g id="text_30">
+   <text style="font-style: italic; font-size: 7px; font-family: 'Times New Roman', 'DejaVu Serif', serif; text-anchor: middle; fill: #1a1a1a" x="252.3456" y="261.946125" transform="rotate(-0 252.3456 261.946125)">causal support is context-gated  (off-context null  →  native-lineage positive)</text>
+  </g>
+ </g>
+</svg>
