@@ -1,0 +1,75 @@
+{
+  "11-type": {
+    "0.05": {
+      "candidate": 12,
+      "significant": 5,
+      "uniq": 12
+    },
+    "0.1": {
+      "candidate": 3,
+      "significant": 2,
+      "uniq": 3
+    },
+    "0.15": {
+      "candidate": 1,
+      "significant": 1,
+      "uniq": 1
+    }
+  },
+  "17-type": {
+    "0.05": {
+      "candidate": 7,
+      "significant": 6,
+      "uniq": 7
+    },
+    "0.1": {
+      "candidate": 2,
+      "significant": 1,
+      "uniq": 2
+    },
+    "0.15": {
+      "candidate": 1,
+      "significant": 1,
+      "uniq": 1
+    }
+  },
+  "17-type_distribution@0.10": {
+    "sham": {
+      "Astrocyte": 415,
+      "Bcell": 206,
+      "CAM": 284,
+      "CPC": 85,
+      "Ependymal": 2500,
+      "FB": 3,
+      "MdC": 315,
+      "Microglia": 395,
+      "Neuron": 214,
+      "OPC": 67,
+      "Oligodendrocyte": 75,
+      "Pericyte": 248,
+      "SMC": 809,
+      "Tcell": 7,
+      "aEC": 513,
+      "capEC": 451,
+      "vEC": 244
+    },
+    "MCAO": {
+      "Astrocyte": 417,
+      "Bcell": 101,
+      "CAM": 207,
+      "CPC": 58,
+      "Ependymal": 2500,
+      "MdC": 208,
+      "Microglia": 172,
+      "Neuron": 146,
+      "OPC": 60,
+      "Oligodendrocyte": 26,
+      "Pericyte": 202,
+      "SMC": 625,
+      "Tcell": 10,
+      "aEC": 360,
+      "capEC": 503,
+      "vEC": 212
+    }
+  }
+}

@@ -25,9 +25,13 @@ raw_cache/
 data/GSE174574/
 data/GSE225948/
 data/GSE225948_probe/
+data/GSE197731/GSM*/
 gears_validation/
 # Keep processed tables that back the figures/tables:
 !gate1/rewiring_study/*_rewiring_full.csv
+# Local temp/intermediate artifacts (not part of the deliverable)
+gate1/output/
+gate1/rewiring_study/_*
 
 # OS
 .DS_Store

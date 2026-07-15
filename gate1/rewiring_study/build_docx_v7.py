@@ -143,6 +143,7 @@ FIG_MAP = {
     "5": "figure5_drug_reversal.png",
     "6": "figure6_L5_triangulation.png",
     "7": "figure7_evidence_ladder.png",
+    "8": "cellchat_rewiring_heatmap.png",
     "S1": "figureS1_pc_correction.png",
 }
 def figure_png(num):
@@ -311,30 +312,19 @@ add_title(title_line[2:].strip())
 rest_preamble = [l for l in preamble if not l.startswith("# ")]
 process_lines(rest_preamble)
 
-# body sections (defer References; collect Figure Legends / Tables(in-text) as tail)
+# body sections (render in document order; only References is deferred to the end)
 refs_body = None
-tail = []
 for head, body in sections:
     if head == "References":
         refs_body = body
-    elif head in ("Figure Legends", "Tables (in-text)"):
-        tail.append((head, body))
     else:
         add_heading(head, 1)
         process_lines(body)
 
-# tail (Figure Legends, Tables in-text)
-for head, body in tail:
-    add_heading(head, 1)
-    process_lines(body)
+# NOTE: the supplementary material is now embedded inline in manuscript_v7.md
+# (synced from the docx), so it is no longer appended from Supplementary_v6.md.
 
-# supplementary material
-supp_text = open(SUPP, encoding="utf-8").read()
-supp_lines = supp_text.splitlines()
-doc.add_page_break()
-process_lines(supp_lines, single_hash_style="Heading 1", double_hash_style="Heading 2")
-
-# references last
+# references last (plain paragraphs, matching the docx layout)
 if refs_body is not None:
     doc.add_page_break()
     add_heading("References", 1)
@@ -357,5 +347,4 @@ zoom.set(qn("w:percent"), "100")
 
 doc.save(OUT)
 print("Saved:", OUT)
-print("Sections rendered:", len(sections), "| references deferred:", refs_body is not None,
-      "| tail:", [h for h, _ in tail])
+print("Sections rendered:", len(sections), "| references deferred:", refs_body is not None)

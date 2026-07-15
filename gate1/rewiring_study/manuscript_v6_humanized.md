@@ -8,9 +8,6 @@
 
 *Corresponding author: Wenwu Huang, Department of Neurosurgery, The Fifth Affiliated Hospital of Wenzhou Medical University (Lishui Central Hospital), Lishui, Zhejiang, China. Email: hwenwu321@gmail.com*
 
-> **Target journal:** Patterns (Cell Press) 
-> **Manuscript type:** Methods article with validation 
-> **Version:** v6, 2026-07-10 (formatted for Patterns / Cell Press)
 
 ---
 
@@ -41,7 +38,6 @@ The implications reach beyond stroke. Any field using single-cell transcriptomic
 
 ## Terminology Ledger
 
-> **Note to the reader:** This paper uses several specialized abbreviations. The Terminology Ledger below defines them at first use. The main text minimises clustering: no sentence contains more than two unfamiliar acronyms. Section labels (e.g., 3.5) are kept minimal.
 
 | Canonical term | Definition | First-use expansion |
 |---|---|---|
@@ -51,7 +47,6 @@ The implications reach beyond stroke. Any field using single-cell transcriptomic
 | DoRothEA | literature-curated TF→target regulon database | Alvarez-Garcia 2019, Nat Commun |
 | MCAO | middle cerebral artery occlusion | mouse stroke model |
 | pseudotime | continuous trajectory (BEAM; Barry 2022) | note: not velocity |
-| A+C mode | cross-modality analysis: A=SigCom LINCS signature-match, C=Replogle K562 sc-CRISPR regulon-response | define in 3.8 |
 | L1–L5 | five-level evidence ladder | Table 1 |
 | emp p | empirical permutation p-value | compute over n_perm million |
 
@@ -83,7 +78,7 @@ To probe the recovered programs from more than one angle, we triangulate directi
 
 ### 2.1 Data sources
 
-**Mouse ischemic-stroke single-cell transcriptomes.** We used two independently generated mouse MCAO scRNA-seq cohorts. **Cohort 1, GSE174574** (Li et al., 2021 <sup>3</sup>): 3 MCAO (24 h) + 3 sham, 57,528 cells, with a BEAM pseudotime trajectory. **Cohort 2, GSE225948** (Anrather et al., 2024 <sup>4</sup>): genuine two-timepoint post-stroke time course (2 d and 14 d, brain and blood). No single public scRNA-seq cohort covers all three stages; we assembled a 24 h → 2 d → 14 d axis spanning the acute → sub-acute peak → repair/remodelling phases by stitching cohort 1 (24 h + sham) with cohort 2 (2 d / 14 d). This is a limitation (4.3).
+**Mouse ischemic-stroke single-cell transcriptomes.** We used two independently generated mouse MCAO scRNA-seq cohorts. **Cohort 1, GSE174574** (Li et al., 2021 <sup>3</sup>): 3 MCAO (24 h) + 3 sham, 57,528 cells, with a BEAM pseudotime trajectory. **Cohort 2, GSE225948** (Anrather et al., 2024 <sup>4</sup>): genuine two-timepoint post-stroke time course (2 d and 14 d, brain and blood). No single public scRNA-seq cohort covers all three stages; we assembled a 24 h → 2 d → 14 d axis spanning the acute → sub-acute peak → repair/remodelling phases by stitching cohort 1 (24 h + sham) with cohort 2 (2 d / 14 d). This is a limitation (Discussion 4.4).
 
 **Human stroke bulk transcriptome.** GSE16561 <sup>30</sup>: 39 stroke vs 24 controls, peripheral whole blood, Illumina HumanWG-6.
 
@@ -117,23 +112,23 @@ Positive ΔW denotes *coupling enhancement*; negative denotes *coupling weakenin
 
 Cell–cell communication analysis followed the CellChat framework <sup>21</sup>, applied separately per time point to identify ligand–receptor pairs whose strength changes across stroke transitions.
 
-### 2.5 Level 3: Cross-species test
+### 2.5 Cross-species test
 
-**(a) Structural enrichment.** For each mouse-recovered TF we projected its DoRothEA target set onto the human orthologs (via HGNC). Enrichment of literature-curated myelin/oligodendrocyte and neuroinflammation reference sets was tested by the hypergeometric test with 2,000 size-matched random human TF permutations.
+**Structural enrichment.** For each mouse-recovered TF we projected its DoRothEA target set onto the human orthologs (via HGNC). Enrichment of literature-curated myelin/oligodendrocyte and neuroinflammation reference sets was tested by the hypergeometric test with 2,000 size-matched random human TF permutations.
 
-**(b) Expression activation.** Module activity was scored by an AUCell/ssGSEA rank-mass fraction <sup>6, 31</sup> on each TF's human DoRothEA target set in GSE16561, comparing stroke vs control (Mann–Whitney U; Cliff's δ; BH correction).
+**Expression activation.** Module activity was scored by an AUCell/ssGSEA rank-mass fraction <sup>6, 31</sup> on each TF's human DoRothEA target set in GSE16561, comparing stroke vs control (Mann–Whitney U; Cliff's δ; BH correction).
 
-### 2.6 Level 4: Drug reversal via LINCS
+### 2.6 Drug reversal via LINCS
 
 The 24 h stroke injury signature (up/down gene sets) was submitted to the L1000CDS2 API <sup>22</sup> for reverse connectivity mapping. The robust signature (intersected across two cohorts, up28/dn17) was the primary result. Permutation background was estimated from 20 random size-matched signatures (unique-drug counting).
 
-### 2.7 Level 5: Public TF-perturbation re-analysis
+### 2.7 Public TF-perturbation re-analysis
 
-**(a) Native-lineage bulk KO.** For each TF we computed mean log₂FC of its DoRothEA target program from the public DE table, odds ratio and Fisher exact p for bottom-quartile enrichment, and rank among all DoRothEA TF programs.
+**Native-lineage bulk KO.** For each TF we computed mean log₂FC of its DoRothEA target program from the public DE table, odds ratio and Fisher exact p for bottom-quartile enrichment, and rank among all DoRothEA TF programs.
 
-**(b) SigCom LINCS (A modality).** We queried `l1000_xpr` (CRISPR-KD, 140,603 signatures) and `l1000_oe` (overexpression, 33,782) via the SigCom LINCS data API <sup>35</sup>, submitting each TF's human DoRothEA target program (up to 500 targets). The `database` parameter was passed as the string library name.
+**SigCom LINCS.** We queried `l1000_xpr` (CRISPR-KD, 140,603 signatures) and `l1000_oe` (overexpression, 33,782) via the SigCom LINCS data API <sup>35</sup>, submitting each TF's human DoRothEA target program (up to 500 targets). The `database` parameter was passed as the string library name.
 
-**(c) Replogle K562 sc-CRISPR (C modality).** From the h5ad (backed mode, `anndata 0.11.4`), we identified perturbation rows by parsing the obs.index (`<ID>_<GENE>_<guide>_<ENSG>`). NTC = `non-targeting` (n = 585). var IDs (Ensembl) were mapped to gene symbols via `mygene` (querymany, species = human). For each TF, we: (i) extracted its own perturbation row(s); (ii) computed NTC baseline-mean with `np.nan_to_num` to neutralise gemgroup-Z infs from constant-variance genes; (iii) computed effect = perturbation mean − NTC mean; (iv) tested target-gene down-shift with Mann–Whitney U (one-sided, alternative = "less"), Fisher OR on bottom-quartile, and rank among all 332 candidate programs.
+**Replogle K562 sc-CRISPR.** From the h5ad (backed mode, `anndata 0.11.4`), we identified perturbation rows by parsing the obs.index (`<ID>_<GENE>_<guide>_<ENSG>`). NTC = `non-targeting` (n = 585). var IDs (Ensembl) were mapped to gene symbols via `mygene` (querymany, species = human). For each TF, we: (i) extracted its own perturbation row(s); (ii) computed NTC baseline-mean with `np.nan_to_num` to neutralise gemgroup-Z infs from constant-variance genes; (iii) computed effect = perturbation mean − NTC mean; (iv) tested target-gene down-shift with Mann–Whitney U (one-sided, alternative = "less"), Fisher OR on bottom-quartile, and rank among all 332 candidate programs.
 
 ### 2.8 Prediction benchmark
 
@@ -157,7 +152,6 @@ The biological findings rest on a scoping result that first fixes what the frame
 
 Because the graph embedding enters the readout linearly and is provided identically to the linear baseline, it does not expand the linear hypothesis space available under matched inputs; the graph therefore does not, under this implementation, yield higher accuracy. This scoping result is the premise for the interpretability-oriented design developed next.
 
-**[Figure 2A about here, Prediction benchmark: graph vs linear, 90 configurations]**
 
 ### 3.2 Why only a graph can recover edge-level rewiring
 
@@ -167,7 +161,6 @@ The answer lies in what is being measured. A linear model that predicts perturba
 
 TSC-GNN is built to recover, not to predict: its output is edge-level ΔW with permutation significance and module-level master-regulator ranking: quantities that a linear predictor cannot compute and a foundation-model readout cannot decompose. The graph is necessary not because it makes better predictions, but because it defines *what is interpretable*. The remaining Results demonstrate what this recovery lens reveals.
 
-**[Figure 2B about here, Schematic: interpretability vs prediction trade-off]**
 
 ### 3.3 Temporal rewiring recovers biologically coherent, established stroke programs
 
@@ -185,9 +178,8 @@ The recovered program is evaluated along the five-level evidence ladder (L1–L5
 | **L4** Translational hypothesis generation | Which drugs reverse the injury signature? | L1000CDS2 reverse-matching of the robust 24 h signature | Perturbation-direction concordance | Robust hits vorinostat / trichostatin A / Mevastatin / Rosuvastatin; permutation p = 0.33 (n.s.) → hypothesis generation, not efficacy prediction |
 | **L5** Directional causal support | Is the program directionally supported by independent perturbation? | Native-lineage KO (L5a) + LINCS OE (L5b) + K562 sc-CRISPRi (L5c) triangulation | Independent directional perturbation | L5a: Sox10 rank 46/412, Cebpb rank 149/404; L5b: GATA2 OE rank 3/33,782 (p = 1.4 × 10⁻⁵); L5c: context-gated null with K562 positive controls (MYC rank 19/332) |
 
-**[Figure 7 about here, Five-level evidence ladder (L1–L5) visual summary]**
 
-**[Table 2 about here, Summary of significant edges per transition]**
+**Table 2.** Summary of significant edges per transition**
 
 | Transition | Phase | # Sig. edges (q < 0.05) | Representative rewired edges (ΔW, q) |
 |---|---|---|---|
@@ -196,26 +188,24 @@ The recovered program is evaluated along the five-level evidence ladder (L1–L5
 | 2 d→14 d | Active remyelination | 19 | *Sox10→Plp1* (ΔW = +0.51), *Hey2→Acta2* (ΔW = +0.59); both q < 0.001 |
 | sham→14 d | Inflammation resolution | 36 | *Sox9→Hapln1* (ΔW = +0.79), *Sox10→Plp1* (ΔW = +0.42); both q < 0.001 |
 
-- **Acute injury onset (sham→24 h, 8 edges):** weak but directionally consistent damage/inflammatory coupling (e.g. *Tbx21→Cxcr3*, ΔW = −0.21).
-- **Repair initiation (24 h→2 d, 28 edges):** a sharp oligodendrocyte-commitment surge, *Sox2→Lsamp* (ΔW = +0.86) and *Sox10→Ank3* (ΔW = +0.74), both q < 0.001.
-- **Active remyelination (2 d→14 d, 19 edges):** the canonical myelin edge **Sox10→Plp1** strengthens markedly (ΔW = +0.51, q < 0.001), independently recovering the remyelination programme; *Hey2→Acta2* (ΔW = +0.59) marks vessel-wall remodelling.
-- **Inflammation resolution (sham→14 d, 36 edges):** *Sox9→Hapln1* (ΔW = +0.79) and *Sox10→Plp1* (ΔW = +0.42) couple positively with repair, tracking inflammatory resolution.
+**Acute injury onset (sham→24 h, 8 edges):** weak but directionally consistent damage/inflammatory coupling (e.g. *Tbx21→Cxcr3*, ΔW = −0.21).
+**Repair initiation (24 h→2 d, 28 edges):** a sharp oligodendrocyte-commitment surge, *Sox2→Lsamp* (ΔW = +0.86) and *Sox10→Ank3* (ΔW = +0.74), both q < 0.001.
+**Active remyelination (2 d→14 d, 19 edges):** the canonical myelin edge **Sox10→Plp1** strengthens markedly (ΔW = +0.51, q < 0.001), independently recovering the remyelination programme; *Hey2→Acta2* (ΔW = +0.59) marks vessel-wall remodelling.
+**Inflammation resolution (sham→14 d, 36 edges):** *Sox9→Hapln1* (ΔW = +0.79) and *Sox10→Plp1* (ΔW = +0.42) couple positively with repair, tracking inflammatory resolution.
 
-**Recovery of established programs (Level 2).** The recovered master regulators aligned with established post-stroke repair biology <sup>23, 24, 25</sup>. **Sox10, Sox2 and Sox9**, canonical master regulators of oligodendrocyte lineage commitment and myelin regeneration, drove the strongest rewiring and links to the top remyelination edge *Sox10→Plp1*. As a negative control, under the strict q < 0.1 threshold, the *only* TF reproduced across all three analyses was **Fos**, an immediate-early / AP-1 stress-response gene non-specifically induced by any injury <sup>26</sup>; we surface this as a stress-artifact control rather than a biological signal.
+**Recovery of established programs.** The recovered master regulators aligned with established post-stroke repair biology <sup>23, 24, 25</sup>. **Sox10, Sox2 and Sox9**, canonical master regulators of oligodendrocyte lineage commitment and myelin regeneration, drove the strongest rewiring and links to the top remyelination edge *Sox10→Plp1*. As a negative control, under the strict q < 0.1 threshold, the *only* TF reproduced across all three analyses was **Fos**, an immediate-early / AP-1 stress-response gene non-specifically induced by any injury <sup>26</sup>; we surface this as a stress-artifact control rather than a biological signal.
 
 **Sanity of recovered targets.** Targets of significant rewired edges were enriched for oligodendrocyte (OR 36–61), neuron (OR 110) and microglia (OR 15) markers; 14/15 known stroke-relevant TFs appeared, and 69–79 % of significant edges (pooled 74 %) preserved their direction after PC composition correction, confirming the rewiring signal is not a compositional artefact. PC correction flipping raw→PC direction (e.g. *Sox10→Ank3*: raw −0.38 → +0.73) demonstrates that composition masking can hide true regulatory gain and that the corrected estimate is the more reliable rewiring measure.
 
-**[Figure 3 about here, Temporal rewiring heatmaps per transition]**
-
 ### 3.4 Level 1, Cross-cohort master-regulator reproducibility
 
-To test technical stability we re-derived the rewiring on the two independent cohorts and compared **TF master-regulator rankings** against the integrated analysis. Because the integrated "sham" baseline mixes cells from both cohorts, with no shared transition and a different gene space, we evaluate reproducibility at the **master-regulator level**, where the biological signal is robust, rather than at the edge level, where single-edge estimates are intrinsically noisy. The integrated ranking pools all four transitions, two of which are stitched cross-cohort pseudo-transitions (4.3); the ρ therefore reflects TFs that drive rewiring in general, with *Sox10* the clean cross-cohort-reproduced exemplar.
+To test technical stability we re-derived the rewiring on the two independent cohorts and compared **TF master-regulator rankings** against the integrated analysis. Because the integrated "sham" baseline mixes cells from both cohorts, with no shared transition and a different gene space, we evaluate reproducibility at the **master-regulator level**, where the biological signal is robust, rather than at the edge level, where single-edge estimates are intrinsically noisy. The integrated ranking pools all four transitions, two of which are stitched cross-cohort pseudo-transitions (4.4); the ρ therefore reflects TFs that drive rewiring in general, with *Sox10* the clean cross-cohort-reproduced exemplar.
 
 The master-regulator ranking reproduced significantly across cohorts (Table S1):
 
 **Sox10** appeared in the top-20 |ΔW|max TFs of **all three** analyses; **Sox2/Sox9** reproduced in ≥2. By contrast, individual edge-level significance did **not** reproduce across cohorts (direction agreement ≈ 0.52, i.e. at chance; Jaccard ≈ 0), consistent with the high intrinsic variance of single-edge estimates under a fixed-graph/linear-readout method, and reported here as expected behaviour that motivates the module-level interpretability focus, not as a defect.
 
-### 3.5 Level 3, Cross-species regulatory convergence of recovered programs
+### 3.5 Cross-species regulatory convergence of recovered programs
 
 > **Scope disclosure:** The orthogonal-projection test (3.5a) asks whether the mouse-recovered TF's regulatory program is **conserved in the structure of the human GRN** (via the independent human DoRothEA network). The activation test (3.5b) asks, separately, whether the corresponding target programs are **transcriptionally engaged in independent human stroke data**. Together they upgrade L3 from "structural conservation" to **cross-species regulatory convergence**, the same programs that rewire in mouse stroke are (i) conserved in human GRN architecture and (ii) co-activated in independent human patient samples. This is *functional convergence*, not *biological validation*: the bulk cohort is peripheral blood (not brain) and cross-sectional (not time-resolved), so brain-intrinsic and temporal claims still rest on the mouse evidence.
 
@@ -237,25 +227,19 @@ To move beyond structural conservation, we asked whether the recovered programs 
 
 All three programs were significantly activated in human stroke blood (BH-q = 1.1 × 10⁻⁸), and stronger than 99.8 % of size-matched random gene sets (empirical p = 0.002; Table S3):
 
-A brain-enriched negative-control TF (**PAX6**, 344 targets) was *also* activated (p = 4.5 × 10⁻⁸). The observed activation therefore cannot be interpreted as evidence that these three regulatory programs are *uniquely* activated in stroke; rather, these findings indicate that part of the signal likely reflects generalized transcriptional reprogramming associated with systemic inflammation and the post-stroke leukocyte-composition shift. We therefore interpret the L3 result as **orthogonal evidence of cross-species regulatory convergence**: the recovered programs are among the co-activated modules in human stroke, and their *direction* (inflammatory axes up-regulated) is concordant with the mouse rewiring (3.3). Activation of the SOX10 module in peripheral blood should **not** be interpreted as direct evidence of oligodendrocyte remyelination; the oligodendrocyte-specific reading of SOX10 rests on the mouse structural evidence (3.5a). Cell-composition deconvolution was not performed, and the blood-based, cross-sectional design limits direct inference on brain-intrinsic temporal remodelling.
+A brain-enriched negative-control TF (**PAX6**, 344 targets) was *also* activated (p = 4.5 × 10⁻⁸). The observed activation therefore cannot be interpreted as evidence that these three regulatory programs are *uniquely* activated in stroke; rather, these findings indicate that part of the signal likely reflects generalized transcriptional reprogramming associated with systemic inflammation and the post-stroke leukocyte-composition shift. We therefore interpret the L3 result as **orthogonal evidence of cross-species regulatory convergence**: the recovered programs are among the co-activated modules in human stroke, and their *direction* (inflammatory axes up-regulated) is concordant with the mouse rewiring (3.3). Activation of the SOX10 module in peripheral blood should **not** be interpreted as direct evidence of oligodendrocyte remyelination; the oligodendrocyte-specific reading of SOX10 rests on the mouse structural evidence (3.5a). Cell-composition deconvolution was not performed, and the blood-based, cross-sectional design limits direct inference on brain-intrinsic temporal remodelling(fig. 4).
 
-**[Figure 4 about here, Cross-species regulatory convergence: structural projection + blood activation]**
-
-### 3.6 Level 4, Drug-perturbation relevance via LINCS
+### 3.6 Drug-perturbation relevance via LINCS
 
 As a translational demonstration we converted the 24 h stroke injury program into a disease signature, up-regulated injury/inflammatory genes (SPP1, CCL4, LGALS3, CD14, C5AR1, TNF, …) and a heterogeneous set of lower-expression genes (interferon-response, microglia-marker and transport genes). the 24 h signature is dominated by the **acute inflammatory/injury axis** and does **not** by itself contain down-regulated myelin/repair structural genes; the myelin-regeneration axis is recovered independently by the rewiring analysis (Levels 2–3, 3.3–3.5), not by this signature. The signature was derived from the DoRothEA-network gene space (the same space as the rewiring), i.e. a regulatory-program-filtered differential expression, not the full transcriptome.
 
 We built two signatures: a single-cohort **main** signature (up100/dn100, best score 0.0671 with severe ties, only 1 known agent hit) and a **robust** consensus signature intersected across the two cohorts (up28/dn17, best 0.125). We report **robust** as the primary result; main is a single-cohort noise control, echoing the L1 reproducibility theme.
 
-The robust signature returned **four literature-supported agents in the top 50** via the L1000CDS2 reverse-match API <sup>22</sup>: **vorinostat** and **trichostatin A** (HDAC inhibitors) and **mevastatin** and **rosuvastatin** (statins). The recovered classes are independently motivated in the stroke and neuroprotection literature, HDAC inhibitors for neuroprotection <sup>48</sup> and statins for stroke prevention and recovery <sup>47</sup>, which lends biological plausibility to the reverse-matched hits. Their **anti-inflammatory** relevance aligns directly with the inflammatory axis captured in the 24 h signature; their **pro-myelin / neuroprotective** relevance aligns with the remyelination program independently recovered by the rewiring analysis (Sox10→Plp1, Levels 2–3), a cross-level convergence, not a within-signature effect.
+The robust signature returned **four literature-supported agents in the top 50** via the L1000CDS2 reverse-match API <sup>22</sup>: **vorinostat** and **trichostatin A** (HDAC inhibitors) and **mevastatin** and **rosuvastatin** (statins). The recovered classes are independently motivated in the stroke and neuroprotection literature, HDAC inhibitors for neuroprotection <sup>48</sup> and statins for stroke prevention and recovery <sup>47</sup>, which lends biological plausibility to the reverse-matched hits. Their **anti-inflammatory** relevance aligns directly with the inflammatory axis captured in the 24 h signature; their **pro-myelin / neuroprotective** relevance aligns with the remyelination program independently recovered by the rewiring analysis (Sox10→Plp1, Levels 2–3), a cross-level convergence, not a within-signature effect(fig. 5).
 
 **Statistical rigour (permutation background).** Using unique-drug counting (to avoid inflating the count by L1000's multi-cell-line duplicate entries), 20 random signatures of matched size returned a mean of **2.75 ± 1.37** such hits (max 5). The observed count of **4** did **not** exceed chance (**empirical p ≈ 0.3**; N = 20, single-shot, live API). A preliminary duplicate-counting scheme had spuriously suggested p = 0.048; we corrected this and do **not** claim significant enrichment. Further, vorinostat's cross-cell-line consistency (n_hits = 6) proved to be an L1000 background effect: under random signatures vorinostat appeared in 53 % of runs (max n_hits = 16).
 
-> **[Author note, L4 Limitation]:** Level 4 is a **translational proof-of-concept / hypothesis-generation** demonstration, *not* a drug-efficacy prediction. LINCS profiles derive from non-neuronal cancer cell lines; the signature is single-timepoint (24 h acute) and derived from the DoRothEA gene space rather than the full transcriptome; L1000CDS2 shows heavy ties; the permutation did not reach significance; and the entire pipeline is in silico with no wet-lab confirmation.
-
-**[Figure 5 about here, Drug reversal: top hits and permutation distribution]**
-
-### 3.7 Level 5, Program-level directional causal support from public TF perturbation
+### 3.7 Program-level directional causal support from public TF perturbation
 
 > **Scope disclosure:** L5 addresses the central caveat of any causal-graph method, *the graph is never perturbed*, by re-analysing **public, independent** TF loss-of-function RNA-seq. We test, at the **program (TF→target module) level**, whether the framework's recovered target program is enriched among genes that go *down* when the TF itself is knocked out. This is **directional causal support**, explicitly **not** edge-level validation (edges do not reproduce across cohorts, 3.4) and **not** a claim of causality within stroke (the perturbation data are non-stroke).
 
@@ -265,7 +249,7 @@ The target programs are taken from the **same mouse DoRothEA GRN** used by the f
 
 **Sox10, oligodendrocyte-specific conditional knockout (GSE269122 <sup>33</sup>).** The recovered Sox10 target program is the most down-enriched among the tested candidates (Table S4):
 
-Removing Sox10 down-regulates the genes our GRN attributes to Sox10 more strongly than all other candidate programs (rank 46/412; specificity gradient Sox10 ≪ Cebpb < Gata2 < Sox2), consistent with "remove an activator → its targets fall" and providing directional causal support for the Sox10→myelin/remyelination program recovered in 3.3.
+Removing Sox10 down-regulates the genes our GRN attributes to Sox10 more strongly than all other candidate programs (rank 46/412; specificity gradient Sox10 < Cebpb < Gata2 < Sox2), consistent with "remove an activator → its targets fall" and providing directional causal support for the Sox10→myelin/remyelination program recovered in 3.3.
 
 **Cebpb, heterozygous knockout Kupffer cells (GSE273163 <sup>34</sup>).** The recovered Cebpb program is again the most down-enriched among candidates, with clean specificity against the non-perturbed Sox10 program (Table S5):
 
@@ -273,13 +257,13 @@ Cebpb's own targets are significantly down (OR = 1.20, Fisher p = 0.022) and mor
 
 **Cross-dataset specificity.** The Sox10 program is specifically down only where Sox10 is perturbed (rank 46 in GSE269122 vs 278 in GSE273163); the Cebpb program is down in both (oligodendrocyte maturation and inflammatory programs are co-regulated) but most down where Cebpb itself is perturbed.
 
-#### 3.7b Independent gene-perturbation consistency, SigCom LINCS (L5b, A modality)
+#### 3.7b Independent gene-perturbation consistency, SigCom LINCS (L5b)
 
 As an orthogonal test, we queried the SigCom LINCS gene-perturbation libraries <sup>35</sup>, CRISPR knockdown (`l1000_xpr`, 140,603 signatures) and overexpression (`l1000_oe`, 33,782), with each TF's human DoRothEA target program (up to 500 targets, capped). For each TF, we asked whether its *own* perturbation signature ranks as a top reverser (CRISPR KO) or top mimicker (OE), and whether this ranking is self-specific.
 
 The strongest result is **GATA2 overexpression**: GATA2's own OE signature ranks **3rd of 33,782 (top 0.01 %)** as a mimicker of the GATA2 target program (p = 1.4 × 10⁻⁵), with both GATA2 OE replicates classified as mimickers. The self-specificity is pronounced, self percentile 0.01 % vs best cross-TF 4.98 % (Δ = −4.97 %), providing strong orthogonal evidence that GATA2 is an activator of its DoRothEA-recovered targets. In the CRISPR-KO library, all three TFs' own KO signatures appear in the top ~1 % of reversers (SOX10 top 0.90 %; CEBPB top 0.46 %; GATA2 top 1.17 %), directionally correct but **not self-specific** (self ≈ cross percentiles), likely because the L1000 cancer-cell-line context dilutes TF-specific effects. SOX10 OE showed mixed directionality, and no CEBPB OE signature exists in the library.
 
-#### 3.7c Single-cell-resolution perturb-seq re-analysis, Replogle 2022 K562 (L5c, C modality)
+#### 3.7c Single-cell-resolution perturb-seq re-analysis, Replogle 2022 K562 (L5c)
 
 As a higher-resolution and off-context control we re-analysed a genome-scale CRISPRi screen in K562 (Replogle et al., 2022 <sup>36</sup>; 11,258 perturbations, 585 non-targeting controls; Figshare 20029387), testing each TF's recovered DoRothEA target program under the TF's own CRISPRi signature (gemgroup Z-normalised pseudo-bulk). In this off-context cancer line the test returned a **null**: none of the three TFs' target programs was significantly down-shifted under its own perturbation (Table S7).
 
@@ -287,25 +271,21 @@ SOX10's locus is absent from the K562 gene space (the TF is not expressed in mye
 
 This negative result is informative rather than contradictory: it demarcates the **context boundary** of program-level causal support. Directional support is recovered when the perturbation is biologically appropriate, a TF knocked out in its native lineage (L5a: Sox10 oligodendrocyte-cKO, Cebpb Kupffer-cell KO) or perturbed in the correct direction (L5b: GATA2 overexpression), but not in a generic cancer-cell-line CRISPRi screen where the TF may be inactive (SOX10) or its tissue-aggregated target program not co-regulated (CEBPB/GATA2).
 
-### 3.8 Cross-modality synthesis of gene-level perturbation support (A + C)
+### 3.8 Cross-modality synthesis of gene-level perturbation support
 
 Levels 5b and 5c interrogate the framework's recovered TF→target programs with two **independent public gene-perturbation modalities** that differ in resolution and in *what they measure*. Analysed jointly they yield an insight that neither delivers alone: **directional causal support is context-gated, and the two modalities dissociate "signature mimicry" from "regulon response."**
 
-#### 3.8.1 Methods
+**(1) Signature-matching modality, SigCom LINCS (A).** For each focal TF we submit its human DoRothEA target program (up-gene query, ≤500 targets) to the SigCom LINCS `l1000_xpr` and `l1000_oe` libraries. We record the percentile rank of the TF's *own* perturbation signature as a reverser (KD) or mimicker (OE) of its target program, and its **self-vs-cross specificity**. This tests transcriptome-*scale* similarity: does perturbing the TF produce a signature that globally looks like / opposes the target module?
 
-**(M1) Signature-matching modality, SigCom LINCS (A).** For each focal TF we submit its human DoRothEA target program (up-gene query, ≤500 targets) to the SigCom LINCS `l1000_xpr` and `l1000_oe` libraries. We record the percentile rank of the TF's *own* perturbation signature as a reverser (KD) or mimicker (OE) of its target program, and its **self-vs-cross specificity**. This tests transcriptome-*scale* similarity: does perturbing the TF produce a signature that globally looks like / opposes the target module?
+**(2) Regulon-response modality, Replogle 2022 K562 sc-CRISPR (C).** From the genome-scale CRISPRi pseudo-bulk (11,258 perturbations, 585 NTCs, gemgroup-Z; `anndata` backed mode, Ensembl→symbol via `mygene`) we take the TF's own perturbation row, baseline-correct against the NTC mean (`np.nan_to_num` to neutralise gemgroup-Z ∞ from constant-variance genes), and test whether the **specific DoRothEA target set** is shifted down: mean target Z, one-sided Mann–Whitney U, Fisher OR on bottom-quartile genes, and rank among all 332 candidate programs. This tests membership-*resolved* response: do the exact annotated targets move under endogenous knockdown?
 
-**(M2) Regulon-response modality, Replogle 2022 K562 sc-CRISPR (C).** From the genome-scale CRISPRi pseudo-bulk (11,258 perturbations, 585 NTCs, gemgroup-Z; `anndata` backed mode, Ensembl→symbol via `mygene`) we take the TF's own perturbation row, baseline-correct against the NTC mean (`np.nan_to_num` to neutralise gemgroup-Z ∞ from constant-variance genes), and test whether the **specific DoRothEA target set** is shifted down: mean target Z, one-sided Mann–Whitney U, Fisher OR on bottom-quartile genes, and rank among all 332 candidate programs. This tests membership-*resolved* response: do the exact annotated targets move under endogenous knockdown?
+**(3) In-context positive control.** To distinguish a genuine cell-type context boundary from a broken pipeline, we ran M2 on a curated panel of K562 (erythro-myeloid leukaemia) master regulators, GATA1, TAL1, KLF1, MYB, MYC, RUNX1, NFE2, BCL11A, ZBTB7A, FLI1, SPI1, CEBPA, E2F1, for which a regulon down-shift under their own CRISPRi is biologically expected.
 
-**(M3) In-context positive control.** To distinguish a genuine cell-type context boundary from a broken pipeline, we ran M2 on a curated panel of K562 (erythro-myeloid leukaemia) master regulators, GATA1, TAL1, KLF1, MYB, MYC, RUNX1, NFE2, BCL11A, ZBTB7A, FLI1, SPI1, CEBPA, E2F1, for which a regulon down-shift under their own CRISPRi is biologically expected.
-
-**(M4) Context-appropriateness ordering.** We arrange all gene-perturbation evidence for the three focal TFs by a single axis, biological context appropriateness of the perturbation, spanning **native lineage** (L5a) → **correct-direction generic** (L5b) → **off-context cancer line** (L5c), and read the *gradient* of support.
-
-#### 3.8.2 Results
+**(4) Context-appropriateness ordering.** We arrange all gene-perturbation evidence for the three focal TFs by a single axis, biological context appropriateness of the perturbation, spanning **native lineage** (L5a) → **correct-direction generic** (L5b) → **off-context cancer line** (L5c), and read the *gradient* of support.
 
 **Cross-modality map for the three focal TFs.** Support is monotone in context appropriateness and modality-dependent (Table 10).
 
-**[Table 10 about here, Cross-modality perturbation support map]**
+**Table 10 Cross-modality perturbation support map**
 
 | TF | Native-lineage bulk KO (L5a) | LINCS OE mimicker (A) | LINCS CRISPR-KD reverser (A) | K562 sc-CRISPR regulon response (C) |
 |---|---|---|---|---|
@@ -317,17 +297,15 @@ Levels 5b and 5c interrogate the framework's recovered TF→target programs with
 
 *SOX10/CEBPB/GATA2 rows reproduce Table S7 for context; the three focal stroke TFs rank far below the in-context positives (139–304/332).*
 
-**New findings from combining A + C:**
+**New findings from combining SigCom LINCS signature-match and Replogle K562 sc-CRISPR regulon-response:**
 
-1. **Convergent context-gating across two independent modalities.** Two orthogonal public resources, LINCS bulk L1000 and Replogle K562 single-cell CRISPRi, independently fail to give TF-specific, brain-relevant directional support for the stroke programs, whereas native-lineage KO (L5a) does. These convergent off-context nulls act as **negative controls** that exclude the trivial explanation that the target programs are recoverable from *any* perturbation dataset.
+**(1) Convergent context-gating across two independent modalities.** Two orthogonal public resources, LINCS bulk L1000 and Replogle K562 single-cell CRISPRi, independently fail to give TF-specific, brain-relevant directional support for the stroke programs, whereas native-lineage KO (L5a) does. These convergent off-context nulls act as **negative controls** that exclude the trivial explanation that the target programs are recoverable from *any* perturbation dataset.
 
-2. **The two modalities dissociate signature-mimicry from regulon-response, visible only when combined.** GATA2's overexpression signature is the 3rd-strongest mimicker (LINCS, top 0.01 %), yet its exact target set does **not** move under endogenous CRISPRi in K562 (rank 139/332, p = 0.18), even though GATA2 is a bona-fide hematopoietic TF present in K562. The transcriptome-scale "mimicry/reversal" that LINCS reports is therefore **not** evidence that the specific DoRothEA edges are active in that context; only the membership-resolved Replogle test adjudicates that, and it is null off-context. Neither modality alone reveals this separation.
+**(2) The two modalities dissociate signature-mimicry from regulon-response, visible only when combined.** GATA2's overexpression signature is the 3rd-strongest mimicker (LINCS, top 0.01 %), yet its exact target set does **not** move under endogenous CRISPRi in K562 (rank 139/332, p = 0.18), even though GATA2 is a bona-fide hematopoietic TF present in K562. The transcriptome-scale "mimicry/reversal" that LINCS reports is therefore **not** evidence that the specific DoRothEA edges are active in that context; only the membership-resolved Replogle test adjudicates that, and it is null off-context. Neither modality alone reveals this separation.
 
-3. **Calibrated interpretation via positive control: power exists, but module-level tests have a ceiling.** The K562-internal positives (MYC, BCL11A) prove the null is not a pipeline artefact; the GATA1 failure proves that generic regulons are only a coarse, breadth-and-confidence-dependent proxy even in-context. This **bounds** how strongly *any* module-level gene-perturbation test, A or C, can be interpreted.
+**(3) Calibrated interpretation via positive control: power exists, but module-level tests have a ceiling.** The K562-internal positives (MYC, BCL11A) prove the null is not a pipeline artefact; the GATA1 failure proves that generic regulons are only a coarse, breadth-and-confidence-dependent proxy even in-context. This **bounds** how strongly *any* module-level gene-perturbation test, can be interpreted.
 
-4. **The gradient is the result, and it matches what an interpretable-structure framework predicts.** Ordered by context appropriateness, support decays monotonically (native-lineage positive → correct-direction OE self-specific → off-context CRISPRi null), exactly as expected if the graph encodes **context-specific regulatory hypotheses** rather than a transferable predictor.
-
-**[Figure 6 about here, L5 three-layer triangulation: A + C cross-modality synthesis]**
+**(4) The gradient is the result, and it matches what an interpretable-structure framework predicts.** Ordered by context appropriateness, support decays monotonically (native-lineage positive → correct-direction OE self-specific → off-context CRISPRi null), exactly as expected if the graph encodes **context-specific regulatory hypotheses** rather than a transferable predictor(fig. 6).
 
 ---
 
@@ -350,14 +328,6 @@ This is meaningful because it exposes a trade-off. Accurate prediction needs lea
 The framework reports edge-level rewiring ΔW (3.3), yet every validation level (L1–L5) operates at the *module* (program) level. This juxtaposition, edge-level output, module-level validation, is itself a key finding. Individual edge estimates (e.g., Sox10→Ank3, ΔW = +0.74) are precise enough to direct biological attention and rank master regulators, but they do **not** reproduce across cohorts (Jaccard ≈ 0; direction agreement ≈ 0.52, at chance; 3.4). The module-level evidence from L2–L5, by contrast, shows that the **aggregate** TF→target program is conserved across cohorts, conserved across species, directionally supported by independent perturbation, and orthogonally activated in human stroke blood. The asymmetry, **edges are dataset-specific; programs are robust**, mirrors a recognised principle in network biology: single edges are inherently noisy, whereas network-level properties (module membership, master-regulator rank) are stable <sup>18, 43, 50</sup>. We report the Jaccard ≈ 0 result, as the empirical basis for this insight and as a caution that single-edge GRN claims should be read as dataset-specific hypotheses, not universal discoveries. This aligns TSC-GNN with the module-level hypothesis-generation paradigm (SCENIC <sup>6</sup>, NicheNet <sup>8</sup>) rather than with earlier edge-level causality claims that failed to sustain adoption <sup>20, 43, 51</sup>.
 
 ***Why programs survive.*** The stability of program-level rewiring despite edge-level instability (3.4) reflects three properties of biological GRNs. First, **network degeneracy** <sup>52, 53</sup>: multiple distinct edge configurations converge on the same outcome, so a TF such as Sox10 controls its myelin targets through a distributed, redundant interaction set rather than a single invariant edge. Second, **functional redundancy** among co-regulators <sup>54</sup>: Sox10, Sox2, Sox9 and Olig2 share many myelin targets, so when one edge is weak in a cohort another compensates and the program signal is preserved. Third, **attractor dynamics** <sup>55, 56</sup>: the GRN relaxes toward stable attractor states, so the oligodendrocyte program is reconstituted through different wiring in different contexts. The recovered program is therefore buffered by network architecture rather than pinned to individual edges, an implication a purely predictive model, which reports a single accuracy number, cannot surface.
-
-**Anticipated reviewer questions.**
-
-*Q1: If the GNN does not outperform a linear baseline, why use a GNN at all?* The scoping benchmark (3.1) answers this: the GNN contributes interpretation, not prediction accuracy. A fixed-graph GNN and a no-graph linear baseline share the same prediction hypothesis space; they differ only in what they reveal about *where* and *which* regulation changes. The graph is necessary not for prediction but for decomposing the perturbation onto individual edges, a task no graph-free readout can perform.
-
-*Q2: Why trust edge-level rewiring if cross-cohort edge overlap is near zero?* Edge-level estimates are dataset-specific hypotheses, not validated discoveries; the module-level evidence (L2–L5) establishes that the aggregate program is directionally correct and conserved. Individual edges remain useful as context-dependent, testable hypotheses, not invariant truths.
-
-*Q3: Is the framework generalizable beyond stroke?* It is disease-agnostic and applies to any multi-timepoint single-cell dataset with a DoRothEA-compatible regulon library, e.g. spinal cord injury, multiple sclerosis, traumatic brain injury, chronic inflammation. The stitched-time-axis and fixed-graph constraints apply equally, and the L5 causal-support paradigm can be adopted wherever public TF-perturbation data exist for the relevant cell types.
 
 ### 4.4 Limitations
 

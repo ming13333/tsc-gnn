@@ -102,6 +102,8 @@ for lib, info in LIBS.items():
 
 # ---- main loop ----
 results = {}
+failed_any = False
+n_failed = 0
 for lib, info in LIBS.items():
     print(f"\n===== {lib} (db={info['name']}) =====", flush=True)
     qres = {}
@@ -113,6 +115,8 @@ for lib, info in LIBS.items():
         except RuntimeError as e:
             print(f"  [FAIL] {tf}: {e}", flush=True)
             qres[tf] = {"raw": [], "stat": {}, "n_rev": 0, "n_mim": 0, "error": str(e)}
+            failed_any = True
+            n_failed += 1
             time.sleep(3)
             continue
         res = j.get("results", [])
@@ -161,10 +165,30 @@ for lib, info in LIBS.items():
                 row.append("absent")
         print(f"  {tfq:8s} | " + " | ".join(f"{x:20s}" for x in row), flush=True)
 
-json.dump({
+def safe_write(path, obj):
+    """Atomic write: never leave a half-written / corrupt JSON on disk."""
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+    os.replace(tmp, path)
+
+doc = {
     "targets_n": {tf: len(targets[tf]) for tf in TFS},
     "ent_targets_n": {tf: len(ent_targets[tf]) for tf in TFS},
     "own_uuids_n": {lib: {tf: len(own[lib][tf]) for tf in TFS} for lib in LIBS},
     "results": results,
-}, open(OUT, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-print(f"\n[done] -> {OUT}", flush=True)
+}
+
+if failed_any:
+    # HARDENING (CONFORMANCE audit B2, 2026-07-14): a failed run must NOT
+    # clobber a previously good result. Write the partial output to a
+    # sidecar file and leave OUT untouched.
+    partial = OUT + ".partial"
+    safe_write(partial, doc)
+    print(f"\n[WARN] {n_failed} query(ies) failed (see log above).", flush=True)
+    print(f"[WARN] The existing good result at {OUT} was NOT overwritten.", flush=True)
+    print(f"[WARN] Partial/failed output written to {partial}", flush=True)
+    print(f"[WARN] Re-run only after the SigCom LINCS API recovers (HTTP 500).", flush=True)
+else:
+    safe_write(OUT, doc)
+    print(f"\n[done] -> {OUT}", flush=True)

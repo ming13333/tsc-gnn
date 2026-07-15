@@ -75,3 +75,6 @@
 ## Supplementary Figures
 
 - **Supplementary Figure S1.** PC composition correction: raw vs corrected ΔW for all significant edges.
+- **Supplementary Figure S2.** 24 h / 48 h cell–cell communication in GSE197731 (WT) and cross-cohort 24 h consistency. (A) Heatmap of log₂(ipsilateral/contralateral) communication score for the 38 significant 24 h WT ligand–receptor pairs. (B) Pathway-level convergence between the two 24 h cohorts (GSE174574 vs GSE197731_WT): 2 vs 14 pathways, 1 shared (Thrombospondin; pathway Jaccard = 0.07). (C) Sender→receiver cell-type convergence: 2 vs 25 significant cell-type pairs, 1 shared (Pericyte→Pericyte). Panels B/C show that cross-cohort agreement is meaningful at the pathway/cell-type resolution even though the LR-pair Jaccard is 0.00 (power asymmetry).
+
+![Supplementary Figure S2](figures/supp_fig_s2_cellchat_24h_48h.png)

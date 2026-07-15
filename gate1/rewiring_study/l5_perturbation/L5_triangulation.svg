@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#555555"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="720" height="560" fill="#ffffff"/>
+
+  <!-- title -->
+  <text x="360" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#1a1a1a">L5 三层三角验证 — 因果支持仅成立于恰当生物学语境</text>
+  <text x="360" y="50" text-anchor="middle" font-size="11" font-style="italic" fill="#666666">Triangulation of directional causal support across three independent perturbation modalities</text>
+
+  <!-- arrows to center -->
+  <line x1="130" y1="232" x2="350" y2="298" stroke="#555555" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="360" y1="232" x2="360" y2="298" stroke="#555555" stroke-width="2" marker-end="url(#ah)"/>
+  <line x1="590" y1="232" x2="372" y2="298" stroke="#555555" stroke-width="2" marker-end="url(#ah)"/>
+
+  <!-- L5a box -->
+  <rect x="25" y="80" width="210" height="152" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <rect x="25" y="80" width="210" height="30" rx="8" fill="#2e7d32"/>
+  <rect x="25" y="98" width="210" height="12" fill="#2e7d32"/>
+  <text x="130" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">L5a · 原生谱系 bulk KO</text>
+  <text x="40" y="128" font-size="11" fill="#333333">Sox10 oligo-cKO / Cebpb het-KO</text>
+  <text x="40" y="146" font-size="11" fill="#333333">靶程序在自身 KO 下显著下调</text>
+  <text x="40" y="168" font-size="11" font-weight="bold" fill="#2e7d32">Sox10 rank 46/412 (top 11%)</text>
+  <text x="40" y="186" font-size="11" fill="#333333">Cebpb rank 149/404 (top 37%)</text>
+  <text x="40" y="210" font-size="12" font-weight="bold" fill="#2e7d32">✓ 阳性 (native-lineage)</text>
+
+  <!-- L5b box -->
+  <rect x="255" y="80" width="210" height="152" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <rect x="255" y="80" width="210" height="30" rx="8" fill="#2e7d32"/>
+  <rect x="255" y="98" width="210" height="12" fill="#2e7d32"/>
+  <text x="360" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">L5b · LINCS 过表达 (OE)</text>
+  <text x="270" y="128" font-size="11" fill="#333333">GATA2 OE vs DoRothEA 靶程序</text>
+  <text x="270" y="148" font-size="11" font-weight="bold" fill="#2e7d32">rank 3 / 33,782 (top 0.01%)</text>
+  <text x="270" y="168" font-size="11" fill="#333333">mimicker, p = 1.4e-05</text>
+  <text x="270" y="186" font-size="11" fill="#333333">强自特异性 (self 0.01% vs 4.98%)</text>
+  <text x="270" y="210" font-size="12" font-weight="bold" fill="#2e7d32">✓ 阳性 (OE, 正确方向)</text>
+
+  <!-- L5c box -->
+  <rect x="485" y="80" width="210" height="152" rx="8" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+  <rect x="485" y="80" width="210" height="30" rx="8" fill="#f9a825"/>
+  <rect x="485" y="98" width="210" height="12" fill="#f9a825"/>
+  <text x="590" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">L5c · K562 sc-CRISPRi</text>
+  <text x="500" y="128" font-size="11" fill="#333333">Replogle 2022 genome-scale</text>
+  <text x="500" y="148" font-size="11" fill="#333333">CEBPB self-Z −0.43 → 靶集不动</text>
+  <text x="500" y="166" font-size="11" fill="#333333">(MWU p = 0.84)</text>
+  <text x="500" y="184" font-size="11" fill="#333333">GATA2 self-Z −0.19 → 不动</text>
+  <text x="500" y="202" font-size="11" fill="#333333">(p = 0.18); SOX10 不在 K562</text>
+  <text x="500" y="222" font-size="12" font-weight="bold" fill="#e65100">○ 语境边界 null (off-context)</text>
+
+  <!-- center conclusion -->
+  <rect x="230" y="300" width="260" height="120" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.5"/>
+  <rect x="230" y="300" width="260" height="28" rx="8" fill="#6a1b9a"/>
+  <rect x="230" y="316" width="260" height="12" fill="#6a1b9a"/>
+  <text x="360" y="319" text-anchor="middle" font-size="13" font-weight="bold" fill="#ffffff">核心结论</text>
+  <text x="360" y="346" text-anchor="middle" font-size="11" fill="#333333">三模态独立收敛 →</text>
+  <text x="360" y="369" text-anchor="middle" font-size="13" font-weight="bold" fill="#6a1b9a">因果支持仅成立于</text>
+  <text x="360" y="389" text-anchor="middle" font-size="13" font-weight="bold" fill="#6a1b9a">恰当生物学语境</text>
+  <text x="360" y="412" text-anchor="middle" font-size="11" fill="#6a1b9a">L5 = causal support ≠ validation</text>
+
+  <!-- positive control strip -->
+  <rect x="25" y="450" width="670" height="80" rx="8" fill="#fffde7" stroke="#f9a825" stroke-width="1.2"/>
+  <text x="40" y="474" font-size="12" font-weight="bold" fill="#e65100"># K562 内部正对照（方法有效功率校准）</text>
+  <text x="40" y="496" font-size="11" fill="#333333">MYC rank 19/332 (p = 3.1e-3) · BCL11A rank 29/332 (p = 7.5e-3) → 靶集显著下移</text>
+  <text x="40" y="516" font-size="10" fill="#666666">⇒ C 层 null 是真语境边界，非流程失效；但 GATA1 (on-target 成功) 靶集仍不动 → 通用 regulon 仅粗代理</text>
+
+  <!-- legend -->
+  <rect x="540" y="40" width="12" height="12" fill="#2e7d32" rx="2"/>
+  <text x="558" y="50" font-size="10" fill="#444444">阳性</text>
+  <rect x="600" y="40" width="12" height="12" fill="#f9a825" rx="2"/>
+  <text x="618" y="50" font-size="10" fill="#444444">语境边界</text>
+</svg>

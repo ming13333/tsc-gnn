@@ -196,7 +196,7 @@ The strongest result is **GATA2 overexpression**: GATA2's own OE signature ranks
 
 ---
 
-## 3.8 Cross-modality synthesis of gene-level perturbation support (A + C)
+## 3.8 Cross-modality synthesis of gene-level perturbation support 
 
 Levels 5b and 5c interrogate the framework's recovered TF→target programs with two **independent public gene-perturbation modalities** that differ in resolution and in *what they measure*. Analysed jointly they yield an insight that neither delivers alone: **directional causal support is context-gated, and the two modalities dissociate "signature mimicry" from "regulon response."** We formalise the combined analysis as a complete method + result unit below.
 
