@@ -36,3 +36,6 @@ gate1/rewiring_study/_*
 # OS
 .DS_Store
 Thumbs.db
+
+# Word temporary lock files
+~$*
