@@ -37,38 +37,41 @@ def set_run_font(run, size=11, bold=False, italic=False, sup=False, sub=False, c
 # ---------------- inline parser ----------------
 TOKEN = re.compile(r"(<sup>.*?</sup>|<sub>.*?</sub>|\*\*\*[^*]*?\*\*\*|\*\*[^*]+\*\*|\*[^*]+\*|\^(\d+))")
 
-def parse_inline(text):
+def parse_inline(text, bold=False, italic=False):
     runs = []
     pos = 0
     while pos < len(text):
         m = TOKEN.search(text, pos)
         if not m:
             if text[pos:]:
-                runs.append(("text", text[pos:]))
+                runs.append(("text", text[pos:], bold, italic))
             break
         if m.start() > pos:
-            runs.append(("text", text[pos:m.start()]))
+            runs.append(("text", text[pos:m.start()], bold, italic))
         tok = m.group(0)
         if tok.startswith("<sup>"):
-            runs.append(("sup", tok[5:-6]))
+            runs.append(("sup", tok[5:-6], bold, italic))
         elif tok.startswith("<sub>"):
-            runs.append(("sub", tok[5:-6]))
+            runs.append(("sub", tok[5:-6], bold, italic))
         elif tok.startswith("***"):
-            runs.append(("bolditalic", tok[3:-3]))
+            runs.extend(parse_inline(tok[3:-3], bold=True, italic=True))
         elif tok.startswith("**"):
-            runs.append(("bold", tok[2:-2]))
+            runs.extend(parse_inline(tok[2:-2], bold=True, italic=italic))
         elif tok.startswith("*"):
-            runs.append(("italic", tok[1:-1]))
+            runs.extend(parse_inline(tok[1:-1], bold=bold, italic=True))
         else:  # ^N
-            runs.append(("sup", tok[1:]))
+            runs.append(("sup", tok[1:], bold, italic))
         pos = m.end()
     return runs
 
 def add_runs(par, text, size=11):
-    for kind, val in parse_inline(text):
+    for item in parse_inline(text):
+        kind, val = item[0], item[1]
+        b = item[2] if len(item) > 2 else False
+        it = item[3] if len(item) > 3 else False
         r = par.add_run(val)
-        set_run_font(r, size, bold=(kind in ("bold", "bolditalic")),
-                     italic=(kind in ("italic", "bolditalic")),
+        set_run_font(r, size, bold=(b or kind in ("bold", "bolditalic")),
+                     italic=(it or kind in ("italic", "bolditalic")),
                      sup=(kind == "sup"), sub=(kind == "sub"))
 
 # ---------------- headings ----------------
